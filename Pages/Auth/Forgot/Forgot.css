@@ -1,0 +1,35 @@
+.Heading2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+}
+.Next-Button{
+    padding: 32% 495%;
+    cursor: pointer;
+    background-color: #1E637E;
+    color: white;
+    box-shadow: 0px 0px 30px rgb(31 91 124 / 9%);
+    border-radius: 8px;
+    border-color: #1E637E;
+    font-weight: 700;
+}
+.para2 {
+    width: 109vh;
+    position: relative;
+    left: 130px;
+    top: -20px;
+}
+@media (max-width:452px){
+    
+    .Next-Button{
+        padding: 32% 415%;
+    }
+    .para2{
+        left: 142px;
+    top: -26px;
+    font-size: 12px;
+    }
+    
+}
