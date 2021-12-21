@@ -1,0 +1,12 @@
+.image{
+    
+    width: 35vw;
+    height: 65vh;
+    
+}
+
+.image-box{
+
+    position: relative;
+    left: -20%;
+}

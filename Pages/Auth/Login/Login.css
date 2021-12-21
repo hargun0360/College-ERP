@@ -1,0 +1,153 @@
+.Container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow:hidden;
+}
+
+.Login-Box{
+
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    height: 60vh;
+    width: 40vw;
+}
+.type-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+
+.Heading1{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -2%;
+}
+
+.Login-Heading{
+    font-weight: 400;
+    font-size: 7vh;
+    font-family:cursive;
+
+}
+
+.para1{
+    line-height: 3%;
+}
+.Label1{
+    
+    position: relative;
+    top: 11%;
+}
+
+.Label2{
+    position: relative;
+    top: 11%;
+   
+}
+.input-field{
+    background-color: #F7F7F7;
+    text-align: center;
+    padding: 2.5%;
+    border-style: none;
+    
+}
+#emailicon{
+    position: relative;
+    padding: 2%;
+    top: 50%;
+    width: 9%;
+}
+.Button{
+    position: relative;
+    top: 13%;
+}
+.Forgot-text{
+    position: relative;
+    top: 17%;
+
+}
+.Forgotpassword-text{
+    color: #1F5B7C;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.Login-Button{
+    padding: 32% 390%;
+    cursor: pointer;
+    background-color: #1E637E;
+    color: white;
+    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
+    border-radius: 8px;
+    border-color: #1E637E;
+    font-weight: 700;
+
+}
+.alerts{
+    color: rgb(199, 11, 11);
+    position: relative;
+    top: 4%;
+
+}
+#passlock{
+    position: relative;
+    padding: 2%;
+    top: 50%;
+    width: 9%;
+}
+#showpass{
+    position: relative;
+    padding: 2%;
+    top: 50%;
+    width: 9%;
+    left: 78%;
+    cursor: pointer;
+}
+
+@media (max-width:848px) {
+
+    .Container{
+        flex-direction: column;
+        overflow: scroll;
+    }
+    .para1{
+        font-size: smaller;
+        position: relative;
+    width: 94vh;
+    left: 105px;
+    }
+    .Login-Heading {
+        font-size: 5vh;
+        position: relative;
+        width: 78vh;
+        left: 104px;
+    }
+    
+}
+@media (max-width:452px){
+    .illustration-box{
+        display: none;
+    }
+    .input-field{
+        width: 300px;
+    }
+    .Login-Button{
+        padding: 32% 326%;
+    }
+    .Forgot-text{
+        width: 50vh;
+    position: relative;
+    left: 68px;
+    }
+}

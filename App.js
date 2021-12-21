@@ -1,14 +1,12 @@
 import React from 'react'
 import './App.css';
-import Home from './Components/Home';
-import Header from './Components/Header';
+import Login from '../src/Pages/Auth/Login/Login'
 
 function App() {
   return (
     <div className="App">
-    <Header />
-    <Home />
-   
+    
+   <Login />
     </div>
   );
 }
