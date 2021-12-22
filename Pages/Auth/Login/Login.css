@@ -25,6 +25,11 @@
     align-items: flex-start;
     
 }
+.para3{
+    position: relative;
+    top: -38px;
+    left: 10px;
+}
 
 .Heading1{
     display: flex ;
@@ -57,10 +62,12 @@
 }
 .input-field{
     background-color: #F7F7F7;
-    text-align: center;
     padding: 2.5%;
     border-style: none;
     
+}
+.input-field::placeholder{
+    padding-left: 18px;
 }
 #emailicon{
     position: relative;
@@ -123,6 +130,12 @@
         overflow: scroll;
     }
     .para1{
+        font-size: smaller;
+        position: relative;
+    width: 94vh;
+    left: 105px;
+    }
+    .para3{
         font-size: smaller;
         position: relative;
     width: 94vh;

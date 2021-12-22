@@ -28,11 +28,7 @@
     left: 11px;
     width: 359px;
 }
-.para3{
-    position: relative;
-    top: -38px;
-    left: 10px;
-}
+
 .Login-Heading3{
     font-weight: 400;
     font-size: 7vh;
@@ -77,10 +73,7 @@
     }
 }
 @media (max-width:425px){
-    .type-box{
-        position: relative;
-    left: 81px;
-    }
+    
     .Button1{
         left: -1%;
     }
