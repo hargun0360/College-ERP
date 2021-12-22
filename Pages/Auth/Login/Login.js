@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
+import illustrate from '../../../Assets/Imagesused/login.png'
 import './Login.css'
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     return (
         <div className='Container'>
             <div className='illustration-box'>
-                <Image />
+                <Image imge={illustrate}/>
             </div>
             <div>
                 <form className='Login-Box' onSubmit={handleSubmit(onSubmit)}>

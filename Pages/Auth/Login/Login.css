@@ -31,7 +31,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -4%;
+    top: -2%;
 }
 
 .Login-Heading{
@@ -84,7 +84,7 @@
 }
 
 .Login-Button{
-    padding: 32% 390%;
+    padding: 32% 440%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -92,6 +92,7 @@
     border-radius: 8px;
     border-color: #1E637E;
     font-weight: 700;
+    border-style: none;
 
 }
 .alerts{
@@ -143,7 +144,7 @@
         width: 300px;
     }
     .Login-Button{
-        padding: 32% 326%;
+        padding: 32% 365%;
     }
     .Forgot-text{
         width: 50vh;

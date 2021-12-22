@@ -6,7 +6,7 @@
     top: 3%;
 }
 .Next-Button{
-    padding: 32% 495%;
+    padding: 38% 568%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -14,17 +14,18 @@
     border-radius: 8px;
     border-color: #1E637E;
     font-weight: 700;
+    border-style: none;
 }
 .para2 {
     width: 109vh;
     position: relative;
-    left: 130px;
+    left: 108px;
     top: -20px;
 }
 @media (max-width:452px){
     
     .Next-Button{
-        padding: 32% 415%;
+        padding: 35% 474%;
     }
     .para2{
         left: 142px;

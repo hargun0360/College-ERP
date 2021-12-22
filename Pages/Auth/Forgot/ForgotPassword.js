@@ -3,6 +3,7 @@ import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import '../Login/Login.css'
+import illustrate from '../../../Assets/Imagesused/forgot.png'
 import './Forgot.css'
 
 const Forgotpassword = () => {
@@ -19,7 +20,7 @@ const Forgotpassword = () => {
     return (
         <div className='Container'>
             <div className='illustration-box'>
-                <Image />
+                <Image imge={illustrate} />
             </div>
             <div>
                 <form className='Login-Box' onSubmit={handleSubmit(onSubmit)}>
