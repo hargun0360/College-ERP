@@ -14,6 +14,11 @@ const OTP = () => {
         reset();
     }
 
+    const handleClick = (data)=>{
+        // trigger the api to resend the otp.
+        console.log(data);
+    }
+
     return (
         <div className='Container'>
             <div className='illustration-box'>
@@ -36,7 +41,7 @@ const OTP = () => {
                             <SubmitButton className="Login-Button" Label="Login" ></SubmitButton>
                         </div>
                     </div>
-                    <div className='Forgot-text'>
+                    <div className='Forgot-text' onClick={handleClick}>
                         <p className='Forgotpassword-text'>Resend OTP</p>
                     </div>
                 </form>

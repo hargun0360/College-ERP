@@ -24,11 +24,17 @@
     justify-content: flex-start;
     align-items: flex-start;
     
+    
 }
 .para3{
     position: relative;
     top: -38px;
-    left: 10px;
+    left: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    width: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Heading1{
@@ -40,14 +46,19 @@
 }
 
 .Login-Heading{
-    font-weight: 400;
+    font-weight: 600;
     font-size: 7vh;
-    font-family:cursive;
+    font-family: 'Ubuntu', sans-serif;
 
 }
 
 .para1{
     line-height: 3%;
+    font-family: 'Ubuntu', sans-serif;
+    width: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .Label1{
     
@@ -64,11 +75,11 @@
     background-color: #F7F7F7;
     padding: 2.5%;
     border-style: none;
+    padding-left: 10%;
     
 }
-.input-field::placeholder{
-    padding-left: 18px;
-}
+
+
 #emailicon{
     position: relative;
     padding: 2%;
@@ -82,6 +93,7 @@
 .Forgot-text{
     position: relative;
     top: 17%;
+    cursor: pointer;
 
 }
 .Forgotpassword-text{
@@ -89,9 +101,12 @@
     font-weight: 500;
     font-size: 20px;
 }
+.Linker{
+    text-decoration: none;
+}
 
 .Login-Button{
-    padding: 32% 440%;
+    padding: 32% 478%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -106,6 +121,8 @@
     color: rgb(199, 11, 11);
     position: relative;
     top: 4%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
 
 }
 #passlock{
@@ -130,22 +147,26 @@
         overflow: scroll;
     }
     .para1{
-        font-size: smaller;
-        position: relative;
-    width: 94vh;
-    left: 105px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+   
+    /* left: 105px; */
     }
     .para3{
-        font-size: smaller;
-        position: relative;
-    width: 94vh;
-    left: 105px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
     }
     .Login-Heading {
         font-size: 5vh;
         position: relative;
         width: 78vh;
-        left: 104px;
+        left: 115px;
     }
     
 }
@@ -159,9 +180,18 @@
     .Login-Button{
         padding: 32% 365%;
     }
+    .Login-Box{
+        width: 94vw;
+    }
     .Forgot-text{
         width: 50vh;
     position: relative;
     left: 68px;
     }
+    
 }
+/* @media (max-width:380px){
+    .para1,.para3{
+        left: 130px;
+}
+} */

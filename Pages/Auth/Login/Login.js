@@ -3,7 +3,10 @@ import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import illustrate from '../../../Assets/Imagesused/login.png'
+import AuthService from '../../../ApiServices/AuthService'
 import './Login.css'
+import { Link } from 'react-router-dom'
+
 
 const Login = () => {
 
@@ -12,7 +15,12 @@ const Login = () => {
         mode: "onTouched"
     });
     const onSubmit = (data) => {
+        let loginas="admin";
         console.log(data);
+        AuthService.login(data,loginas)
+        .then((res)=>{
+            console.log(res);
+        })
         reset();
     }
 
@@ -56,7 +64,8 @@ const Login = () => {
                         </div>
                     </div>
                     <div className='Forgot-text'>
-                        <p className='Forgotpassword-text'>Forgot Password?</p>
+                    <Link to={"/forgot"} className='Linker' > <p className='Forgotpassword-text'>Forgot Password?</p></Link>
+                       
                     </div>
                 </form>
 
