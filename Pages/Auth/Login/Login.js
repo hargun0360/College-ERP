@@ -30,7 +30,7 @@ const Login = () => {
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
             dispatch(actionCreators.userEmail(res.data.email));
-            navigate("/");
+            navigate("/Dashboard");
             }
             
         }).catch((error)=>{
@@ -39,12 +39,16 @@ const Login = () => {
             if(error.response.status === 404){
                 alert("invalid user");
             }
-            if(error.response.status === 403){
+            else if(error.response.status === 403){
                 alert("incorrect password");
             }
-            if(error.response.status === 302){
+            else if(error.response.status === 302){
                 alert("user is not admin")
             }
+            else{
+                navigate("/page404")
+            }
+
         })
         reset();
     }

@@ -34,8 +34,11 @@ const Forgotpassword = () => {
             if(error.response.status === 400){
                 alert("invalid user");
             }
-            if(error.response.status === 500){
+            else if(error.response.status === 500){
                 alert("network Error!");
+            }
+            else{
+                navigate("/Page404");
             }
         })
         reset();

@@ -47,7 +47,7 @@ const CreatePass = () => {
             if(res.status===200){
                 alert("saved successfully");
                 console.log(res);
-                
+                navigate("/Login");
             }
             
         }).catch((error)=>{
@@ -56,8 +56,11 @@ const CreatePass = () => {
             if(error.response.status === 500){
                 alert("Time out!");
             }
-            if(error.response.status === 422){
+            else if(error.response.status === 422){
                 alert("pasword do not match");
+            }
+            else{
+                navigate("/Page404");
             }
         })
             reset();

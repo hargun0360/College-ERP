@@ -33,11 +33,14 @@ const OTP = () => {
             if(error.response.status === 422){
                 alert("otp expired");
             }
-            if(error.response.status === 420){
+            else if(error.response.status === 420){
                 alert("Wrong otp");
             }
-            if(error.response.status === 500){
+            else if(error.response.status === 500){
                 alert("Time out!");
+            }
+            else{
+                navigate("/Page404");
             }
         })
         reset();

@@ -28,7 +28,7 @@
 }
 .para3{
     position: relative;
-    top: -38px;
+    top: -20px;
     left: 15px;
     font-family: 'Ubuntu', sans-serif;
     width: 70vh;
@@ -42,7 +42,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -2%;
+    top: -3%;
 }
 
 .Login-Heading{
@@ -59,6 +59,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: 8%;
+    margin-top: 10%;
 }
 .Label1{
     
@@ -106,7 +109,7 @@
 }
 
 .Login-Button{
-    padding: 32% 478%;
+    padding: 32% 428%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -136,7 +139,7 @@
     padding: 2%;
     top: 50%;
     width: 9%;
-    left: 78%;
+    left: 83%;
     cursor: pointer;
 }
 
@@ -178,7 +181,7 @@
         width: 300px;
     }
     .Login-Button{
-        padding: 32% 365%;
+        padding: 32% 312%;
     }
     .Login-Box{
         width: 94vw;
@@ -187,6 +190,9 @@
         width: 50vh;
     position: relative;
     left: 68px;
+    }
+    #showpass{
+        left: 72%;
     }
     
 }

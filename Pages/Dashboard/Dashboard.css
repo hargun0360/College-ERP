@@ -1,0 +1,11 @@
+.Dashboard-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 40%;
+}
+.dashboard{
+    height: 100vh;
+    width: 100vw;
+}

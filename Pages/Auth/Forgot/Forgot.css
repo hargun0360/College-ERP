@@ -6,7 +6,7 @@
     top: 3%;
 }
 .Next-Button{
-    padding: 38% 605%;
+    padding: 38% 508%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -19,18 +19,18 @@
 .para2 {
     width: 109vh;
     position: relative;
-    left: 130px;
-    top: -20px;
+    left: 120px;
+    top: 0px;
     font-family: 'Ubuntu', sans-serif;
 }
 @media (max-width:452px){
     
     .Next-Button{
-        padding: 35% 474%;
+        padding: 35% 369%;
     }
     .Heading2{
         top: 8%;
-        left: -32%;
+        left: -13%;
     }
     .para2{
         display: flex;
