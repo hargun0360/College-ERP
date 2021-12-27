@@ -7,6 +7,7 @@ import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
 import {Routes,Route} from 'react-router-dom'
 import Home from './Pages/Home/Home';
+import NotFound from './Components/UI/PageNotFound/Page404';
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
             <Route exact path="/otp" element={<OTP />} />
             <Route exact path="/changepass" element={<ChangePass />} />
             <Route exact path="/createpass" element={<CreatePass />} />
+            <Route path="*" element={<NotFound />} />
       </Routes>
-      {/*  */}
     </div>
   );
 }
