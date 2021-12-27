@@ -1,14 +1,20 @@
 import axios from './Interceptor';
 
 class AuthServices {
-    login(loginas,data) { 
-        return axios.post(`/login/${loginas}`,data)
+    login(user,data) { 
+        return axios.post(`auth/login?user=${user}`,data)
     }
-    otp(data){  
-        return axios.post("/signup/otp",data)
+    forgot(user,data){  
+        return axios.post(`auth/verifybeforereset?user=${user}`,data)
       }
-      otpResend(data){ 
-        return axios.post('/signup/otp-resend',data)
+      otp(data){ 
+        return axios.post('auth/checkotpbeforereset',data)
+    }
+    resendotp(data){ 
+        return axios.post('auth/resendotp',data)
+    }
+    resetpass(user,data){ 
+        return axios.post(`auth/resetpassword?user=${user}`,data)
     }
 }
 

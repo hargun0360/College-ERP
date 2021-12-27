@@ -6,18 +6,20 @@ import OTP from './Pages/Auth/OTP/OTP';
 import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
 import {Routes,Route} from 'react-router-dom'
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
     <div className="App">
      <Routes>
-            <Route exact path="/"  />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/Login" element={<Login />} />
             <Route exact path="/forgot" element={<Forgotpassword />} />
             <Route exact path="/otp" element={<OTP />} />
             <Route exact path="/changepass" element={<ChangePass />} />
+            <Route exact path="/createpass" element={<CreatePass />} />
       </Routes>
-   
+      {/*  */}
     </div>
   );
 }

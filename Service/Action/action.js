@@ -1,6 +1,12 @@
-export default function increment(data){
+export  const userEmail = (data)=>{
     return{
-        type:"INCREMENT",
+        type:"User_Email",
+        payload:data
+    }
+}
+export  const user= (data)=>{
+    return{
+        type:"User_Type",
         payload:data
     }
 }

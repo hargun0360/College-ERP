@@ -5,15 +5,39 @@ import { useForm } from 'react-hook-form'
 import '../Login/Login.css'
 import illustrate from '../../../Assets/Imagesused/forgot.png'
 import './Forgot.css'
-
+import  {  useNavigate  } from 'react-router-dom'
+import AuthService from '../../../ApiServices/AuthService'
+import * as actionCreators from "../../../Service/Action/action";
+import {useSelector,useDispatch} from 'react-redux'
 const Forgotpassword = () => {
-
-    
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const mystate = useSelector((state)=>state.emailReducer.user);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
-    const onSubmit = (data) => {
+    const onSubmit = (data,e) => {
+        e.preventDefault();
         console.log(data);
+        AuthService.forgot(mystate,data)
+        .then((res)=>{
+            if(res.status===200){
+                dispatch(actionCreators.userEmail(data.email));
+                alert("otp sent");
+                console.log(res);
+                navigate('/otp');
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            console.log(error.response);
+            if(error.response.status === 400){
+                alert("invalid user");
+            }
+            if(error.response.status === 500){
+                alert("network Error!");
+            }
+        })
         reset();
     }
 

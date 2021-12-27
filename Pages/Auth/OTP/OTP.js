@@ -4,19 +4,66 @@ import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import illustrate from '../../../Assets/Imagesused/forgot.png'
 import '../Login/Login.css'
-
+import AuthService from '../../../ApiServices/AuthService'
+import {useSelector} from 'react-redux'
+import  {  useNavigate  } from 'react-router-dom'
 const OTP = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
-    const onSubmit = (data) => {
-        console.log(data);
+    const navigate = useNavigate();
+    const mystate = useSelector((state)=>state.emailReducer.email)
+    const onSubmit = (data,e) => {
+        e.preventDefault();
+        let obj={
+            email:mystate,
+            otp:data.otp
+        }
+        AuthService.otp(obj)
+        .then((res)=>{
+            if(res.status===200){
+                alert("Verified Successfully");
+                console.log(res);
+                navigate("/createpass")
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            console.log(error.response);
+            if(error.response.status === 422){
+                alert("otp expired");
+            }
+            if(error.response.status === 420){
+                alert("Wrong otp");
+            }
+            if(error.response.status === 500){
+                alert("Time out!");
+            }
+        })
         reset();
     }
 
-    const handleClick = (data)=>{
-        // trigger the api to resend the otp.
-        console.log(data);
+    const handleClick = (e)=>{
+        e.preventDefault();
+        const object={
+            email:mystate,
+        }
+        console.log(object);
+        AuthService.resendotp(object)
+        .then((res)=>{
+            if(res.status===200){
+                alert("Resend otp");
+                console.log(res);
+                
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            if(error.response.status === 500){
+                alert("Time out!");
+            }
+        })
+
     }
 
     return (

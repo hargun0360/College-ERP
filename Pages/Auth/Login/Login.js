@@ -6,20 +6,45 @@ import illustrate from '../../../Assets/Imagesused/login.png'
 import AuthService from '../../../ApiServices/AuthService'
 import './Login.css'
 import { Link } from 'react-router-dom'
-
-
+import {useDispatch,useSelector} from 'react-redux'
+import * as actionCreators from "../../../Service/Action/action";
+import  {  useNavigate  } from 'react-router-dom'
 const Login = () => {
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const mystate = useSelector((state)=>state.emailReducer.user)
     const [toggle, setToggle] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
-    const onSubmit = (data) => {
-        let loginas="admin";
+    console.log(mystate);
+    const onSubmit = (data,e) => {
+        e.preventDefault();
+        console.log(e);
+        let loginas=mystate;
         console.log(data);
-        AuthService.login(data,loginas)
+        AuthService.login(loginas,data)
         .then((res)=>{
-            console.log(res);
+            if(res.status===201){
+                console.log(res);
+            localStorage.setItem("user",res.data.accessToken);
+            localStorage.setItem("ref_token",res.data.refreshToken);
+            dispatch(actionCreators.userEmail(res.data.email));
+            navigate("/");
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            console.log(error.response);
+            if(error.response.status === 404){
+                alert("invalid user");
+            }
+            if(error.response.status === 403){
+                alert("incorrect password");
+            }
+            if(error.response.status === 302){
+                alert("user is not admin")
+            }
         })
         reset();
     }
