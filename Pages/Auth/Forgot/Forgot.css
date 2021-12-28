@@ -6,7 +6,7 @@
     top: 3%;
 }
 .Next-Button{
-    padding: 38% 508%;
+    padding: 38% 492%;
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -17,10 +17,6 @@
     border-style: none;
 }
 .para2 {
-    width: 109vh;
-    position: relative;
-    left: 120px;
-    top: 0px;
     font-family: 'Ubuntu', sans-serif;
 }
 @media (max-width:452px){
@@ -30,14 +26,11 @@
     }
     .Heading2{
         top: 8%;
-        left: -13%;
     }
     .para2{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    font-size: 12px;
-    margin-right: 81%;
+        
+    font-size: 11px;
+   
     }
     .Login-Box{
         width: 94vw;

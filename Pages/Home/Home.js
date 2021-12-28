@@ -9,6 +9,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const handleChange = (e)=>{
         dispatch(actionCreators.user(e.target.value));
+        localStorage.setItem("userd",e.target.value);
         navigate('/Login');
     }
     return (

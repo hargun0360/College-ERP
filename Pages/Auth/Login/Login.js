@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import * as actionCreators from "../../../Service/Action/action";
 import  {  useNavigate  } from 'react-router-dom'
+import Toaster from '../../../Components/UI/Toaster/Toaster'
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -84,8 +85,10 @@ const Login = () => {
                         </div>
                         <div className='input2'>
                             <i id="passlock" className="fa fa-lock icon"></i>
-                            <i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle(!toggle) }}></i>
-                            <input className='input-field' size={"44"} type={toggle ? "text" : "password"} placeholder='Password' name="password" {...register("password", { required: "**Password is required", minLength: { value: 4, message: "**Password must be more than 4 characters" }, maxLength: { value: 12, message: "**Password cannot exceed more than 12 characters" } })}></input>
+                            {
+                                toggle?<i id="showpass" className="fa fa-eye-slash icon" onClick={() => { setToggle(!toggle) }}></i>:<i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle(!toggle) }}></i>
+                            }
+                            <input className='input-field' size={"44"} type={toggle ? "text" : "password"} placeholder='Password' name="password" {...register("password", { required: "**Password is required", minLength: { value: 8, message: "**Password must be more than 8 characters" }, maxLength: { value: 14, message: "**Password cannot exceed more than 14 characters" } })}></input>
                         </div>
                         <p className='alerts'>{errors.password?.message}</p>
                         <div className='Button'>

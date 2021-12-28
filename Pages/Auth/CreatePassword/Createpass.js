@@ -20,8 +20,8 @@ const CreatePass = () => {
     const formSchema = Yup.object().shape({
         password: Yup.string()
           .required("Password is required")
-          .min(8, "Password length should be at least 4 characters")
-          .max(14, "Password cannot exceed more than 12 characters"),
+          .min(8, "Password length should be at least 8 characters")
+          .max(14, "Password cannot exceed more than 14 characters"),
         cpassword: Yup.string()
           .required("Confirm Password is required")
           .oneOf([Yup.ref("password")], "Passwords do not match")
@@ -86,7 +86,9 @@ const CreatePass = () => {
                         </div>
                         <div className='input1'>
                             <i id="passlock" className="fa fa-lock icon"></i>
-                            <i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle1(!toggle1) }}></i>
+                            {
+                                toggle1?<i id="showpass" className="fa fa-eye-slash icon" onClick={() => { setToggle1(!toggle1) }}></i>:<i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle1(!toggle1) }}></i>
+                            }
                             <input className='input-field' size={"44"} type={toggle1 ? "text" : "password"} placeholder='Password' name="password" {...register("password")}></input>
                         </div>
                         <p className='alerts'>{errors.password?.message}</p>
@@ -97,7 +99,9 @@ const CreatePass = () => {
                         </div>
                         <div className='input2'>
                             <i id="passlock" className="fa fa-lock icon"></i>
-                            <i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle2(!toggle2) }}></i>
+                            {
+                                toggle2?<i id="showpass" className="fa fa-eye-slash icon" onClick={() => { setToggle2(!toggle2) }}></i>:<i id="showpass" className="fa fa-eye icon" onClick={() => { setToggle2(!toggle2) }}></i>
+                            }
                             <input className='input-field' size={"44"} type={toggle2 ? "text" : "password"} placeholder='Password' name="cpassword" {...register("cpassword")}></input>
                         </div>
                        <p className='alerts'>{errors.cpassword?.message}</p>

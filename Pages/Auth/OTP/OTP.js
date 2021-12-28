@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -12,6 +12,13 @@ const OTP = () => {
         mode: "onTouched"
     });
     const navigate = useNavigate();
+    const [disabled,setDisabled]=useState(false);
+    const [counter, setCounter] =useState(59);
+    useEffect(() => {
+        const timer =
+        counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        return () => clearInterval(timer);
+    }, [counter]);
     const mystate = useSelector((state)=>state.emailReducer.email)
     const onSubmit = (data,e) => {
         e.preventDefault();
@@ -45,6 +52,10 @@ const OTP = () => {
         })
         reset();
     }
+    setTimeout(() => {
+        setDisabled(true);
+    }, 59000);
+    
 
     const handleClick = (e)=>{
         e.preventDefault();
@@ -66,7 +77,6 @@ const OTP = () => {
                 alert("Time out!");
             }
         })
-
     }
 
     return (
@@ -91,9 +101,15 @@ const OTP = () => {
                             <SubmitButton className="Login-Button" Label="Login" ></SubmitButton>
                         </div>
                     </div>
-                    <div className='Forgot-text' onClick={handleClick}>
+                    {
+                        disabled ?  <div className='Forgot-text' onClick={handleClick}>
                         <p className='Forgotpassword-text'>Resend OTP</p>
+                    </div> :  <div className='Forgot-text'>
+                        <p className='text-otp'>Resend OTP in<span style={{color:"#1F5B7C",fontWeight:"bold"}}> 00:{counter}</span></p>
                     </div>
+                    }
+                   
+                   
                 </form>
 
             </div>
