@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -9,9 +9,14 @@ import { useNavigate } from 'react-router-dom'
 import AuthService from '../../../ApiServices/AuthService'
 import * as actionCreators from "../../../Service/Action/action";
 import { useSelector, useDispatch } from 'react-redux'
+import Toaster from '../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../../Components/UI/Spinner/Spinner'
 const Forgotpassword = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false)
     const mystate = useSelector((state) => state.emailReducer.user);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
@@ -19,11 +24,13 @@ const Forgotpassword = () => {
     const onSubmit = (data, e) => {
         e.preventDefault();
         console.log(data);
+        setLoading(true);
         AuthService.forgot(mystate, data)
             .then((res) => {
                 if (res.status === 200) {
+                    setLoading(false);
                     dispatch(actionCreators.userEmail(data.email));
-                    alert("otp sent");
+                    toast.success("otp sent");
                     console.log(res);
                     navigate('/otp');
                 }
@@ -31,11 +38,12 @@ const Forgotpassword = () => {
             }).catch((error) => {
                 console.log(error);
                 console.log(error.response);
+                setLoading(false);
                 if (error.response.status === 400) {
-                    alert("invalid user");
+                    toast.error("invalid user");
                 }
                 else if (error.response.status === 500) {
-                    alert("network Error!");
+                    toast.error("network Error!");
                 }
                 else {
                     navigate("/Page404");
@@ -46,6 +54,9 @@ const Forgotpassword = () => {
 
     return (
         <div className='Container'>
+        {
+            loading && <Spinner />
+        }
             <div className='illustration-box'>
                 <Image imge={illustrate} />
             </div>
@@ -75,7 +86,7 @@ const Forgotpassword = () => {
                 </form>
 
             </div>
-
+                <Toaster />
         </div>
     )
 }

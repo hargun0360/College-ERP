@@ -7,21 +7,21 @@ import '../Login/Login.css'
 import AuthService from '../../../ApiServices/AuthService'
 import {useSelector} from 'react-redux'
 import  {  useNavigate  } from 'react-router-dom'
+import Toaster from '../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../../Components/UI/Spinner/Spinner'
+import OtpTimer from 'otp-timer'
 const OTP = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
     const navigate = useNavigate();
-    const [disabled,setDisabled]=useState(false);
-    const [counter, setCounter] =useState(59);
-    useEffect(() => {
-        const timer =
-        counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-        return () => clearInterval(timer);
-    }, [counter]);
+    const [loading, setLoading] = useState(false)
     const mystate = useSelector((state)=>state.emailReducer.email)
     const onSubmit = (data,e) => {
         e.preventDefault();
+        setLoading(true);
         let obj={
             email:mystate,
             otp:data.otp
@@ -29,7 +29,8 @@ const OTP = () => {
         AuthService.otp(obj)
         .then((res)=>{
             if(res.status===200){
-                alert("Verified Successfully");
+                setLoading(false);
+                toast.success("Verified Successfully");
                 console.log(res);
                 navigate("/createpass")
             }
@@ -37,14 +38,15 @@ const OTP = () => {
         }).catch((error)=>{
             console.log(error);
             console.log(error.response);
+            setLoading(false);
             if(error.response.status === 422){
-                alert("otp expired");
+                toast.warn("otp expired");
             }
             else if(error.response.status === 420){
-                alert("Wrong otp");
+                toast.warn("Wrong otp");
             }
             else if(error.response.status === 500){
-                alert("Time out!");
+                toast.error("Time out!");
             }
             else{
                 navigate("/Page404");
@@ -52,13 +54,10 @@ const OTP = () => {
         })
         reset();
     }
-    setTimeout(() => {
-        setDisabled(true);
-    }, 59000);
     
 
-    const handleClick = (e)=>{
-        e.preventDefault();
+    const handleClick = ()=>{
+        setLoading(true);
         const object={
             email:mystate,
         }
@@ -66,21 +65,26 @@ const OTP = () => {
         AuthService.resendotp(object)
         .then((res)=>{
             if(res.status===200){
-                alert("Resend otp");
+                setLoading(false);
+                toast.success("otp sent");
                 console.log(res);
                 
             }
             
         }).catch((error)=>{
+            setLoading(false);
             console.log(error);
             if(error.response.status === 500){
-                alert("Time out!");
+                toast.error("Time out!");
             }
         })
     }
 
     return (
         <div className='Container'>
+         {
+            loading && <Spinner />
+        }
             <div className='illustration-box'>
                 <Image imge={illustrate}/>
             </div>
@@ -101,19 +105,14 @@ const OTP = () => {
                             <SubmitButton className="Login-Button" Label="Login" ></SubmitButton>
                         </div>
                     </div>
-                    {
-                        disabled ?  <div className='Forgot-text' onClick={handleClick}>
-                        <p className='Forgotpassword-text'>Resend OTP</p>
-                    </div> :  <div className='Forgot-text'>
-                        <p className='text-otp'>Resend OTP in<span style={{color:"#1F5B7C",fontWeight:"bold"}}> 00:{counter}</span></p>
+                    <div className='Forgot-text'>
+                    <OtpTimer minutes={0} seconds= {59} resend={handleClick} text="Resend OTP in" ButtonText="Resend OTP" textColor={"#1F5B7C"} buttonColor={"#1F5B7C"} background={"#ffffff"} />
                     </div>
-                    }
-                   
                    
                 </form>
 
             </div>
-
+                    <Toaster />
         </div>
     )
 }

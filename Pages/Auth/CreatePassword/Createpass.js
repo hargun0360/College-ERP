@@ -11,10 +11,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import  {  useNavigate  } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import AuthService from '../../../ApiServices/AuthService'
+import Toaster from '../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../../Components/UI/Spinner/Spinner'
 const CreatePass = () => {
     const navigate = useNavigate();
     const [toggle1, setToggle1] = useState(false);
     const [toggle2, setToggle2] = useState(false);
+    const [loading, setLoading] = useState(false)
     const mystate1 = useSelector((state)=>state.emailReducer.user)
     const mystate2 = useSelector((state)=>state.emailReducer.email)
     const formSchema = Yup.object().shape({
@@ -33,6 +38,7 @@ const CreatePass = () => {
       });
     const onSubmit = (data,e) => {
         e.preventDefault();
+        setLoading(true);
         console.log(data);
         let obj={
             email:mystate2,
@@ -45,7 +51,8 @@ const CreatePass = () => {
         AuthService.resetpass(mystate1,obj)
         .then((res)=>{
             if(res.status===200){
-                alert("saved successfully");
+                setLoading(false);
+                toast.success("saved successfully");
                 console.log(res);
                 navigate("/Login");
             }
@@ -53,11 +60,12 @@ const CreatePass = () => {
         }).catch((error)=>{
             console.log(error);
             console.log(error.response);
+            setLoading(false);
             if(error.response.status === 500){
-                alert("Time out!");
+                toast.error("Time out!");
             }
             else if(error.response.status === 422){
-                alert("pasword do not match");
+                toast.warn("pasword do not match");
             }
             else{
                 navigate("/Page404");
@@ -69,7 +77,10 @@ const CreatePass = () => {
 
     return (
         <div className='Container'>
-            <div className='illustration-box'>
+         {
+            loading && <Spinner />
+        }
+        <div className='illustration-box'>
                 <Image imge={illustrate}/>
             </div>
             <div>
@@ -113,7 +124,7 @@ const CreatePass = () => {
                 </form>
 
             </div>
-
+                <Toaster />
         </div>
     )
 }

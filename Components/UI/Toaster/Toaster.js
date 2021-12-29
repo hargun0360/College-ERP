@@ -1,10 +1,9 @@
 import React from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Toaster = (props) => {
+const Toaster = () => {
     return (
         <div>
-            toast.{props.type}({props.message});
             <ToastContainer
             theme="colored"
             position="top-center"

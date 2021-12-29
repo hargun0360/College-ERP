@@ -10,11 +10,15 @@ import {useDispatch,useSelector} from 'react-redux'
 import * as actionCreators from "../../../Service/Action/action";
 import  {  useNavigate  } from 'react-router-dom'
 import Toaster from '../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../../Components/UI/Spinner/Spinner'
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const mystate = useSelector((state)=>state.emailReducer.user)
     const [toggle, setToggle] = useState(false);
+    const [loading, setLoading] = useState(false)
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
@@ -24,9 +28,11 @@ const Login = () => {
         console.log(e);
         let loginas=mystate;
         console.log(data);
+        setLoading(true);
         AuthService.login(loginas,data)
         .then((res)=>{
             if(res.status===201){
+                setLoading(false);
                 console.log(res);
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
@@ -37,14 +43,15 @@ const Login = () => {
         }).catch((error)=>{
             console.log(error);
             console.log(error.response);
+            setLoading(false);
             if(error.response.status === 404){
-                alert("invalid user");
+                toast.error("Invalid User");
             }
             else if(error.response.status === 403){
-                alert("incorrect password");
+                toast.warn("incorrect password");
             }
             else if(error.response.status === 302){
-                alert("user is not admin")
+                toast.warn("user is not admin");
             }
             else{
                 navigate("/page404")
@@ -56,6 +63,9 @@ const Login = () => {
 
     return (
         <div className='Container'>
+        {
+            loading && <Spinner />
+        }
             <div className='illustration-box'>
                 <Image imge={illustrate}/>
             </div>
@@ -102,7 +112,7 @@ const Login = () => {
                 </form>
 
             </div>
-
+                <Toaster />
         </div>
     )
 }

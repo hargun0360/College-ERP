@@ -91,11 +91,11 @@
 }
 .Button{
     position: relative;
-    top: 13%;
+    top: 7%;
 }
 .Forgot-text{
     position: relative;
-    top: 17%;
+    top: 15%;
     cursor: pointer;
 
 }
@@ -142,6 +142,7 @@
     left: 83%;
     cursor: pointer;
 }
+
 
 @media (max-width:848px) {
 
