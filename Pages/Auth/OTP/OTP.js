@@ -16,7 +16,7 @@ const OTP = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const [loading, setLoading] = useState(false)
     const mystate = useSelector((state)=>state.emailReducer.email)
     const onSubmit = (data,e) => {
