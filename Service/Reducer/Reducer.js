@@ -1,6 +1,6 @@
 const initialState={
     email:"",
-    user:"",
+    user:""
 };
 export default function emailReducer(state=initialState,action){
 
