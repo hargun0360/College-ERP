@@ -8,7 +8,7 @@ import './Forgot.css'
 import { useNavigate } from 'react-router-dom'
 import AuthService from '../../../ApiServices/AuthService'
 import * as actionCreators from "../../../Service/Action/action";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Toaster from '../../../Components/UI/Toaster/Toaster'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +17,7 @@ const Forgotpassword = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false)
-    const mystate = useSelector((state) => state.emailReducer.user);
+    const mystate = localStorage.getItem("userd")
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });

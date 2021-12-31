@@ -20,7 +20,7 @@ const CreatePass = () => {
     const [toggle1, setToggle1] = useState(false);
     const [toggle2, setToggle2] = useState(false);
     const [loading, setLoading] = useState(false)
-    const mystate1 = useSelector((state)=>state.emailReducer.user)
+    const mystate1 = localStorage.getItem("userd");
     const mystate2 = useSelector((state)=>state.emailReducer.email)
     const formSchema = Yup.object().shape({
         password: Yup.string()

@@ -26,7 +26,7 @@ const Login = () => {
     const onSubmit = (data,e) => {
         e.preventDefault();
         console.log(e);
-        let loginas=mystate;
+        let loginas=localStorage.getItem("userd");
         console.log(data);
         setLoading(true);
         AuthService.login(loginas,data)
