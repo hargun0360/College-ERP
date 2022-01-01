@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
   }
-  .sidebar.active{
+  .sidebar.activate{
     width:200px;
   }
   .sidebar #btn{
@@ -26,11 +26,11 @@
     transform: translateX(-50%);
     cursor: pointer;
   }
-  .sidebar.active #btn{
+  .sidebar.activate #btn{
     left:90%;
   }
   .sidebar ul {
-    margin-top: -42px;
+    margin-top: -3px;
     margin-left: -34px;
   }
   .sidebar ul li{
@@ -72,7 +72,7 @@
     left:-8px;
     top:7px;
   }
-  .sidebar.active ul li .tooltip{
+  .sidebar.activate ul li .tooltip{
     display:none;
   }
   .sidebar ul li:hover .tooltip{
@@ -86,13 +86,13 @@
     align-items:center;
     justify-content: center;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 0px 8px 8px 0px;
     transition:all 0.4s ease;
   }
   .sidebar ul li .linking:hover{
     color:#1E637E;
     background:#e0dddd;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0px 8px 8px 0px;
   }
   .sidebar ul li i{
     font-size: 18px;
@@ -112,9 +112,13 @@
     pointer-events: none;
     transition:all 0.3s ease;
   }
-  .sidebar.active .links_name{
+  .sidebar.activate .links_name{
     transition:0s;
     display: flex;
     pointer-events: auto;
     width: 133px;
+  }
+  .active{
+      background-color:#e0dddd;
+      border-radius: 0px 6px 6px 0px;
   }
