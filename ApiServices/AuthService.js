@@ -16,6 +16,9 @@ class AuthServices {
     resetpass(user,data){ 
         return axios.post(`auth/resetpassword?user=${user}`,data)
     }
+    logout(){
+        localStorage.clear();
+     }
 }
 
 export default new AuthServices();
