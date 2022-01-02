@@ -143,13 +143,113 @@
     font-size: 23px;
     margin-bottom: -1%;
 }
-.cross{
-    position: absolute;
-    top: 19%;
-    left: 65%;
+.cross {
+    position: relative;
+    top: -29%;
+    left: -3%;
     cursor: pointer;
 }
 #crossed:hover{
     color: grey;
     transform: scale(1.5,1.5);
+}
+@media (max-width:1000px){
+    .Main-Heading .Sub-heading h2{
+        font-size: 38px;
+    }
+    .Continue-Button{
+        width: 300px;
+        top: 78%;
+    }
+    .Continue-Button:hover{
+        width: 335px;
+    }
+    .underline{
+        top: 15%;
+        left: 46%;
+    }
+    .Underline-image{
+        width: 208px;
+    }
+}
+@media (max-width:768px){
+    .Landing-container{
+        flex-direction: column-reverse;
+    }
+    .Left-Container {
+        padding-left: 75%;
+        height: 55vh;
+        margin-top: -10%;
+    }
+    .image-illus {
+        height: 54vh;
+        width: 60vw;
+    }
+    .Modal-container {
+        width: 414px;
+        height: 394px;
+    }
+    .Modal-box{
+        height: 111vh;
+    }
+    .cross {
+        top: -26%;
+        left: -4%;
+    }
+}
+@media (max-width:600px){
+    .Left-Container {
+        padding-left: 115%;
+    }
+}
+@media (max-width:472px){
+    .Main-Heading .Sub-heading h2{
+        font-size: 28px;
+    }
+    .Continue-Button {
+        width: 218px;
+        top: 56%;
+    }
+    .Continue-Button:hover{
+        width: 240px;
+    }
+    .Underline-image {
+        width: 150px;
+    }
+    .underline {
+        top: 9%;
+    }
+    .image-illus {
+        height: 50vh;
+        width: 90vw;
+    }
+    .Modal-container {
+        width: 258px;
+        height: 324px;
+    }
+    .Modal-container .Modal-heading h2 {
+        font-size: 30px;
+    }
+    .Student h2, .Faculty h2, .Admin h2 {
+        font-size: 17px;
+    }
+    .Student, .Faculty, .Admin {
+        padding-left: 4%;
+    }
+    .box1, .box2, .box3 {
+        width: 209px;
+    }
+    .box1:hover,.box2:hover,.box3:hover{
+        width: 230px;
+    }
+    .cross {
+        top: -21%;
+        left: -5%;
+    }
+}
+@media (max-width:345px){
+    .Left-Container {
+        padding-left: 137%;
+        overflow-x: hidden;
+    }
 }
