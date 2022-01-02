@@ -20,7 +20,7 @@ const Main = () => {
                         <div className='Sub-heading'>
                             <h2>Manage everything </h2>
                             <span className='underline'>
-                                <img src={underline} alt="illustration" />
+                                <img className='Underline-image' src={underline} alt="illustration" />
                             </span>
                         </div>
                         <div className='Sub-heading'>
