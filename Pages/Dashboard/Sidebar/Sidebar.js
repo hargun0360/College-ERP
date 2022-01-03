@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { SidebarData } from './SidebarData';
+import { StudentSidebarData } from './StudentSidebarData';
+import { AdminSidebarData } from './AdminSidebarData';
 import 'boxicons'
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css'
@@ -16,13 +17,15 @@ const Sidebar = () => {
         AuthServices.logout();
         navigate("/");
     }
+    let user=localStorage.getItem("userd");
+    console.log(user);
     return (
         <div className={`sidebar ${active ? "activate" : ""}`}>
             <div class="logo_content" onClick={handleClick}>
                 <box-icon name="menu" id="btn" color="#505050" />
             </div>
             <ul className="nav_list">
-                {SidebarData.map((val, key) => {
+                {user==="student" ? StudentSidebarData.map((val, key) => {
                     return (
                         <li key={key}>
                             <NavLink exact activeClassName="active" to={val.Link} className='linking'>
@@ -32,7 +35,17 @@ const Sidebar = () => {
                             <span className="tooltip">{val.tooltip}</span>
                         </li>
                     );
-                })}
+                }) : user==="faculty" ? AdminSidebarData.map((val,key)=>{
+                    return (
+                        <li key={key}>
+                            <NavLink exact activeClassName="active" to={val.Link} className='linking'>
+                                <i>{val.icon}</i>
+                                <span className="links_name">{val.title}</span>
+                            </NavLink>
+                            <span className="tooltip">{val.tooltip}</span>
+                        </li>
+                    );
+                }) : null}  
                 <li onClick={handleInputClick}>
                     <NavLink exact activeClassName="active" to='/' className='linking'>
                         <i><box-icon name="log-out" color="#505050" /></i>
