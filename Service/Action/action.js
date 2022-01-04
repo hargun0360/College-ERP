@@ -10,3 +10,11 @@ export  const user= (data)=>{
         payload:data
     }
 }
+
+export const flag=(value)=>{
+    console.log(value);
+    return{
+        type:"Toggle",
+        payload:value
+    }
+}

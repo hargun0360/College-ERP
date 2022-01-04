@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { StudentSidebarData } from './StudentSidebarData';
 import { AdminSidebarData } from './AdminSidebarData';
 import 'boxicons'
@@ -7,12 +7,20 @@ import './Sidebar.css'
 import '../Dashboard.css'
 import AuthServices from '../../../ApiServices/AuthService'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { flag } from '../../../Service/Action/action';
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const [state,setState]=useState(true);
     const navigate = useNavigate();
     const [active, setActive] = useState(false);
     const handleClick = () => {
         setActive(!active);
+        setState(!state);
     }
+    useEffect(() => {
+        dispatch(flag(active));
+    }, [active]);
     const handleInputClick = () => {
         AuthServices.logout();
         navigate("/");
@@ -22,7 +30,7 @@ const Sidebar = () => {
     return (
         <div className={`sidebar ${active ? "activate" : ""}`}>
             <div class="logo_content" onClick={handleClick}>
-                <box-icon name="menu" id="btn" color="#505050" />
+                {state ? <box-icon name="menu" id="btn" color="#505050" /> : <box-icon name="left-arrow-alt" id="btn" color="#505050" /> }
             </div>
             <ul className="nav_list">
                 {user==="student" ? StudentSidebarData.map((val, key) => {

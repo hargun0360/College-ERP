@@ -1,8 +1,4 @@
-const initialState={
-    email:"",
-    user:""
-};
-export default function emailReducer(state=initialState,action){
+export function emailReducer(state={email:"",user:""},action){
 
     switch(action.type){
         case "User_Email" :
@@ -19,4 +15,16 @@ export default function emailReducer(state=initialState,action){
             return state
     }
 
+}
+
+export function toggleReducer(state={},action){
+    switch(action.type){
+        case "Toggle" :
+            return{
+                ...state,
+                val:action.payload
+            };
+            default:
+                return state;
+    }
 }

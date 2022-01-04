@@ -1,0 +1,77 @@
+.Admin-Container{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 78px);
+    margin-left: 78px;
+    display: flex;
+    justify-content: center;
+}
+.Admin-Container.activate{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 200px);
+    margin-left: 200px;
+}
+.Admin-Profile-Box{
+    width:85vw;
+    height: 181px;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 90px;  
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.Admin-Container.activate > .Admin-Profile-Box {
+    width:80vw;
+}
+.profile-box1,.Admin-email,.Admin-mobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-image-box{
+    height: 130px;
+    width: 130px;
+    margin-left: -10px;
+    position: absolute;
+    left: 2%;
+}
+.Admin-Container.activate > .Admin-Profile-Box > .profile-box1 > .profile-image-box{
+    left: 1.5%;
+}
+.profile-image-box > img {
+    height: 130px;
+    width: 130px;
+}
+.Admin-basic-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 45%;
+}
+.profile-box2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    left: -7%;
+}
+.Admin-name > h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    width: 233%;
+}
+.Admin-post > h4{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+.call-favi{
+    padding-right: 7%;
+}
+.email-favi{
+    padding-right: 4%;
+}
