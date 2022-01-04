@@ -42,6 +42,63 @@ export const AdminDashboard = () => {
                     </div>
                 </div>
             </div>
+            <div className='College-basic-data'>
+                <div className='box-1'>
+                    <div className='student-favi'>
+                        <i class='fas fa-user-graduate'></i>
+                    </div>
+                    <div className='Total-student'>
+                        <h3>5000</h3>
+                    </div>
+                    <div className='Students-name'>
+                        <h5>Students</h5>
+                    </div>
+                    <div className='circular1'>
+                        
+                    </div>
+                </div>
+                <div className='box-2'>
+                    <div className='faculty-favi'>
+                        <i class='fas fa-user-check'></i>
+                    </div>
+                    <div className='Total-faculty'>
+                        <h3>100</h3>
+                    </div>
+                    <div className='Faculty-name'>
+                        <h5>Faculty</h5>
+                    </div>
+                    <div className='circular2'>
+                        
+                    </div>
+                </div>
+                <div className='box-3'>
+                    <div className='calendar-favi'>
+                        <i class='fas fa-calendar'></i>
+                    </div>
+                    <div className='Holiday-date'>
+                        <h3>26</h3>
+                        <span className='prefix'>th</span>
+                        <span className='month-cal'>jan</span>
+                    </div>
+                    <div className='upcoming-Holiday'>
+                        <h5>Upcoming Holiday</h5>
+                    </div>
+                    <div className='circular3'>
+                        
+                    </div>
+                </div>
+                <div className='box-4'>
+
+                </div>
+            </div>
+            <div className='Edit'>
+                <div className='Edit-detail'>
+                    <h5>Edit details</h5>
+                </div>
+                <div className='Edit-favicon'>
+                    <i class='fas fa-edit'></i>
+                </div>
+            </div>
         </div>
     )
 }

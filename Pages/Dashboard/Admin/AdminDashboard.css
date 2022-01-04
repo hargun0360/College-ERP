@@ -3,7 +3,8 @@
     width:calc(100vw - 78px);
     margin-left: 78px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .Admin-Container.activate{
     height:calc(100vh - 56px);
@@ -75,3 +76,115 @@
 .email-favi{
     padding-right: 4%;
 }
+.College-basic-data{
+    display: flex;
+    width: 75vw;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+.box-1,.box-2,.box-3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 192px;
+    height: 215px;
+    border: 2px solid #F2F2F2;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+.Edit{
+    display: flex;
+    position: relative;
+    top: 4.5%;
+    left: -37%;
+    justify-content: space-between;
+    width: 10%;
+}
+.Total-student > h3,.Total-faculty > h3{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    color: white;
+}
+.Students-name > h5,.Faculty-name > h5,.upcoming-Holiday > h5{
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+}
+.upcoming-Holiday > h5 {
+    width: 67%;
+}
+.upcoming-Holiday{
+    width: 50%;
+}
+.Holiday-date > h3{
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    color: white;
+}
+.month-cal{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin-left: 3%;
+    color: white;
+}
+.Holiday-date{
+    width:57%;
+}
+.Edit-detail > h5{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #007BAB;
+}
+.Edit-favicon > i{
+    color: #007BAB;
+}
+.Edit-favicon{
+    margin-top: -2%;
+}
+.student-favi > i,.faculty-favi > i{
+    position: relative;
+    top: -46%;
+    color: white;
+}
+.circular1,.circular2,.circular3{
+    width: 7vmax;
+    height: 6vmax;
+    border-left: 1px solid #F2F2F2;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -45px;
+    border-style: none;
+}
+.circular3{
+    background-color: #6C63FF;
+}
+.circular2{
+    background-color: #1bdbe2;
+}
+.circular1{
+    background-color: #FF902A;
+}
+.box-1{
+ background: #f08a2a;
+}
+.box-2{
+    background: #2bc8ce;
+}
+.box-3{
+    background: #573ae9;
+}
+.Holiday-date > span,.upcoming-Holiday,.calendar-favi > i{
+    color: white;
+}
+
+
