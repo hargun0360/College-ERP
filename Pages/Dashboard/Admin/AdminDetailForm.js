@@ -2,7 +2,7 @@ import React from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
-const AdminDetailForm = () => {
+const AdminDetailForm = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
@@ -11,7 +11,11 @@ const AdminDetailForm = () => {
         console.log(data);
         reset();
     }
-    return (
+    const handleClick = (e)=>{
+        e.preventDefault();
+        props.setTrigger(false);
+}
+    return (props.trigger) ? (
         <div className='Modal-box'>
             <div className='Admin-Form'>
                 <div className='Admin-Form-Heading'>
@@ -70,11 +74,11 @@ const AdminDetailForm = () => {
                     </form>
                 </div>
                 <div className='cross1'>
-                    <i id="crossed" className="fa fa-times" ></i>
+                    <i id="crossed" className="fa fa-times" onClick={handleClick} ></i>
                 </div>
             </div>
         </div>
-    )
+    ):null;
 }
 
 export default AdminDetailForm

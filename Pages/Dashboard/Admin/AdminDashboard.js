@@ -4,8 +4,14 @@ import 'boxicons'
 import './AdminDashboard.css'
 import { useSelector } from 'react-redux'
 import Chart from "react-apexcharts";
+import AdminDetailForm from './AdminDetailForm'
 export const AdminDashboard = () => {
     const { val } = useSelector((state) => state.toggle);
+    const [flag, setFlag] = useState(false);
+    const handleClick = (e) => {
+        e.preventDefault();
+        setFlag(true);
+    }
     console.log(val);
     const option = {
         series: [70],
@@ -22,17 +28,20 @@ export const AdminDashboard = () => {
                 dataLabels: {
                     name: {
                         show: false,
-                      },
+                    },
                     value: {
                         color: "#111",
                         fontSize: "35px",
                         show: true
-                      }
+                    }
                 },
             },
         },
     }
-    return (
+    return (<>
+        {
+            <AdminDetailForm trigger={flag} setTrigger={setFlag} />
+        }
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
                 <div className='profile-box1'>
@@ -117,7 +126,7 @@ export const AdminDashboard = () => {
                     <Chart options={option} series={option.series} type="radialBar" height={310} />;
                 </div>
             </div>
-            <div className='Edit'>
+            <div className='Edit' onClick={handleClick}>
                 <div className='Edit-detail'>
                     <h5>Edit details</h5>
                 </div>
@@ -126,5 +135,5 @@ export const AdminDashboard = () => {
                 </div>
             </div>
         </div>
-    )
+    </>)
 }

@@ -102,6 +102,7 @@
     left: -37%;
     justify-content: space-between;
     width: 10%;
+    cursor: pointer;
 }
 .Total-student > h3,.Total-faculty > h3{
     font-family: 'Inter', sans-serif;
