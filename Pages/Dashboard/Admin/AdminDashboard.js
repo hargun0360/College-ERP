@@ -3,9 +3,35 @@ import avatarPreview from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
 import { useSelector } from 'react-redux'
+import Chart from "react-apexcharts";
 export const AdminDashboard = () => {
     const { val } = useSelector((state) => state.toggle);
     console.log(val);
+    const option = {
+        series: [70],
+        chart: {
+            height: 200,
+            type: "radialBar"
+        },
+        plotOptions: {
+            radialBar: {
+                hollow: {
+                    margin: 10,
+                    size: '55%',
+                },
+                dataLabels: {
+                    name: {
+                        show: false,
+                      },
+                    value: {
+                        color: "#111",
+                        fontSize: "35px",
+                        show: true
+                      }
+                },
+            },
+        },
+    }
     return (
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
@@ -54,7 +80,7 @@ export const AdminDashboard = () => {
                         <h5>Students</h5>
                     </div>
                     <div className='circular1'>
-                        
+
                     </div>
                 </div>
                 <div className='box-2'>
@@ -68,7 +94,7 @@ export const AdminDashboard = () => {
                         <h5>Faculty</h5>
                     </div>
                     <div className='circular2'>
-                        
+
                     </div>
                 </div>
                 <div className='box-3'>
@@ -84,11 +110,11 @@ export const AdminDashboard = () => {
                         <h5>Upcoming Holiday</h5>
                     </div>
                     <div className='circular3'>
-                        
+
                     </div>
                 </div>
                 <div className='box-4'>
-
+                    <Chart options={option} series={option.series} type="radialBar" height={310} />;
                 </div>
             </div>
             <div className='Edit'>

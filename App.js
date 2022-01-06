@@ -10,12 +10,14 @@ import Home from '../src/Pages/Home/Home';
 import NotFound from './Components/UI/PageNotFound/Page404';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
+import AdminDetailForm from './Pages/Dashboard/Admin/AdminDetailForm';
 function App() {
   return (
     <div className="App">
      <Routes>
             <Route exact path="/" element={<LandingPage />} />
             <Route exact path="/Login" element={<Login />} />
+            <Route exact path="/form" element={<AdminDetailForm />} />
             <Route exact path="/forgot" element={<Forgotpassword />} />
             <Route exact path="/otp" element={<OTP />} />
             <Route exact path="/changepass" element={<ChangePass />} />
