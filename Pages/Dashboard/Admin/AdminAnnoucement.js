@@ -47,7 +47,10 @@ const AdminAnnoucementForm = (props) => {
                                     onChange={date => setSelectDate(date)}
                                     isClearable
                                     minDate={new Date()}
-                                    maxDate={new Date()} />
+                                    maxDate={new Date()}
+                                    className='input-field-form3'
+                                    required
+                                     />
                             </div>
                         </div>
                         <div className='combine-input'>
@@ -68,9 +71,9 @@ const AdminAnnoucementForm = (props) => {
                                 </label>
                             </div>
                             <div className='Input-detail'>
-                                <textarea className='input-field-form' cols={40} type="text" name="mobilenumber" {...register("mobilenumber", { required: "**Mobile Number is required", pattern: { value: /^[6789][0-9]{9}$/i, message: "**This is not a valid mobile number" } })}></textarea>
+                                <textarea className='input-field-form' cols={40} type="text" name="Announcement" {...register("Announcement", { required: "**Mobile Number is required" })}></textarea>
                             </div>
-                            <p className='alerts'>{errors.mobilenumber?.message}</p>
+                            <p className='alerts'>{errors.Announcement?.message}</p>
                         </div>
                         <div className='Button-update'>
                             <SubmitButton className="Admin-Details-Update" Label="Post" ></SubmitButton>
