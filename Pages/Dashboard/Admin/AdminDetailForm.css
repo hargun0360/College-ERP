@@ -13,7 +13,7 @@
     align-items: flex-start;
     justify-content: center;
 }
-.input-field-form,.input-field-form1{
+.input-field-form,.input-field-form1,.input-field-form2{
     background-color: #F7F7F7;
     padding: 1.5%;
     border-style: none;
@@ -50,8 +50,12 @@
     margin-bottom: 14%;
 }
 .cross1{
-    position: relative;
-    top: -84%;
-    left: 47%;
+    position: fixed;
+    top: 4%;
+    left: 79%;
     cursor: pointer;
+}
+.input-field-form2{
+    padding-left: 0%;
+    text-align: center;
 }
