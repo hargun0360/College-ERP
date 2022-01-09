@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import avatarPreview from '../../../Assets/Imagesused/Profile.png'
+import profile from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
 import { useSelector } from 'react-redux'
@@ -8,6 +8,8 @@ import AdminDetailForm from './AdminDetailForm'
 export const AdminDashboard = () => {
     const { val } = useSelector((state) => state.toggle);
     const [flag, setFlag] = useState(false);
+    const [avatar, setAvatar] = useState(profile);
+    const [avatarPreview, setAvatarPreview] = useState(profile);
     const handleClick = (e) => {
         e.preventDefault();
         setFlag(true);
@@ -38,6 +40,32 @@ export const AdminDashboard = () => {
             },
         },
     }
+    const [value, setValue] = useState(false);
+    const [state, setState] = useState(true);
+    const handleHoverin = () => {
+        setValue(true);
+    }
+    const handleHoverout = () => {
+        setValue(false);
+    }
+    const changeProfile = () => {
+        setState(false);
+    }
+    const handleChange = (e) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setAvatarPreview(reader.result);
+                setAvatar(reader.result);
+            }
+        };
+
+        if(e.target.files[0]){
+            reader.readAsDataURL(e.target.files[0]);
+          }
+        setState(true);
+    }
     return (<>
         {
             <AdminDetailForm trigger={flag} setTrigger={setFlag} />
@@ -45,8 +73,18 @@ export const AdminDashboard = () => {
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
                 <div className='profile-box1'>
-                    <div className='profile-image-box'>
+                    <div className='profile-image-box' onMouseEnter={handleHoverin} onMouseLeave={handleHoverout}>
                         <img src={avatarPreview} alt="Avatar Preview" />
+                        {
+                            value ? <div className='Edit-profile' onClick={changeProfile}>
+                                <box-icon id="camera-icon" type="solid" name='camera'>
+                                </box-icon>
+                            </div> : null
+                        }
+                        {
+                            state && <input className="file-input" title="" type={"file"} name='avatar' accept="image/*" multiple = "false" onChange={handleChange} />
+                        }
+
                     </div>
                     <div className='Admin-basic-details'>
                         <div className='Admin-name'>

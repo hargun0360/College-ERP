@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/otp" element={<OTP />} />
             <Route exact path="/changepass" element={<ChangePass />} />
             <Route exact path="/createpass" element={<CreatePass />} />
-            <Route exact path="/Dashboard" element={<Dashboard />} />
+            <Route exact path="admin/Dashboard" element={<Dashboard />} />
             <Route exact path="/form" element={<AdminAnnoucementForm />} />
             <Route path="*" element={<NotFound />} />
       </Routes>

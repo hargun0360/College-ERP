@@ -33,10 +33,12 @@
 }
 .profile-image-box{
     height: 130px;
-    width: 130px;
+    width: 123px;
     margin-left: -10px;
     position: absolute;
-    left: 2%;
+    left: 1%;
+    transition:all 0.5s ease;
+    opacity:1;
 }
 .Admin-Container.activate > .Admin-Profile-Box > .profile-box1 > .profile-image-box{
     left: 1.5%;
@@ -44,6 +46,7 @@
 .profile-image-box > img {
     height: 130px;
     width: 130px;
+    border-radius: 50%;
 }
 .Admin-basic-details{
     display: flex;
@@ -190,4 +193,26 @@
 }
 .box-4{
     margin-top: -4%;
+}
+.Edit-profile{
+    width: max-content;
+    position: absolute;
+    top: 89%;
+    left: 77%;
+    cursor: pointer;
+}
+#camera-icon{
+    fill: rgb(143, 137, 137);
+    cursor: pointer;
+}
+.file-input{
+    position: absolute;
+    top: 87%;
+    left: 78%;
+    cursor: pointer;
+    width: 16%;
+    opacity: 0;
+}
+input[type=file]::-webkit-file-upload-button { 
+    cursor: pointer; 
 }

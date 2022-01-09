@@ -71,7 +71,7 @@ const AdminAnnoucementForm = (props) => {
                                 </label>
                             </div>
                             <div className='Input-detail'>
-                                <textarea className='input-field-form' cols={40} type="text" name="Announcement" {...register("Announcement", { required: "**Mobile Number is required" })}></textarea>
+                                <textarea className='input-field-form' cols={40} type="text" name="Announcement" {...register("Announcement", { required: "**Announcement field is required" })}></textarea>
                             </div>
                             <p className='alerts'>{errors.Announcement?.message}</p>
                         </div>

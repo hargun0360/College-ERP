@@ -16,6 +16,7 @@ import Spinner from '../../../Components/UI/Spinner/Spinner'
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = localStorage.getItem("userd");
     const mystate = useSelector((state)=>state.emailReducer.user)
     const [toggle, setToggle] = useState(false);
     const [loading, setLoading] = useState(false)
@@ -37,7 +38,7 @@ const Login = () => {
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
             dispatch(actionCreators.userEmail(res.data.email));
-            navigate("/Dashboard");
+            navigate(`${user}/Dashboard`);
             }
             
         }).catch((error)=>{
