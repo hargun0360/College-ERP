@@ -2,19 +2,30 @@ import React from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
+import * as actionCreators from "../../../Service/Action/action";
+import { useDispatch } from 'react-redux'
 const AdminDetailForm = (props) => {
+    const dispatch = useDispatch();
+    console.log(props.profileImage);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
     const onSubmit = (data, e) => {
         e.preventDefault();
         console.log(data);
+        const myForm = new FormData();
+        myForm.set("name", data.fullname);
+        myForm.set("email", data.email);
+        myForm.set("phone", data.mobilenumber);
+        myForm.set("qualification", data.qualification);
+        myForm.set("profile", props.profileImage);
+        dispatch(actionCreators.addAdminDetails(myForm))
         reset();
     }
-    const handleClick = (e)=>{
+    const handleClick = (e) => {
         e.preventDefault();
         props.setTrigger(false);
-}
+    }
     return (props.trigger) ? (
         <div className='Modal-box'>
             <div className='Admin-Form'>
@@ -78,7 +89,7 @@ const AdminDetailForm = (props) => {
                 </div>
             </div>
         </div>
-    ):null;
+    ) : null;
 }
 
 export default AdminDetailForm

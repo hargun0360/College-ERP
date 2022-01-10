@@ -6,11 +6,11 @@ import OTP from './Pages/Auth/OTP/OTP';
 import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
 import {Routes,Route} from 'react-router-dom'
-import Home from '../src/Pages/Home/Home';
 import NotFound from './Components/UI/PageNotFound/Page404';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import AdminAnnoucementForm from './Pages/Dashboard/Admin/AdminAnnoucement';
+import Annoucement from './Pages/Dashboard/Annoucement/Annoucement'
 function App() {
   return (
     <div className="App">
@@ -23,6 +23,7 @@ function App() {
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard" element={<Dashboard />} />
             <Route exact path="/form" element={<AdminAnnoucementForm />} />
+            <Route exact path="/annoucement" element={<Annoucement />} />
             <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

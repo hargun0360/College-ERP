@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import profile from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import Chart from "react-apexcharts";
 import AdminDetailForm from './AdminDetailForm'
+import * as actionCreators from "../../../Service/Action/action";
 export const AdminDashboard = () => {
+    const dispatch = useDispatch();
     const { val } = useSelector((state) => state.toggle);
+    const mydata = useSelector((state) => state.getAdmin);
     const [flag, setFlag] = useState(false);
     const [avatar, setAvatar] = useState(profile);
     const [avatarPreview, setAvatarPreview] = useState(profile);
@@ -66,9 +69,13 @@ export const AdminDashboard = () => {
           }
         setState(true);
     }
+    useEffect(() => {
+        dispatch(actionCreators.loadAdminDetails())
+    }, []);
+    console.log(mydata);
     return (<>
         {
-            <AdminDetailForm trigger={flag} setTrigger={setFlag} />
+            <AdminDetailForm trigger={flag} setTrigger={setFlag} profileImage={avatar}/>
         }
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
