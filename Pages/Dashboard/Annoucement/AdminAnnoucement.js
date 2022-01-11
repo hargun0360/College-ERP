@@ -73,7 +73,7 @@ const AdminAnnoucement = () => {
         <div className={`Annoucement-Container ${val ? "activate" : ""}`}>
             <div className='make-annoucement-btn'>
                 <div className='annoucement-icon'>
-                    <box-icon id="camera-icon" type="solid" name='camera' />
+                    <box-icon id="edit-icons" color="white"  name='edit' />
                 </div>
                 <div className='annoucement-text'>
                     <h2>Make an Announcement</h2>
