@@ -15,12 +15,12 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    background: #1E637E;
-    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.2);
+    background: #136180e1;
+    box-shadow: 0px 0px 30px rgba(111, 141, 158, 0.13);
     border-radius: 8px;
     padding: 1.0%;
     border-style: none;
-    margin: 2.5% 0;
+    margin: 1.5% 0;
     width: 22%;
     padding-right: 0%;
     padding-left: 0.1%;
@@ -37,3 +37,8 @@
 .annoucement-icon{
     margin-right: 2.5%;
 }
+.annoucement-table::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+    background-color: aquamarine;
+  }

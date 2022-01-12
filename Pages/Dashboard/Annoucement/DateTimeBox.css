@@ -1,0 +1,36 @@
+.Date-Time-Box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 35%;
+    background-color: #00A6AB;
+    color: white;
+    border-radius: 8px;
+    border-style: none;
+    padding: 1% 0%;
+    position: relative;
+    overflow: hidden;
+}
+.Circular-Box{
+    width: 12vmax;
+    height: 11vmax;
+    border-left: 1px solid #F2F2F2;
+    border-radius: 50%;
+    position: absolute;
+    top: -16px;
+    right: 146px;
+    border-style: none;
+    background-color: #00B8BD;
+}
+.Time-Box{
+    margin-left: 38%;
+}
+.Date-Box > h4, .Time-Box > h4{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+}
+.Date-Box,.Time-Box{
+    margin-bottom: -2%;
+}

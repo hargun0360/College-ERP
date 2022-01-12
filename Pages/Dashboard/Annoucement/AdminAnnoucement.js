@@ -64,7 +64,7 @@ const AdminAnnoucement = () => {
     }];
     const { val } = useSelector((state) => state.toggle);
     const style = {
-        width: "90vw", minHeight: "90vh", overflow: "scroll"
+        width: "90vw", minHeight: "90vh", overflow:"revert",scrollbars:"hidden"
     }
     const activateStyle = {
         width: "81vw", minHeight: "90vh",
@@ -81,15 +81,14 @@ const AdminAnnoucement = () => {
             </div>
             <div className='annoucement-table'>
                 <MaterialTable style={val ? activateStyle : style} columns={columns} data={tableData} title={""} options={{ search: false, sorting: false, toolbar: false, maxBodyHeight: 400, tableLayout: "100%", paging: false, draggable: false, actionsColumnIndex: -1 }} actions={[{
-                    icon: Delete,
-                    iconProps: {  fontSize: "small", color: "primary"  },
+                   icon: () => <box-icon color="red"  name='trash-alt' />,
                     tooltip: "Delete annoucement",
                     onClick: (e,id) => { console.log("data delete",e,id) }
                 }]} localization={{
                     header: {
                         actions: ""
                     }
-                }} />
+                }}  />
             </div>
         </div>
     )

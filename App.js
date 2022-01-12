@@ -11,6 +11,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import AdminAnnoucementForm from './Pages/Dashboard/Admin/AdminAnnoucement';
 import Annoucement from './Pages/Dashboard/Annoucement/Annoucement'
+import DateTimeBox from './Pages/Dashboard/Annoucement/DateTimeBox'
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="admin/Dashboard" element={<Dashboard />} />
             <Route exact path="/form" element={<AdminAnnoucementForm />} />
             <Route exact path="/annoucement" element={<Annoucement />} />
+            <Route exact path="/date" element={<DateTimeBox />} />
             <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
