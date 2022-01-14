@@ -2,14 +2,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 35%;
+    width: 133%;
     background-color: #00A6AB;
     color: white;
     border-radius: 8px;
     border-style: none;
-    padding: 1% 0%;
+    padding: 5% 0%;
     position: relative;
     overflow: hidden;
+    padding-right: 4%;
+    margin-left: -15%;
+    top: -21px;
 }
 .Circular-Box{
     width: 12vmax;
@@ -18,7 +21,7 @@
     border-radius: 50%;
     position: absolute;
     top: -16px;
-    right: 146px;
+    right: 125px;
     border-style: none;
     background-color: #00B8BD;
 }

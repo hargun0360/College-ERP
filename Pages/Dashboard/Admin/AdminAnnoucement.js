@@ -1,11 +1,10 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
-import DatePicker from "react-datepicker";
+import DateTimeBox from '../Annoucement/DateTimeBox'
 import 'react-datepicker/dist/react-datepicker.css'
 const AdminAnnoucementForm = (props) => {
-    const [selectdate, setSelectDate] = useState(null);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
@@ -18,17 +17,7 @@ const AdminAnnoucementForm = (props) => {
         e.preventDefault();
         props.setTrigger(false);
     }
-    function formatAMPM(date) {
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        var ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        minutes = minutes < 10 ? '0'+minutes : minutes;
-        var strTime = hours + ':' + minutes + ' ' + ampm;
-        return strTime;
-      }
-    return  (
+    return (props.trigger) ? (
         <div className='Modal-box'>
             <div className='Admin-Form'>
                 <div className='Admin-Form-Heading'>
@@ -36,34 +25,7 @@ const AdminAnnoucementForm = (props) => {
                 </div>
                 <div>
                     <form className='Admin-Input' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='combine-input'>
-                            <div className='Label-form'>
-                                <label htmlFor="Date">
-                                    Date
-                                </label>
-                            </div>
-                            <div className='Input-detail'>
-                                <DatePicker selected={selectdate}
-                                    onChange={date => setSelectDate(date)}
-                                    isClearable
-                                    minDate={new Date()}
-                                    maxDate={new Date()}
-                                    className='input-field-form3'
-                                    required
-                                     />
-                            </div>
-                        </div>
-                        <div className='combine-input'>
-                            <div className='Label-form'>
-                                <label htmlFor="Time">
-                                    Time
-                                </label>
-                            </div>
-                            <div className='Input-detail1'>
-                                <input className='input-field-form2' size={"40"} value={formatAMPM(new Date)} disabled={true}></input>
-                            </div>
-                            <p className='alerts'>{errors.email?.message}</p>
-                        </div>
+                        <DateTimeBox />
                         <div className='combine-input'>
                             <div className='Label-form'>
                                 <label htmlFor="Announcement">
@@ -71,7 +33,7 @@ const AdminAnnoucementForm = (props) => {
                                 </label>
                             </div>
                             <div className='Input-detail'>
-                                <textarea className='input-field-form' cols={40} type="text" name="Announcement" {...register("Announcement", { required: "**Announcement field is required" })}></textarea>
+                                <textarea className='input-field-form' cols={40} rows={5} type="text" name="Announcement" {...register("Announcement", { required: "**Announcement field is required" })}></textarea>
                             </div>
                             <p className='alerts'>{errors.Announcement?.message}</p>
                         </div>
@@ -85,7 +47,7 @@ const AdminAnnoucementForm = (props) => {
                 </div>
             </div>
         </div>
-    ) 
+    ):null
 }
 
 export default AdminAnnoucementForm

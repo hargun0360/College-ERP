@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
 import 'boxicons'
 import MaterialTable from 'material-table'
 import './Annoucement.css'
-import Delete from '@material-ui/icons/Delete';
+import AdminAnnoucementForm from '../Admin/AdminAnnoucement'
 const AdminAnnoucement = () => {
+    const [flag, setFlag] = useState(false);
     const tableData = [{ Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm.", },
     { Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm." }]
     const columns = [{
@@ -69,9 +70,17 @@ const AdminAnnoucement = () => {
     const activateStyle = {
         width: "81vw", minHeight: "90vh",
     }
-    return (
+
+    const handleClick = (e) =>{
+        e.preventDefault();
+        setFlag(true);
+    }
+    return (<>
+        {
+            <AdminAnnoucementForm trigger={flag} setTrigger={setFlag} />
+        }
         <div className={`Annoucement-Container ${val ? "activate" : ""}`}>
-            <div className='make-annoucement-btn'>
+            <div className='make-annoucement-btn' onClick={handleClick}>
                 <div className='annoucement-icon'>
                     <box-icon id="edit-icons" color="white"  name='edit' />
                 </div>
@@ -91,7 +100,7 @@ const AdminAnnoucement = () => {
                 }}  />
             </div>
         </div>
-    )
+        </>)
 }
 
 export default AdminAnnoucement

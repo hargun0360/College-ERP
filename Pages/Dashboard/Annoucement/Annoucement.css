@@ -24,6 +24,7 @@
     width: 22%;
     padding-right: 0%;
     padding-left: 0.1%;
+    cursor: pointer;
 }
 .annoucement-text > h2{
     font-family: Inter;
