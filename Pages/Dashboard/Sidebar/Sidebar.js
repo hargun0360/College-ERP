@@ -43,7 +43,7 @@ const Sidebar = () => {
                             <span className="tooltip">{val.tooltip}</span>
                         </li>
                     );
-                }) : user==="faculty" ? AdminSidebarData.map((val,key)=>{
+                }) : user==="admin" ? AdminSidebarData.map((val,key)=>{
                     return (
                         <li key={key}>
                             <NavLink exact activeClassName="active" to={val.Link} className='linking'>

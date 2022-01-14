@@ -38,7 +38,7 @@ const Login = () => {
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
             dispatch(actionCreators.userEmail(res.data.email));
-            navigate(`${user}/Dashboard`);
+            navigate(`/${user}/Dashboard/profile`);
             }
             
         }).catch((error)=>{

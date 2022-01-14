@@ -38,7 +38,7 @@ const AdminAnnoucementForm = (props) => {
                             <p className='alerts'>{errors.Announcement?.message}</p>
                         </div>
                         <div className='Button-update'>
-                            <SubmitButton className="Admin-Details-Update" Label="Post" ></SubmitButton>
+                            <SubmitButton className="Admin-Update" Label="Post" ></SubmitButton>
                         </div>
                     </form>
                 </div>

@@ -1,16 +1,17 @@
 import React from 'react'
 import 'boxicons'
+let user=localStorage.getItem("userd");
 export const AdminSidebarData = [
     {
         title:"Profile",
         icon:<box-icon name="user" color="#505050"/>,
-        Link:'/Profile',
+        Link:`/${user}/Dashboard/profile`,
         tooltip:"Profile"
     },
     {
         title:"Announcements",
         icon:<box-icon name="bell" color="#505050"/>,
-        Link:'/Announcements',
+        Link:`/${user}/Dashboard/annoucement`,
         tooltip:"Announcements"
 
     },
