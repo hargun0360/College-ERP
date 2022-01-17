@@ -37,6 +37,46 @@ const AdminAnnoucementForm = (props) => {
                             </div>
                             <p className='alerts'>{errors.Announcement?.message}</p>
                         </div>
+                        <div className='annoucement-opt'>
+                            <div className='faculty-radio'>
+                                <label className='label-data' htmlFor="field-Faculty">
+                                    <input
+                                        {...register("aopt", { required: "**This field is required" })}
+                                        type="radio"
+                                        name="aopt"
+                                        value="Faculty"
+                                        id="field-Faculty"
+                                    />
+                                    Faculty
+                                </label>
+
+                            </div>
+                            <div className='student-radio'>
+                            <label className='label-data' htmlFor="field-Student">
+                                    <input
+                                        {...register("aopt", { required: "**This field is required" })}
+                                        type="radio"
+                                        name="aopt"
+                                        value="Student"
+                                        id="field-Student"
+                                    />
+                                    Student
+                                </label>
+                            </div>
+                            <div className='both-radio'>
+                            <label className='label-data' htmlFor="field-Both">
+                                    <input
+                                        {...register("aopt", { required: "**This field is required" })}
+                                        type="radio"
+                                        name="aopt"
+                                        value="Both"
+                                        id="field-Both"
+                                    />
+                                    Both
+                                </label>
+                            </div>
+                        </div>
+                        <p className='alerts'>{errors.aopt?.message}</p>
                         <div className='Button-update'>
                             <SubmitButton className="Admin-Update" Label="Post" ></SubmitButton>
                         </div>
@@ -47,7 +87,7 @@ const AdminAnnoucementForm = (props) => {
                 </div>
             </div>
         </div>
-    ):null
+    ) : null
 }
 
 export default AdminAnnoucementForm

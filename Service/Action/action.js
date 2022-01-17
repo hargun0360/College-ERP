@@ -25,10 +25,13 @@ export const flag=(value)=>{
 
 //Admin get details
 
+
 export const loadAdminDetails = () => async (dispatch) => {
+  const user = localStorage.getItem("userd");
+  const id = localStorage.getItem("userid");
     try {
       dispatch({ type: "Admin_Details_Request" });
-      const res = await AuthService.getadminDetails()
+      const res = await AuthService.getadminDetails(user,id)
   
       dispatch({ type: "Admin_Details_Success", payload: res.data });
     } catch (error) {

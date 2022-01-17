@@ -1,6 +1,11 @@
 import React from 'react'
 import 'boxicons'
-let user=localStorage.getItem("userd");
+var user;
+if(localStorage.getItem("user")){
+    user = localStorage.getItem("userd");
+    console.log(user);
+}
+console.log(user);
 export const AdminSidebarData = [
     {
         title:"Profile",

@@ -37,6 +37,7 @@ const Login = () => {
                 console.log(res);
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
+            localStorage.setItem("userid",res.data.result._id);
             dispatch(actionCreators.userEmail(res.data.email));
             navigate(`/${user}/Dashboard/profile`);
             }

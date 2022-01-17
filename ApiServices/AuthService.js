@@ -1,5 +1,6 @@
 import axios from './Interceptor';
 
+
 class AuthServices {
 
 
@@ -27,8 +28,9 @@ class AuthServices {
 
     //Get Admin Detail
 
-    getadminDetails() {
-        return axios.get('admin/showProfile', {
+    getadminDetails(user,id) {
+        console.log(user,id);
+        return axios.get(`admin/showProfile/${id}?user=${user}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

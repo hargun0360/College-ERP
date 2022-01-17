@@ -216,3 +216,29 @@
 input[type=file]::-webkit-file-upload-button { 
     cursor: pointer; 
 }
+.annoucement-opt{
+    display: flex;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+}
+.student-radio{
+    position: relative;
+    left: 5%;
+}
+.both-radio{
+    position: relative;
+    left: 7%;
+}
+#field-Student,#field-Faculty,#field-Both{
+    position: relative;
+    left: -3%;
+}
+.annoucement-opt{
+    margin-bottom: 1%;
+}
+.label-data{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
