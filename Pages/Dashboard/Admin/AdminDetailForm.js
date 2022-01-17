@@ -6,13 +6,11 @@ import * as actionCreators from "../../../Service/Action/action";
 import { useDispatch } from 'react-redux'
 const AdminDetailForm = (props) => {
     const dispatch = useDispatch();
-    console.log(props.profileImage);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
     const onSubmit = (data, e) => {
         e.preventDefault();
-        console.log(data);
         const myForm = new FormData();
         myForm.set("name", data.fullname);
         myForm.set("email", data.email);

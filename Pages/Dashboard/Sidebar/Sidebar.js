@@ -7,9 +7,10 @@ import './Sidebar.css'
 import '../Dashboard.css'
 import AuthServices from '../../../ApiServices/AuthService'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { flag } from '../../../Service/Action/action';
 const Sidebar = () => {
+    const my = useSelector((state)=>state.user.user)
     const dispatch = useDispatch();
     const [state,setState]=useState(true);
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Sidebar = () => {
                 {user==="student" ? StudentSidebarData.map((val, key) => {
                     return (
                         <li key={key}>
-                            <NavLink exact activeClassName="active" to={val.Link} className='linking'>
+                            <NavLink exact activeClassName="active" to={`/${my}${val.Link}`} className='linking'>
                                 <i>{val.icon}</i>
                                 <span className="links_name">{val.title}</span>
                             </NavLink>
@@ -46,7 +47,7 @@ const Sidebar = () => {
                 }) : user==="admin" ? AdminSidebarData.map((val,key)=>{
                     return (
                         <li key={key}>
-                            <NavLink exact activeClassName="active" to={val.Link} className='linking'>
+                            <NavLink exact activeClassName="active" to={`/${my}${val.Link}`} className='linking'>
                                 <i>{val.icon}</i>
                                 <span className="links_name">{val.title}</span>
                             </NavLink>

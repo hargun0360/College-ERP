@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {emailReducer,toggleReducer,adminDetailReducer,addadminDetailReducer} from './Reducer';
+import {emailReducer,toggleReducer,adminDetailReducer,addadminDetailReducer,userReducer} from './Reducer';
 
 
 const rootReducer = combineReducers({
@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
     toggle:toggleReducer,
     getAdmin:adminDetailReducer,
     addAdmin:addadminDetailReducer,
+    user:userReducer,
   });
   
   export default rootReducer;

@@ -17,7 +17,6 @@ export const AdminDashboard = () => {
         e.preventDefault();
         setFlag(true);
     }
-    console.log(val);
     const option = {
         series: [70],
         chart: {
@@ -72,7 +71,6 @@ export const AdminDashboard = () => {
     useEffect(() => {
         dispatch(actionCreators.loadAdminDetails())
     }, []);
-    console.log(mydata);
     return (<>
         {
             <AdminDetailForm trigger={flag} setTrigger={setFlag} profileImage={avatar}/>

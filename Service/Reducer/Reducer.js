@@ -77,3 +77,15 @@ export function addadminDetailReducer(state = { admindata: {} }, action) {
             return state;
     }
 }
+
+export function userReducer(state = {}, action) {
+    switch (action.type) {
+        case "User_Type":
+            return {
+                ...state,
+                user: action.payload
+            };
+        default:
+            return state;
+    }
+}
