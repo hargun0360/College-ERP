@@ -89,3 +89,28 @@ export function userReducer(state = {}, action) {
             return state;
     }
 }
+
+//get user
+
+export function userDetailReducer(state = {}, action) {
+    switch (action.type) {
+        case "User_Details_Request":
+            return {
+                loading: true,
+            };
+        case "User_Details_Success":
+            return {
+                ...state,
+                loading: false,
+                userdetail: action.payload,
+            };
+        case "User_Details_Fail":
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+}

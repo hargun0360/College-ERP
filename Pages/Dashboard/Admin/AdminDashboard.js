@@ -1,13 +1,15 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState } from 'react'
 import profile from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
-import { useSelector} from 'react-redux'
+import { useSelector,useDispatch} from 'react-redux'
 import Chart from "react-apexcharts";
 import AdminDetailForm from './AdminDetailForm'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
+import * as actionCreators from "../../../Service/Action/action";
 export const AdminDashboard = () => {
     const { val } = useSelector((state) => state.toggle);
+    const dispatch = useDispatch();
     const { loading, admin } = useSelector((state) => state.getAdmin);
     const [flag, setFlag] = useState(false);
     const [avatar, setAvatar] = useState(profile);
@@ -15,6 +17,7 @@ export const AdminDashboard = () => {
     const handleClick = (e) => {
         e.preventDefault();
         setFlag(true);
+        dispatch(actionCreators.getAdminDetail());
     }
     const option = {
         series: [70],

@@ -51,3 +51,18 @@ export const addAdminDetails = (adminData) => async (dispatch) =>{
         dispatch({ type: "Admin_addDetails_Fail", payload: error });
       }
 }
+
+//get user
+
+export const getAdminDetail = () => async (dispatch) => {
+  const user = localStorage.getItem("userd");
+  const id = localStorage.getItem("userid");
+    try {
+      dispatch({ type: "User_Details_Request" });
+      const res = await AuthService.getadminDetails(user,id)
+  
+      dispatch({ type: "User_Details_Success", payload: res.data });
+    } catch (error) {
+      dispatch({ type: "User_Details_Fail", payload: error });
+    }
+  };
