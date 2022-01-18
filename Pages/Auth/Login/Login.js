@@ -39,6 +39,7 @@ const Login = () => {
             localStorage.setItem("ref_token",res.data.refreshToken);
             localStorage.setItem("userid",res.data.result._id);
             dispatch(actionCreators.userEmail(res.data.email));
+            dispatch(actionCreators.loadAdminDetails())
             navigate(`/${user}/Dashboard/profile`);
             }
             

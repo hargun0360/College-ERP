@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import profile from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import Chart from "react-apexcharts";
 import AdminDetailForm from './AdminDetailForm'
-import * as actionCreators from "../../../Service/Action/action";
+import Spinner from '../../../Components/UI/Spinner/Spinner'
 export const AdminDashboard = () => {
-    const dispatch = useDispatch();
     const { val } = useSelector((state) => state.toggle);
-    const mydata = useSelector((state) => state.getAdmin);
+    const { loading, admin } = useSelector((state) => state.getAdmin);
     const [flag, setFlag] = useState(false);
     const [avatar, setAvatar] = useState(profile);
     const [avatarPreview, setAvatarPreview] = useState(profile);
@@ -63,17 +62,16 @@ export const AdminDashboard = () => {
             }
         };
 
-        if(e.target.files[0]){
+        if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]);
-          }
+        }
         setState(true);
     }
-    useEffect(() => {
-        dispatch(actionCreators.loadAdminDetails())
-    }, []);
-    return (<>
+
+    return loading ? (<Spinner />) : (<>
+
         {
-            <AdminDetailForm trigger={flag} setTrigger={setFlag} profileImage={avatar}/>
+            <AdminDetailForm trigger={flag} setTrigger={setFlag} profileImage={avatar} />
         }
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
@@ -87,17 +85,16 @@ export const AdminDashboard = () => {
                             </div> : null
                         }
                         {
-                            state && <input className="file-input" title="" type={"file"} name='avatar' accept="image/*" multiple = "false" onChange={handleChange} />
+                            state && <input className="file-input" title="" type={"file"} name='avatar' accept="image/*" multiple="false" onChange={handleChange} />
                         }
 
                     </div>
                     <div className='Admin-basic-details'>
                         <div className='Admin-name'>
-                            <h2>Santosh Kumar Singh</h2>
+                            <h2>{admin.profile.fullname}</h2>
                         </div>
                         <div className='Admin-post'>
-                            <h4>Head of Department of
-                                Computer science</h4>
+                            <h4>{admin.profile.degree}</h4>
                         </div>
                     </div>
                 </div>
@@ -107,7 +104,7 @@ export const AdminDashboard = () => {
                             <box-icon type='solid' name='envelope'></box-icon>
                         </div>
                         <div className='email-add'>
-                            <h4>santosh20166@gmail.com</h4>
+                            <h4>{admin.profile.email}</h4>
                         </div>
                     </div>
                     <div className='Admin-mobile'>
@@ -115,7 +112,7 @@ export const AdminDashboard = () => {
                             <box-icon type='solid' name='phone-call'></box-icon>
                         </div>
                         <div className='call-number'>
-                            <h4>8134527267</h4>
+                            <h4>{admin.profile.mobile}</h4>
                         </div>
                     </div>
                 </div>
@@ -126,7 +123,7 @@ export const AdminDashboard = () => {
                         <i class='fas fa-user-graduate'></i>
                     </div>
                     <div className='Total-student'>
-                        <h3>5000</h3>
+                        <h3>{admin.studentNo}</h3>
                     </div>
                     <div className='Students-name'>
                         <h5>Students</h5>
@@ -140,7 +137,7 @@ export const AdminDashboard = () => {
                         <i class='fas fa-user-check'></i>
                     </div>
                     <div className='Total-faculty'>
-                        <h3>100</h3>
+                        <h3>{admin.facultyNo}</h3>
                     </div>
                     <div className='Faculty-name'>
                         <h5>Faculty</h5>
