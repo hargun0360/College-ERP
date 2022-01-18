@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
@@ -6,16 +6,17 @@ import * as actionCreators from "../../../Service/Action/action";
 import { useDispatch,useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 const AdminDetailForm = (props) => {
+    
+    const {loading} = useSelector(state => state.userdetails)
+    const { admin } = useSelector((state) => state.getAdmin);
     const dispatch = useDispatch();
-    const {loading,userdetail} = useSelector(state => state.userdetails)
-    console.log(userdetail);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
         defaultValues:{
-            fullname:(userdetail) ? userdetail.profile.fullname : "",
-            email:(userdetail) ? userdetail.profile.email : "",
-            mobilenumber:(userdetail) ? userdetail.profile.mobile : "",
-            qualification:(userdetail) ? userdetail.profile.degree : "",
+            fullname:(admin) ? admin.profile.fullname : "",
+            email:(admin) ? admin.profile.email : "",
+            mobilenumber:(admin) ? admin.profile.mobile : "",
+            qualification:(admin) ? admin.profile.degree : "",
         },
     });
     const onSubmit = (data, e) => {

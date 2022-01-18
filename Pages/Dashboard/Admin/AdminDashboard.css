@@ -53,8 +53,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    position: relative;
-    left: 95%;
+    margin-left: 328%;
 }
 .profile-box2{
     display: flex;
