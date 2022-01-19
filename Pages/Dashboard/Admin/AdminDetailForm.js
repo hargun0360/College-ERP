@@ -5,6 +5,7 @@ import './AdminDetailForm.css'
 import * as actionCreators from "../../../Service/Action/action";
 import { useDispatch,useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
+import  {  useNavigate  } from 'react-router-dom'
 const AdminDetailForm = (props) => {
     
     const {loading} = useSelector(state => state.userdetails)
@@ -21,14 +22,13 @@ const AdminDetailForm = (props) => {
     });
     const onSubmit = (data, e) => {
         e.preventDefault();
-        const myForm = new FormData();
-        myForm.set("fullname", data.fullname);
-        myForm.set("email", data.email);
-        myForm.set("mobile", data.mobilenumber);
-        myForm.set("degree", data.qualification);
-        myForm.set("profile", props.profileImage);
-        dispatch(actionCreators.addAdminDetails(Object.fromEntries(myForm)))
-        console.log(Object.fromEntries(myForm));
+        var myForm = new FormData();
+        myForm.append("fullname", data.fullname);
+        myForm.append("email", data.email);
+        myForm.append("mobile", data.mobilenumber);
+        myForm.append("degree", data.qualification);
+        myForm.append("image", props.profileImage);
+        dispatch(actionCreators.UpdateAdminDetails(myForm))
         e.target.reset();
     }
     const handleClick = (e) => {

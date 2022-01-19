@@ -37,6 +37,49 @@ class AuthServices {
             }
         })
     }
+
+    // update Admin Detail
+
+    updateAdminDetails(data,user,id) {
+        console.log(user,id,data);
+        return axios({
+            method:"put",
+            url:`admin/editprofile/${id}?user=${user}`,
+            data:data,
+            headers:{
+                "Content-Type": "multipart/form-data",
+                 Authorization: 'Bearer ' + localStorage.getItem('user'),
+                 
+            }
+            
+        })
+    }
+
+    // get annoucement
+
+    getAnnoucementDetails(user) {
+        return axios.get(`student/viewAnnouncement?user=${user}`, {
+            headers: {
+                "Content-Type": "application/json" ,
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    // post annoucement
+
+    postAdminDetails(data) {
+        console.log(data);
+        return axios.post(`faculty/makeannouncement`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
 }
+
+
 
 export default new AuthServices();

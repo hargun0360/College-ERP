@@ -88,7 +88,7 @@ export const AdminDashboard = () => {
                             </div> : null
                         }
                         {
-                            state && <input className="file-input" title="" type={"file"} name='avatar' accept="image/*" multiple="false" onChange={handleChange} />
+                            state && <input className="file-input" title="" type="file" name='avatar' accept="image/*" multiple="false" onChange={handleChange} />
                         }
 
                     </div>

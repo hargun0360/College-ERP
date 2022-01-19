@@ -1,10 +1,19 @@
-import React,{useState} from 'react'
-import { useSelector } from 'react-redux'
+import React,{useState,useEffect} from 'react'
 import 'boxicons'
 import MaterialTable from 'material-table'
 import './Annoucement.css'
 import AdminAnnoucementForm from '../Admin/AdminAnnoucement'
+import * as actionCreators from "../../../Service/Action/action";
+import { useDispatch,useSelector } from 'react-redux'
+import Spinner from '../../../Components/UI/Spinner/Spinner';
 const AdminAnnoucement = () => {
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(actionCreators.loadAnnoucementDetails());
+    },[]);
+    //annoucement
+    const ann = useSelector((state)=>state.getAnnoucement);
+    console.log(ann);
     const [flag, setFlag] = useState(false);
     const tableData = [{ Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm.", },
     { Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm." }]
@@ -74,6 +83,7 @@ const AdminAnnoucement = () => {
     const handleClick = (e) =>{
         e.preventDefault();
         setFlag(true);
+
     }
     return (<>
         {

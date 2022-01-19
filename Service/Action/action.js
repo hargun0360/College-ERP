@@ -24,7 +24,7 @@ export const flag=(value)=>{
 //Admin Dashboard
 
 //Admin get details
-
+//main
 
 export const loadAdminDetails = () => async (dispatch) => {
   const user = localStorage.getItem("userd");
@@ -40,7 +40,7 @@ export const loadAdminDetails = () => async (dispatch) => {
   };
 
   //Add Admin Details
-
+//never used
 export const addAdminDetails = (adminData) => async (dispatch) =>{
     try {
         dispatch({ type: "Admin_addDetails_Request" });
@@ -53,7 +53,6 @@ export const addAdminDetails = (adminData) => async (dispatch) =>{
 }
 
 //get user
-
 export const getAdminDetail = () => async (dispatch) => {
   const user = localStorage.getItem("userd");
   const id = localStorage.getItem("userid");
@@ -66,3 +65,68 @@ export const getAdminDetail = () => async (dispatch) => {
       dispatch({ type: "User_Details_Fail", payload: error });
     }
   };
+
+  //Update Admin Detail
+//main
+  export const UpdateAdminDetails = (adminData) => async (dispatch) =>{
+    const user = localStorage.getItem("userd");
+    const id = localStorage.getItem("userid");
+    try {
+        dispatch({ type: "Admin_UpdateDetails_Request" });
+        const res = await AuthService.updateAdminDetails(adminData,user,id)
+      
+        dispatch({ type: "Admin_UpdateDetails_Success",payload: res.status});
+        dispatch(loadAdminDetails());
+      } catch (error) {
+        dispatch({ type: "Admin_UpdateDetails_Fail", payload: error });
+      }
+}
+
+
+// Annoucement--------------------------------------------------------------
+
+
+//load annoucement
+
+export const loadAnnoucementDetails = () => async (dispatch) => {
+  const user = localStorage.getItem("userd");
+    try {
+      dispatch({ type: "Annoucement_Details_Request" });
+      const res = await AuthService.getAnnoucementDetails(user)
+  
+      dispatch({ type: "Annoucement_Details_Success", payload: res.data });
+    } catch (error) {
+      dispatch({ type: "Annoucement_Details_Fail", payload: error });
+    }
+  };
+
+// post annoucement
+
+export const addAnnoucementDetails = (annoucementData) => async (dispatch) =>{
+  try {
+      dispatch({ type: "addAnnoucement_Request" });
+      const res = await AuthService.postAdminDetails(annoucementData)
+
+      dispatch({ type: "addAnnoucement_Success", payload: res.status });
+      dispatch(loadAnnoucementDetails());
+    } catch (error) {
+      dispatch({ type: "addAnnoucement_Fail", payload: error });
+    }
+}
+
+//delete annoucement
+
+export const deleteAnnoucementDetails = () => async (dispatch) => {
+  const user = localStorage.getItem("userd");
+  const id = localStorage.getItem("userid");
+    try {
+      dispatch({ type: "Annoucement_Delete_Request" });
+      const res = await AuthService.deleteAnnoucementDetails(user,id)
+  
+      dispatch({ type: "Annoucement_Delete_Success", payload: res.data });
+      dispatch(loadAnnoucementDetails());
+    } catch (error) {
+      dispatch({ type: "Annoucement_Delete_Fail", payload: error });
+    }
+  };
+

@@ -4,13 +4,34 @@ import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
 import DateTimeBox from '../Annoucement/DateTimeBox'
 import 'react-datepicker/dist/react-datepicker.css'
+import * as actionCreators from "../../../Service/Action/action";
+import { useDispatch,useSelector } from 'react-redux'
+import Spinner from '../../../Components/UI/Spinner/Spinner';
 const AdminAnnoucementForm = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const dispatch = useDispatch();
+    let today=new Date()
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
     const onSubmit = (data, e) => {
         e.preventDefault();
-        console.log(data);
+        const obj={
+            date: today,
+            announcement:data.Announcement,
+            annfor:data.aopt,
+        }
+        console.log(obj);
+        dispatch(actionCreators.addAnnoucementDetails(obj));
         reset();
     }
     const handleClick = (e) => {

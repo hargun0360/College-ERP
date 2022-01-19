@@ -114,3 +114,81 @@ export function userDetailReducer(state = {}, action) {
             return state;
     }
 }
+
+//Update Admin Detail
+
+export function updateAdminDetailReducer(state = {}, action) {
+    switch (action.type) {
+        case "Admin_UpdateDetails_Request":
+            return {
+                loading: true,
+            };
+        case "Admin_UpdateDetails_Success":
+            return {
+                ...state,
+                loading: false,
+                isUpdated: action.payload,
+            };
+        case "Admin_UpdateDetails_Fail":
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+}
+
+// Annoucement
+
+export function loadAnnoucementReducer(state = {}, action) {
+    switch (action.type) {
+        case "Annoucement_Details_Request":
+            return {
+                loading: true,
+            };
+        case "Annoucement_Details_Success":
+            return {
+                ...state,
+                loading: false,
+                annoucement: action.payload
+            };
+        case "Annoucement_Details_Fail":
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+}
+
+//add and delete annoucement
+
+export function addAnnoucementReducer(state = {}, action) {
+    switch (action.type) {
+        case "Annoucement_Delete_Request":
+        case "addAnnoucement_Request":
+            return {
+                loading: true,
+            };
+        case "Annoucement_Delete_Success":
+        case "addAnnoucement_Success":
+            return {
+                ...state,
+                loading: false,
+                isEdit: action.payload
+            };
+        case "Annoucement_Delete_Fail":
+        case "addAnnoucement_Fail":
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+}
