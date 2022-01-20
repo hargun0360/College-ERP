@@ -116,14 +116,13 @@ export const addAnnoucementDetails = (annoucementData) => async (dispatch) =>{
 
 //delete annoucement
 
-export const deleteAnnoucementDetails = () => async (dispatch) => {
+export const deleteAnnoucementDetails = (id) => async (dispatch) => {
   const user = localStorage.getItem("userd");
-  const id = localStorage.getItem("userid");
     try {
       dispatch({ type: "Annoucement_Delete_Request" });
       const res = await AuthService.deleteAnnoucementDetails(user,id)
   
-      dispatch({ type: "Annoucement_Delete_Success", payload: res.data });
+      dispatch({ type: "Annoucement_Delete_Success", payload: res.status });
       dispatch(loadAnnoucementDetails());
     } catch (error) {
       dispatch({ type: "Annoucement_Delete_Fail", payload: error });

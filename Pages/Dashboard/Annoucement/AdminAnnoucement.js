@@ -8,18 +8,22 @@ import { useDispatch,useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 const AdminAnnoucement = () => {
     const dispatch = useDispatch();
+    const[tableData,setTableData] = useState([])
     useEffect(()=>{
         dispatch(actionCreators.loadAnnoucementDetails());
+        if(annoucement){
+            setTableData(annoucement);
+        }
     },[]);
     //annoucement
-    const ann = useSelector((state)=>state.getAnnoucement);
-    console.log(ann);
+    
+    const {loading , annoucement} = useSelector((state)=>state.getAnnoucement);
+    
+
     const [flag, setFlag] = useState(false);
-    const tableData = [{ Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm.", },
-    { Date: "27/12/2021", Time: "9:00 AM", Annoucement: "Each week you should complete one module. Homework assignments and discussions should be completed by Saturday at 11:59 pm each week. Discussions require you to respond to at least two of your classmates. These responses are due each Monday by 11:59 pm." }]
     const columns = [{
         title: "Date",
-        field: "Date",
+        field: "date",
         cellStyle: {
             paddingRight: "15%",
             border: "0px solid transparent",
@@ -38,7 +42,7 @@ const AdminAnnoucement = () => {
     },
     {
         title: "Time",
-        field: "Time",
+        field: "time",
         cellStyle: {
             paddingRight: "22%",
             border: "0px solid transparent",
@@ -56,7 +60,7 @@ const AdminAnnoucement = () => {
     },
     {
         title: "Annoucement",
-        field: "Annoucement",
+        field: "description",
         cellStyle: {
             border: "0px solid transparent",
             overflowX: "hidden"
@@ -74,7 +78,7 @@ const AdminAnnoucement = () => {
     }];
     const { val } = useSelector((state) => state.toggle);
     const style = {
-        width: "90vw", minHeight: "90vh", overflow:"revert",scrollbars:"hidden"
+        width: "90vw", minHeight: "90vh", overflow:"revert",scrollbars:"hidden",
     }
     const activateStyle = {
         width: "81vw", minHeight: "90vh",
@@ -85,7 +89,7 @@ const AdminAnnoucement = () => {
         setFlag(true);
 
     }
-    return (<>
+    return loading ? (<Spinner />) : (<>
         {
             <AdminAnnoucementForm trigger={flag} setTrigger={setFlag} />
         }
@@ -101,8 +105,9 @@ const AdminAnnoucement = () => {
             <div className='annoucement-table'>
                 <MaterialTable style={val ? activateStyle : style} columns={columns} data={tableData} title={""} options={{ search: false, sorting: false, toolbar: false, maxBodyHeight: 400, tableLayout: "100%", paging: false, draggable: false, actionsColumnIndex: -1 }} actions={[{
                    icon: () => <box-icon color="red"  name='trash-alt' />,
-                    tooltip: "Delete annoucement",
-                    onClick: (e,id) => { console.log("data delete",e,id) }
+                    tooltip: "Delete annoucement", 
+                    onClick: (e,ide) => { console.log(ide._id)
+                     dispatch(actionCreators.deleteAnnoucementDetails(ide._id))}
                 }]} localization={{
                     header: {
                         actions: ""
