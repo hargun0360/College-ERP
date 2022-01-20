@@ -23,10 +23,21 @@ const AdminAnnoucementForm = (props) => {
         mm = '0' + mm;
     }
     today = yyyy + '-' + mm + '-' + dd;
+    const formatAMPM = (time) => {
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+    }
     const onSubmit = (data, e) => {
         e.preventDefault();
         const obj={
             date: today,
+            time: formatAMPM(new Date),
             announcement:data.Announcement,
             annfor:data.aopt,
         }
