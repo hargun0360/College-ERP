@@ -186,6 +186,7 @@ export function addAnnoucementReducer(state = {}, action) {
             return {
                 ...state,
                 loading: false,
+                isEdit:null,
                 error: action.payload,
             };
         default:

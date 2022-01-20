@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState, useLayoutEffect,useEffect} from 'react'
 import 'boxicons'
 import MaterialTable from 'material-table'
 import './Annoucement.css'
@@ -9,15 +9,22 @@ import Spinner from '../../../Components/UI/Spinner/Spinner';
 const AdminAnnoucement = () => {
     const dispatch = useDispatch();
     const[tableData,setTableData] = useState([])
-    useEffect(()=>{
-        dispatch(actionCreators.loadAnnoucementDetails());
-        if(annoucement){
-            setTableData(annoucement);
-        }
-    },[]);
+    
     //annoucement
     
+    
+    useLayoutEffect(()=>{
+        dispatch(actionCreators.loadAnnoucementDetails());
+    },[]);
+   
     const {loading , annoucement} = useSelector((state)=>state.getAnnoucement);
+    useEffect(()=>{
+        if(annoucement){
+            setTableData(annoucement);
+            console.log(annoucement);
+        }
+    },[loading]);
+    
     
 
     const [flag, setFlag] = useState(false);

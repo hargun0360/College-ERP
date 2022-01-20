@@ -1,33 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
 import * as actionCreators from "../../../Service/Action/action";
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
-import  {  useNavigate  } from 'react-router-dom'
+import profile from '../../../Assets/Imagesused/Profile.png'
 const AdminDetailForm = (props) => {
-    
-    const {loading} = useSelector(state => state.userdetails)
+    const [avatarPreview, setAvatarPreview] = useState(profile);
+    const { loading } = useSelector(state => state.userdetails)
     const { admin } = useSelector((state) => state.getAdmin);
     const dispatch = useDispatch();
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
-        defaultValues:{
-            fullname:(admin) ? admin.profile.fullname : "",
-            email:(admin) ? admin.profile.email : "",
-            mobilenumber:(admin) ? admin.profile.mobile : "",
-            qualification:(admin) ? admin.profile.degree : "",
+        defaultValues: {
+            fullname: (admin) ? admin.profile.fullname : "",
+            email: (admin) ? admin.profile.email : "",
+            mobilenumber: (admin) ? admin.profile.mobile : "",
+            qualification: (admin) ? admin.profile.degree : "",
         },
     });
     const onSubmit = (data, e) => {
         e.preventDefault();
-        var myForm = new FormData();
-        myForm.append("fullname", data.fullname);
-        myForm.append("email", data.email);
-        myForm.append("mobile", data.mobilenumber);
-        myForm.append("degree", data.qualification);
-        myForm.append("image", props.profileImage);
+        const myForm = new FormData();
+        myForm.set("fullname", data.fullname);
+        myForm.set("email", data.email);
+        myForm.set("mobile", data.mobilenumber);
+        myForm.set("degree", data.qualification);
+        myForm.set("image", props.profileImage);
         dispatch(actionCreators.UpdateAdminDetails(myForm))
         e.target.reset();
     }
@@ -35,6 +35,20 @@ const AdminDetailForm = (props) => {
         e.preventDefault();
         props.setTrigger(false);
     }
+    const handleChange = (e) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setAvatarPreview(reader.result);
+            }
+        };
+
+        if (e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    }
+
     return loading ? (<Spinner />) : (props.trigger) ? (
         <div className='Modal-box'>
             <div className='Admin-Form'>
@@ -42,7 +56,7 @@ const AdminDetailForm = (props) => {
                     <h2>Fill Personal Details</h2>
                 </div>
                 <div>
-                    <form className='Admin-Input' onSubmit={handleSubmit(onSubmit)}>
+                    <form className='Admin-Input' encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
                         <div className='combine-input'>
                             <div className='Label-form'>
                                 <label htmlFor="Full-Name">
@@ -87,6 +101,15 @@ const AdminDetailForm = (props) => {
                                 <input className='input-field-form' size={"40"} type="text" name="qualification" {...register("qualification", { required: "**Qualification is required", })}></input>
                             </div>
                             <p className='alerts'>{errors.qualification?.message}</p>
+                        </div>
+                        <div id="registerImage">
+                            <img src={avatarPreview} alt="Avatar Preview" />
+                            <input
+                                type="file"
+                                name="avatar"
+                                accept="image/*"
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className='Button-update'>
                             <SubmitButton className="Admin-Details-Update" Label="Update" ></SubmitButton>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
 import './AdminDetailForm.css'
@@ -11,6 +11,7 @@ const AdminAnnoucementForm = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const edit = useSelector((state)=>state.editAnnoucement);
     const dispatch = useDispatch();
     let today=new Date()
     var dd = today.getDate();
@@ -45,6 +46,7 @@ const AdminAnnoucementForm = (props) => {
         dispatch(actionCreators.addAnnoucementDetails(obj));
         reset();
     }
+    
     const handleClick = (e) => {
         e.preventDefault();
         props.setTrigger(false);

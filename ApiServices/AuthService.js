@@ -68,9 +68,18 @@ class AuthServices {
 
     // post annoucement
 
-    postAdminDetails(data) {
+    postAdminDetails(data,id) {
         console.log(data);
-        return axios.post(`faculty/makeannouncement`, data, {
+        return axios.post(`faculty/makeannouncement/${id}`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    deleteAnnoucementDetails(idu,ida) {
+        return axios.delete(`faculty/deleteannouncement/${ida}/${idu}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

@@ -103,9 +103,10 @@ export const loadAnnoucementDetails = () => async (dispatch) => {
 // post annoucement
 
 export const addAnnoucementDetails = (annoucementData) => async (dispatch) =>{
+  const id = localStorage.getItem("userid");
   try {
       dispatch({ type: "addAnnoucement_Request" });
-      const res = await AuthService.postAdminDetails(annoucementData)
+      const res = await AuthService.postAdminDetails(annoucementData,id)
 
       dispatch({ type: "addAnnoucement_Success", payload: res.status });
       dispatch(loadAnnoucementDetails());
@@ -116,11 +117,11 @@ export const addAnnoucementDetails = (annoucementData) => async (dispatch) =>{
 
 //delete annoucement
 
-export const deleteAnnoucementDetails = (id) => async (dispatch) => {
-  const user = localStorage.getItem("userd");
+export const deleteAnnoucementDetails = (ida) => async (dispatch) => {
+  const idu = localStorage.getItem("userid");
     try {
       dispatch({ type: "Annoucement_Delete_Request" });
-      const res = await AuthService.deleteAnnoucementDetails(user,id)
+      const res = await AuthService.deleteAnnoucementDetails(idu,ida)
   
       dispatch({ type: "Annoucement_Delete_Success", payload: res.status });
       dispatch(loadAnnoucementDetails());
