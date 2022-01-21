@@ -8,6 +8,14 @@ import Spinner from '../../../Components/UI/Spinner/Spinner';
 import profile from '../../../Assets/Imagesused/Profile.png'
 const AdminDetailForm = (props) => {
     const [avatarPreview, setAvatarPreview] = useState(profile);
+    const get = useSelector((state) => state.updateAdmin);
+    useEffect(()=>{
+        if(get.isUpdated){
+            const obj=Object.fromEntries(get.isUpdated)
+            console.log(obj.image);
+            setAvatarPreview(obj.image);
+        }
+    },[get.loading])
     const { loading } = useSelector(state => state.userdetails)
     const { admin } = useSelector((state) => state.getAdmin);
     const dispatch = useDispatch();
@@ -27,8 +35,9 @@ const AdminDetailForm = (props) => {
         myForm.set("email", data.email);
         myForm.set("mobile", data.mobilenumber);
         myForm.set("degree", data.qualification);
-        myForm.set("image", props.profileImage);
+        myForm.set("image", avatarPreview);
         dispatch(actionCreators.UpdateAdminDetails(myForm))
+        console.log(Object.fromEntries(myForm));
         e.target.reset();
     }
     const handleClick = (e) => {
@@ -108,6 +117,7 @@ const AdminDetailForm = (props) => {
                                 type="file"
                                 name="avatar"
                                 accept="image/*"
+                                title=''
                                 onChange={handleChange}
                             />
                         </div>

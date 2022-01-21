@@ -75,7 +75,7 @@ export const getAdminDetail = () => async (dispatch) => {
         dispatch({ type: "Admin_UpdateDetails_Request" });
         const res = await AuthService.updateAdminDetails(adminData,user,id)
       
-        dispatch({ type: "Admin_UpdateDetails_Success",payload: res.status});
+        dispatch({ type: "Admin_UpdateDetails_Success",payload: adminData});
         dispatch(loadAdminDetails());
       } catch (error) {
         dispatch({ type: "Admin_UpdateDetails_Fail", payload: error });

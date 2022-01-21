@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import profile from '../../../Assets/Imagesused/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
@@ -8,12 +8,21 @@ import AdminDetailForm from './AdminDetailForm'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
 import * as actionCreators from "../../../Service/Action/action";
 export const AdminDashboard = () => {
+    const get = useSelector((state) => state.updateAdmin);
+    const [avatarPreview, setAvatarPreview] = useState(profile);
+    useEffect(()=>{
+        if(get.isUpdated){
+            console.log(Object.fromEntries(get.isUpdated));
+            const obj=Object.fromEntries(get.isUpdated)
+            console.log(obj.image);
+            setAvatarPreview(obj.image);
+        }
+    },[get.loading])
     const { val } = useSelector((state) => state.toggle);
     const dispatch = useDispatch();
     const { loading, admin } = useSelector((state) => state.getAdmin);
     const [flag, setFlag] = useState(false);
     const [avatar, setAvatar] = useState(profile);
-    const [avatarPreview, setAvatarPreview] = useState(profile);
     const handleClick = (e) => {
         e.preventDefault();
         setFlag(true);
@@ -44,14 +53,7 @@ export const AdminDashboard = () => {
             },
         },
     }
-    const [value, setValue] = useState(false);
     const [state, setState] = useState(true);
-    const handleHoverin = () => {
-        setValue(true);
-    }
-    const handleHoverout = () => {
-        setValue(false);
-    }
     const changeProfile = () => {
         setState(false);
     }
@@ -74,19 +76,13 @@ export const AdminDashboard = () => {
     return loading ? (<Spinner />) : (<>
 
         {
-            <AdminDetailForm trigger={flag} setTrigger={setFlag} profileImage={avatar} />
+            <AdminDetailForm trigger={flag} setTrigger={setFlag} />
         }
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admin-Profile-Box'>
                 <div className='profile-box1'>
-                    <div className='profile-image-box' onMouseEnter={handleHoverin} onMouseLeave={handleHoverout}>
+                    <div className='profile-image-box'>
                         <img src={avatarPreview} alt="Avatar Preview" />
-                        {
-                            value ? <div className='Edit-profile' onClick={changeProfile}>
-                                <box-icon id="camera-icon" type="solid" name='camera'>
-                                </box-icon>
-                            </div> : null
-                        }
                         {
                             state && <input className="file-input" title="" type="file" name='avatar' accept="image/*" multiple="false" onChange={handleChange} />
                         }

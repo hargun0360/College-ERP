@@ -86,7 +86,7 @@
     padding: 1% 0%;
     position: absolute;
     left: 106%;
-    top: 0%;
+    top: -17%;
     border-radius: 3px;
   }
   #registerImage > input::file-selector-button {
@@ -94,15 +94,17 @@
     width: 100%;
     z-index: 2;
     height: 8vh;
-    border: none;
+    border: 1px solid transparent;
     margin: 0%;
     font-family: 'Inter', sans-serif;
-    transition: all 0.5s;
+    transition: all 0.2s;
     padding: 0 1vmax;
     color: rgba(0, 0, 0, 0.623);
     background-color: #F7F7F7;
   }
   
-  /* #registerImage > input::file-selector-button:hover {
-    background-color: rgb(235, 235, 235);
-  } */
+  #registerImage > input::file-selector-button:hover {
+    border-color: #1E637E;
+    color: #1E637E;
+    background-color: white;
+  }
