@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Batches.css'
+import AddBatch from './AddBatch'
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
+    const [flag1, setFlag1] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([{ Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }])
     const [flag, setFlag] = useState(true);
@@ -14,6 +16,10 @@ const AdminBatches = () => {
     const handleYearDropdown = (e) => {
         setYear(e.target.value);
         setFlag(false);
+    }
+    const handleBatch = (e) =>{
+        e.preventDefault();
+        setFlag1(true);
     }
     const handleBatchDropdown = (e) => {
         setBatch(e.target.value);
@@ -26,6 +32,9 @@ const AdminBatches = () => {
     }
     return (
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
+        {
+            <AddBatch trigger={flag1} setTrigger={setFlag1} />
+        }
             <div className='Batches-Details'>
                 <div className='Year-Dropdown'>
                     <select id="year-drop" onChange={handleYearDropdown}>
@@ -52,7 +61,7 @@ const AdminBatches = () => {
                         <h4>Apply</h4>
                     </div>
                 </div>
-                <div className='Add-Batch'>
+                <div className='Add-Batch' onClick={handleBatch}>
                     <div className='Batch-text'>
                         <h4>Add Batch</h4>
                     </div>
