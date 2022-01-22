@@ -17,7 +17,7 @@ const EditDetails = (props) => {
     }
 
     return (props.trigger) ?  (
-        <div className='Modal-box1'>
+        <div className='Modal-box'>
             <div className='EditDetails-Form'>
                 <div className='EditDetails-Heading' style={{marginBottom:"5%"}}>
                     <h2>Edit Details</h2>

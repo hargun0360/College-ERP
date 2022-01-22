@@ -164,7 +164,7 @@ tr:hover {
     border-style: solid;
     border: 1px solid #007BAB;
 }
-.Batch-Form{
+.Batch-Form,.EditDetails-Form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -174,7 +174,7 @@ tr:hover {
     width: 479px;
     position: relative;
 }
-.Add-batch-button{
+.Add-batch-button,.EditDetail-button{
     cursor: pointer;
     background-color: #1E637E;
     color: white;
@@ -184,7 +184,7 @@ tr:hover {
     font-weight: 500;
     border-style: none;
 }
-.Add-Batch-btn{
+.Add-Batch-btn,.EditDetail-btn{
     background-color: #1E637E;
     color: white;
     box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
@@ -207,45 +207,10 @@ tr:hover {
     overflow-x: hidden;
 }
 .EditDetails-Form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: white;
     height: 395px;
     width: 434px;
-    position: relative;
-}
-.Modal-box1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 119vw;
-    height: 100vh;
-    top: 0;
-    display: flex;
-    z-index: 999;
-}
-.EditDetail-button{
-    background-color: #1E637E;
-    color: white;
-    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
-    border-radius: 8px;
-    border-color: #1E637E;
-    font-weight: 500;
-    border-style: none;
 }
 .EditDetail-btn{
-    background-color: #1E637E;
-    color: white;
-    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
-    border-radius: 8px;
-    border-color: #1E637E;
-    font-weight: 500;
-    border-style: none;
-    padding: 3%;
     padding-left: 43%;
     width: 107%;
     cursor: pointer;
