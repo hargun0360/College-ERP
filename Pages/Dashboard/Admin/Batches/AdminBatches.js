@@ -4,10 +4,12 @@ import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Batches.css'
 import AddBatch from './AddBatch'
+import EditDetails from './EditDetails'
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
     const [flag1, setFlag1] = useState(false);
+    const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([{ Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }])
     const [flag, setFlag] = useState(true);
@@ -20,6 +22,10 @@ const AdminBatches = () => {
     const handleBatch = (e) =>{
         e.preventDefault();
         setFlag1(true);
+    }
+    const handleEditDetails =  (e) =>{
+        e.preventDefault();
+        setFlag2(true);
     }
     const handleBatchDropdown = (e) => {
         setBatch(e.target.value);
@@ -34,6 +40,9 @@ const AdminBatches = () => {
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
         {
             <AddBatch trigger={flag1} setTrigger={setFlag1} />
+        }
+        {
+            <EditDetails trigger={flag2} setTrigger={setFlag2} />
         }
             <div className='Batches-Details'>
                 <div className='Year-Dropdown'>
@@ -104,7 +113,7 @@ const AdminBatches = () => {
                                         <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.Name}</TableCell>
                                         <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.Email}</TableCell>
                                         <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }}>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={handleEditDetails}>
                                                 <h6>Edit details</h6>
                                             </div>
                                         </TableCell>
