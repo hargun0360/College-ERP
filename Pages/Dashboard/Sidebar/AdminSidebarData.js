@@ -17,7 +17,7 @@ export const AdminSidebarData = [
     {
         title:"Batches",
         icon:<box-icon name="group" color="#505050"/>,
-        Link:'/Batches',
+        Link:'/Dashboard/Batches',
         tooltip:"Batches"
     },
     {

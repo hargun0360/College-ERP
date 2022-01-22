@@ -22,7 +22,6 @@ export const AdminDashboard = () => {
     const dispatch = useDispatch();
     const { loading, admin } = useSelector((state) => state.getAdmin);
     const [flag, setFlag] = useState(false);
-    const [avatar, setAvatar] = useState(profile);
     const handleClick = (e) => {
         e.preventDefault();
         setFlag(true);
@@ -53,25 +52,7 @@ export const AdminDashboard = () => {
             },
         },
     }
-    const [state, setState] = useState(true);
-    const changeProfile = () => {
-        setState(false);
-    }
-    const handleChange = (e) => {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setAvatarPreview(reader.result);
-                setAvatar(reader.result);
-            }
-        };
-
-        if (e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0]);
-        }
-        setState(true);
-    }
+    
 
     return loading ? (<Spinner />) : (<>
 
@@ -83,10 +64,6 @@ export const AdminDashboard = () => {
                 <div className='profile-box1'>
                     <div className='profile-image-box'>
                         <img src={avatarPreview} alt="Avatar Preview" />
-                        {
-                            state && <input className="file-input" title="" type="file" name='avatar' accept="image/*" multiple="false" onChange={handleChange} />
-                        }
-
                     </div>
                     <div className='Admin-basic-details'>
                         <div className='Admin-name'>
