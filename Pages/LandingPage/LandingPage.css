@@ -96,6 +96,18 @@
 	display: flex;
     z-index: 999;
 }
+.Modal-box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	display: flex;
+    z-index: 999;
+}
 .Modal-container{
     width: 476px;
     height: 405px;

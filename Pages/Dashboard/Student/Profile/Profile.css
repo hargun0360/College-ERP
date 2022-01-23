@@ -1,0 +1,129 @@
+.Annoucement-Container.activate > .Personal-year {
+    width: 89vw;
+}
+.Annoucement-Container.activate > .Personal-year > .Personal-info{
+    width: 61vw;
+}
+.Annoucement-Container.activate > .Personal-year > .Personal-info > .Year-info{
+    left: 71%;
+}
+.Annoucement-Container.activate > .Additional-Attendance {
+    width: 89vw;
+}
+.Annoucement-Container.activate > .Additional-Attendance > .Additional-info{
+    width: 61vw;
+}
+.Annoucement-Container.activate > .Additional-Attendance > .Attendance-info{
+    left: 71%;
+}
+.Year-info, .Attendance-info{
+    width: 17vw;
+    height: 220px;
+    top: 0px;
+    background: #FFFFFF;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 76%;
+}
+.Personal-info,.Additional-info{
+    width: 66vw;
+    height: 220px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.Personal-year, .Additional-Attendance{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 32px;
+    width: 91vw;
+    position: relative;
+}
+.Personal-details{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.Personal-detail-heading,.Additional-Info-heading{
+    position: absolute;
+    left: 4%;
+    margin-top: 1%;
+}
+.Additional-Info-heading{
+    left: 3%;
+}
+.Personal-detail-heading,.Additional-Info-heading > h5 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #1E637E;
+}
+#Avatar-img{
+    height: 130px;
+    width: 130px;
+    margin-top: 6%;
+    position: absolute;
+    left: 2%;
+}
+.Student-Details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    left: 22%;
+    margin-top: 3%;
+    width: 30vw;
+}
+.Student-Details > .Name,.Email,.Roll-Number,.Mobile,.Branch > h6{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.Circular-design{
+    border-left: 1px solid #F2F2F2;
+    border-radius: 50%;
+    position: absolute;
+    border-style: none;
+    background-color: #1E637E;
+    height: 17.5vmax;
+    top: 0;
+    left: 85%;
+    margin-top: 0%;
+    width: 19vmax;
+}
+.Info{
+    display: flex;
+    height: 220px;
+}
+.Additional-info,.Additional-personal-details{
+    display: flex;
+    flex-direction: column;
+}
+.Father-info,.Mother-info,.Address-info{
+    display: flex;
+    justify-content: space-between;
+}
+.Father-name,.Mother-name,.Address-name{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.Additional-personal-details{
+    position: absolute;
+    top: 29%;
+    left: 3%;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 41vw;
+}
+.Father-info,.Mother-info,.Address-info{
+    width: 100%;
+}

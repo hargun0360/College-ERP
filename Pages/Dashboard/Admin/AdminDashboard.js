@@ -9,13 +9,13 @@ import Spinner from '../../../Components/UI/Spinner/Spinner'
 import * as actionCreators from "../../../Service/Action/action";
 export const AdminDashboard = () => {
     const get = useSelector((state) => state.updateAdmin);
+    const user = localStorage.getItem("userd");
+    const id = localStorage.getItem("userid");
     const [avatarPreview, setAvatarPreview] = useState(profile);
     useEffect(()=>{
         if(get.isUpdated){
             console.log(Object.fromEntries(get.isUpdated));
             const obj=Object.fromEntries(get.isUpdated)
-            console.log(obj.image);
-            setAvatarPreview(obj.image);
         }
     },[get.loading])
     const { val } = useSelector((state) => state.toggle);
@@ -63,7 +63,7 @@ export const AdminDashboard = () => {
             <div className='Admin-Profile-Box'>
                 <div className='profile-box1'>
                     <div className='profile-image-box'>
-                        <img src={avatarPreview} alt="Avatar Preview" />
+                        <img src={avatarPreview} alt="Avatar" />
                     </div>
                     <div className='Admin-basic-details'>
                         <div className='Admin-name'>

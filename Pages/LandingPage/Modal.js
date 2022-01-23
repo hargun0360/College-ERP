@@ -11,7 +11,7 @@ const Modal = (props) => {
             props.setTrigger(false);
     }
     return (props.trigger) ? (
-        <div className='Modal-box'>
+        <div className='Modal-box1'>
             <div className='Modal-container'>
                 <div className='Modal-heading'>
                     <h2>Continue as</h2>

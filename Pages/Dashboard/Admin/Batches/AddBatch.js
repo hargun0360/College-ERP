@@ -9,6 +9,7 @@ const AddBatch = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
+    const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         if(year===null){
             setState(true);

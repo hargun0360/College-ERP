@@ -13,7 +13,7 @@ import AdminAnnoucementForm from './Pages/Dashboard/Admin/AdminAnnoucement';
 import Annoucement from './Pages/Dashboard/Annoucement/Annoucement'
 import DateTimeBox from './Pages/Dashboard/Annoucement/DateTimeBox'
 import Batches from './Pages/Dashboard/Admin/Batches/Batches'
-import EditDetails from './Pages/Dashboard/Admin/Batches/EditDetails'
+import Profile from './Pages/Dashboard/Student/Profile/Profile';
 function App() {
   return (
     <div className="App">
@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
             <Route exact path="/form" element={<AdminAnnoucementForm />} />
-            <Route exact path="/batch" element={<EditDetails />} />
+            <Route exact path="/batch" element={<Profile />} />
             <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />
             <Route exact path="admin/Dashboard/Batches" element={<Batches />} />
             <Route exact path="/date" element={<DateTimeBox />} />

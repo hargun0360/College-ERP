@@ -8,6 +8,7 @@ import Spinner from '../../../Components/UI/Spinner/Spinner';
 import profile from '../../../Assets/Imagesused/Profile.png'
 const AdminDetailForm = (props) => {
     const [avatarPreview, setAvatarPreview] = useState(profile);
+    const [avatar,setAvatar] = useState(profile)
     const get = useSelector((state) => state.updateAdmin);
     useEffect(()=>{
         if(get.isUpdated){
@@ -35,7 +36,7 @@ const AdminDetailForm = (props) => {
         myForm.set("email", data.email);
         myForm.set("mobile", data.mobilenumber);
         myForm.set("degree", data.qualification);
-        myForm.set("image", avatarPreview);
+        myForm.set("image", avatar);
         dispatch(actionCreators.UpdateAdminDetails(myForm))
         console.log(Object.fromEntries(myForm));
         e.target.reset();
@@ -45,16 +46,11 @@ const AdminDetailForm = (props) => {
         props.setTrigger(false);
     }
     const handleChange = (e) => {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setAvatarPreview(reader.result);
-            }
-        };
-
-        if (e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0]);
+        console.log(e.target.files[0]);
+         if ( e.target.files && e.target.files[0]) {
+            setAvatar(e.target.files[0]);
+            setAvatarPreview(URL.createObjectURL(e.target.files[0]));
+            console.log(e.target.files[0]);
         }
     }
 
