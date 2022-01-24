@@ -117,13 +117,91 @@
     justify-content: space-between;
 }
 .Additional-personal-details{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     position: absolute;
-    top: 29%;
     left: 3%;
-    justify-content: space-between;
-    align-items: flex-start;
     width: 41vw;
+    margin-top: 2%;
+    height: 34vh;
+    justify-content: space-between;
+}
+.Info-Heading,.Info-Details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 .Father-info,.Mother-info,.Address-info{
     width: 100%;
+}
+
+.Father-name,.Mother-name,.Address-name,.AddressName-Heading,.MotherName-Heading,.FatherName-Heading > h5{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.Year-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.year-number{
+    display: flex;
+    z-index: 22;
+    position: relative;
+    top: -6%;
+    left: 13%;
+}
+.year-number > h5 {
+    position: relative;
+    top: 36%;
+    left: 16%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #1E637E;
+}
+.year-number > h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    color: #1E637E;
+}
+.Semester-year{
+    position: relative;
+    top: -25%;
+}
+.circular-year{
+    border-left: 1px solid #F2F2F2;
+    border-radius: 50%;
+    border-style: none;
+    background: radial-gradient(132.5% 132.5% at 50% 50%, #D8F3FF 0%, rgba(206, 240, 255, 0) 60.71%);
+    height: 8vmax;
+    width: 8vmax;
+    position: absolute;
+}
+.Semester-year,.Attendance-heading > h5{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #1E637E;
+}
+.Attendance{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Attendance-circular-bar{
+    position: relative;
+    top: -9%;
+}
+.Attendance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 11vw;
+    position: relative;
+    left: 20%;
+    top: 2%;
 }
