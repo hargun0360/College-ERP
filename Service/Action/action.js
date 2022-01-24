@@ -21,23 +21,15 @@ export const flag=(value)=>{
     }
 }
 
+export const update=(value)=>{
+  return{
+      type:"Toggle_Update",
+      payload:value
+  }
+}
+
 //Admin Dashboard
 
-//Admin get details
-//main
-
-export const loadAdminDetails = () => async (dispatch) => {
-  const user = localStorage.getItem("userd");
-  const id = localStorage.getItem("userid");
-    try {
-      dispatch({ type: "Admin_Details_Request" });
-      const res = await AuthService.getadminDetails(user,id)
-  
-      dispatch({ type: "Admin_Details_Success", payload: res.data });
-    } catch (error) {
-      dispatch({ type: "Admin_Details_Fail", payload: error });
-    }
-  };
 
   //Add Admin Details
 //never used
@@ -76,7 +68,6 @@ export const getAdminDetail = () => async (dispatch) => {
         const res = await AuthService.updateAdminDetails(adminData,user,id)
       
         dispatch({ type: "Admin_UpdateDetails_Success",payload: adminData});
-        dispatch(loadAdminDetails());
       } catch (error) {
         dispatch({ type: "Admin_UpdateDetails_Fail", payload: error });
       }

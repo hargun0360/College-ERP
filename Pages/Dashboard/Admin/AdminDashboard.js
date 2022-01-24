@@ -6,26 +6,53 @@ import { useSelector,useDispatch} from 'react-redux'
 import Chart from "react-apexcharts";
 import AdminDetailForm from './AdminDetailForm'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
+import AuthService from '../../../ApiServices/AuthService'
 import * as actionCreators from "../../../Service/Action/action";
 export const AdminDashboard = () => {
-    const get = useSelector((state) => state.updateAdmin);
     const user = localStorage.getItem("userd");
     const id = localStorage.getItem("userid");
-    const [avatarPreview, setAvatarPreview] = useState(profile);
-    useEffect(()=>{
-        if(get.isUpdated){
-            console.log(Object.fromEntries(get.isUpdated));
-            const obj=Object.fromEntries(get.isUpdated)
+    const [name,setName] = useState("");
+    const [email,setEmail] = useState("");
+    const [image,setImage] = useState(profile);
+    const [mobile,setMobile] = useState("");
+    const [degree,setDegree] = useState("");
+    const [stun,setStun] = useState("");
+    const [facn,setFacn] = useState("");
+    const [loading,setLoading] = useState(true);
+    const loadAdmin = async ()=> {
+        try {
+            const res = await AuthService.getadminDetails(user,id)
+            console.log(res);
+            if(res){
+                setLoading(false)
+            }
+            setName(res.data.profile.fullname);
+            setEmail(res.data.profile.email);
+            setMobile(res.data.profile.mobile);
+            setDegree(res.data.profile.degree);
+            setImage(res.data.profile.image)   
+            setStun(res.data.studentNo)
+            setFacn(res.data.facultyNo)
+        } catch (error) {
+            console.log(error);
         }
-    },[get.loading])
-    const { val } = useSelector((state) => state.toggle);
+        
+    }
+    useEffect(()=>{
+       loadAdmin();
+    },[]);
     const dispatch = useDispatch();
-    const { loading, admin } = useSelector((state) => state.getAdmin);
+    const { val } = useSelector((state) => state.toggle);
+    const { x } = useSelector((state) => state.updateToggle);
+    console.log(x);
+    useEffect(()=>{
+        loadAdmin();
+     },[x]);
     const [flag, setFlag] = useState(false);
     const handleClick = (e) => {
         e.preventDefault();
         setFlag(true);
-        dispatch(actionCreators.getAdminDetail());
+        dispatch(actionCreators.update(false))
     }
     const option = {
         series: [70],
@@ -63,14 +90,14 @@ export const AdminDashboard = () => {
             <div className='Admin-Profile-Box'>
                 <div className='profile-box1'>
                     <div className='profile-image-box'>
-                        <img src={avatarPreview} alt="Avatar" />
+                        <img src={`https://ourcollege.herokuapp.com/${image}`} alt="Avatar" />
                     </div>
                     <div className='Admin-basic-details'>
                         <div className='Admin-name'>
-                            <h2>{admin.profile.fullname}</h2>
+                            <h2>{name}</h2>
                         </div>
                         <div className='Admin-post'>
-                            <h4>{admin.profile.degree}</h4>
+                            <h4>{degree}</h4>
                         </div>
                     </div>
                 </div>
@@ -80,7 +107,7 @@ export const AdminDashboard = () => {
                             <box-icon type='solid' name='envelope'></box-icon>
                         </div>
                         <div className='email-add'>
-                            <h4>{admin.profile.email}</h4>
+                            <h4>{email}</h4>
                         </div>
                     </div>
                     <div className='Admin-mobile'>
@@ -88,7 +115,7 @@ export const AdminDashboard = () => {
                             <box-icon type='solid' name='phone-call'></box-icon>
                         </div>
                         <div className='call-number'>
-                            <h4>{admin.profile.mobile}</h4>
+                            <h4>{mobile}</h4>
                         </div>
                     </div>
                 </div>
@@ -99,7 +126,7 @@ export const AdminDashboard = () => {
                         <i class='fas fa-user-graduate'></i>
                     </div>
                     <div className='Total-student'>
-                        <h3>{admin.studentNo}</h3>
+                        <h3>{stun}</h3>
                     </div>
                     <div className='Students-name'>
                         <h5>Students</h5>
@@ -113,7 +140,7 @@ export const AdminDashboard = () => {
                         <i class='fas fa-user-check'></i>
                     </div>
                     <div className='Total-faculty'>
-                        <h3>{admin.facultyNo}</h3>
+                        <h3>{facn}</h3>
                     </div>
                     <div className='Faculty-name'>
                         <h5>Faculty</h5>

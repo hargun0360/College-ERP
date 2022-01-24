@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import {emailReducer,toggleReducer,adminDetailReducer,addadminDetailReducer,userReducer,userDetailReducer,updateAdminDetailReducer,loadAnnoucementReducer,addAnnoucementReducer} from './Reducer';
+import {emailReducer,toggleReducer,addadminDetailReducer,userReducer,userDetailReducer,updateAdminDetailReducer,loadAnnoucementReducer,addAnnoucementReducer,updateToggleReducer} from './Reducer';
 
 
 const rootReducer = combineReducers({
     emailReducer,
     toggle:toggleReducer,
-    getAdmin:adminDetailReducer,
+    updateToggle:updateToggleReducer,
     addAdmin:addadminDetailReducer,
     user:userReducer,
     userdetails:userDetailReducer,
