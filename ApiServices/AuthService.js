@@ -87,6 +87,40 @@ class AuthServices {
         })
     }
 
+    // get Batch (Batch Section)
+
+        getBatch(year) {
+        return axios.get(`admin/getbatch/${year}`, {
+            headers: {
+                "Content-Type": "application/json" ,
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    // View Student Data (Batch Section)
+
+    getStudents(branch,year) {
+        return axios.get(`admin/viewbatch?batch=cse1&year=3`, {
+            headers: {
+                "Content-Type": "application/json" ,
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    // view each student (batch section)
+
+    getEachStudent(id) {
+        return axios.get(`admin/showprofile/${id}?user=student`, {
+            headers: {
+                "Content-Type": "application/json" ,
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+
 }
 
 

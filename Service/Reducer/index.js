@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {emailReducer,toggleReducer,addadminDetailReducer,userReducer,userDetailReducer,updateAdminDetailReducer,loadAnnoucementReducer,addAnnoucementReducer,updateToggleReducer} from './Reducer';
-
+import {} from './StudentReducer'
 
 const rootReducer = combineReducers({
     emailReducer,

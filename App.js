@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
             <Route exact path="/form" element={<AdminAnnoucementForm />} />
-            <Route exact path="/batch" element={<Profile />} />
+            <Route exact path="/Dashboard/stuProfile" element={<Profile />} />
             <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />
             <Route exact path="admin/Dashboard/Batches" element={<Batches />} />
             <Route exact path="/date" element={<DateTimeBox />} />

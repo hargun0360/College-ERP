@@ -1,35 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Batches.css'
 import AddBatch from './AddBatch'
+import  {  useNavigate  } from 'react-router-dom'
 import EditDetails from './EditDetails'
+import AuthService from '../../../../ApiServices/AuthService';
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
     const [flag1, setFlag1] = useState(false);
     const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
-    const [tableData, setTableData] = useState([{ Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }, { Roll: "2000270100095", Name: "Manish", Email: "Manish@akgec.ac.in" }])
+    const [tableData, setTableData] = useState([])
+    const navigate = useNavigate();
     const [flag, setFlag] = useState(true);
     const years = [{ id: "1", yr: "First" }, { id: "2", yr: "Second" }, { id: "3", yr: "Third" }, { id: "4", yr: "Fourth" }];
-    const batches = [{ id: "1", batch: "CSE" }, { id: "2", batch: "IT" }, { id: "3", batch: "ECE" }, { id: "4", batch: "EN" }];
+    const [batches , setBatches] = useState([]);
     const handleYearDropdown = (e) => {
         setYear(e.target.value);
+        console.log(e.target.value);
         setFlag(false);
     }
     const handleBatch = (e) =>{
         e.preventDefault();
+        setBatch(e.target.value);
         setFlag1(true);
     }
-    const handleEditDetails =  (e) =>{
-        e.preventDefault();
+    const handleEditDetails =  (id) =>{
+        console.log(id);
         setFlag2(true);
     }
     const handleBatchDropdown = (e) => {
         setBatch(e.target.value);
     }
+
+    const handleView = (id) => {
+        localStorage.setItem("stuid",id);
+        navigate("/Dashboard/stuProfile");
+    }
+
+    const handleApply = (e) =>{
+        e.preventDefault();
+        if(year && batch){
+            AuthService.getStudents(batch,year)
+            .then((res)=>{
+                console.log(res);
+                setTableData(res.data.students);
+            }).catch((e)=>{
+                console.log(e);
+            })
+        }else{
+            //show error
+        }
+    }
+
+    useEffect(()=>{
+        loadBatch();
+    },[year]);
+
+    const loadBatch = async ()=> {
+        try {
+            const res = await AuthService.getBatch(year);
+            setBatches(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+
     if (year) {
         console.log(year);
     }
@@ -50,7 +90,7 @@ const AdminBatches = () => {
                         <option selected="selected" hidden>Select Year</option>
                         {
                             years.map((y) => (
-                                <option key={y.id} name={y.id} value={y.yr}>{y.yr}</option>
+                                <option key={y.id} name={y.id} value={y.id}>{y.yr}</option>
                             ))
                         }
                     </select>
@@ -60,12 +100,12 @@ const AdminBatches = () => {
                         <option selected="selected" hidden>Select Batch</option>
                         {
                             batches.map((b) => (
-                                <option key={b.id} name={b.id} value={b.batch}>{b.batch}</option>
+                                <option key={b._id} name={b._id} value={b._id}>{b._id}</option>
                             ))
                         }
                     </select>
                 </div>
-                <div className='Apply-Button'>
+                <div className='Apply-Button' onClick={handleApply}>
                     <div className='Apply-text'>
                         <h4>Apply</h4>
                     </div>
@@ -109,16 +149,16 @@ const AdminBatches = () => {
                             {
                                 tableData.map((data) => (<>
                                     <TableRow>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.Roll}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.Name}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.Email}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.roll}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.name}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
                                         <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={handleEditDetails}>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleEditDetails(data._id)}>
                                                 <h6>Edit details</h6>
                                             </div>
                                         </TableCell>
                                         <TableCell style={{ border: "0px solid transparent" }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif" }}>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif" }} onClick={()=>handleView(data._id)} >
                                                 <h6>View</h6>
                                             </div>
                                         </TableCell>

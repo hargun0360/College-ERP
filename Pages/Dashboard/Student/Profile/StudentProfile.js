@@ -1,12 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './Profile.css'
 import profile from '../../../../Assets/Images/Profile.png'
 import 'boxicons'
 import Chart from "react-apexcharts";
+import AuthService from '../../../../ApiServices/AuthService';
 const StudentProfile = () => {
+    const id = localStorage.getItem("stuid");
     const { val } = useSelector((state) => state.toggle);
     const [image, setImage] = useState(profile);
+    const [att,setAtt] = useState("");
+    const [email,setEmail] = useState("");
+    const [name,setName] = useState("");
+    const [roll,setRoll] = useState("");
+    const [sem,setSem] = useState("");
+    const [address,setAddress] = useState("");
+    const [mobile,setMobile] = useState("");
+    const [father,setFather] = useState("");
+    const [mother,setMother] = useState("");
+    const [year,setYear] = useState("");
+    const [branch,setBranch] = useState("");
+    useEffect(()=>{
+        loadStudent();
+    },[]);
+
+    const loadStudent = async ()=> {
+        try {
+            const res = await AuthService.getEachStudent(id);
+            console.log(res);
+            setAtt(res.data.att);
+            setEmail(res.data.profile.email)
+            setName(res.data.profile.fullname)
+            setRoll(res.data.profile.rollno)
+            setSem(res.data.profile.sem)
+            setAddress(res.data.profile.address)
+            setMobile(res.data.profile.mobileno)
+            setFather(res.data.profile.father)
+            setMother(res.data.profile.mother)
+            setYear(res.data.profile.year)
+            setBranch(res.data.profile.branch)
+            setImage(res.data.profile.image)
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
     const option = {
         series: [80],
         chart: {

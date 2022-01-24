@@ -14,6 +14,9 @@ const AddBatch = (props) => {
         if(year===null){
             setState(true);
         }
+        const obj = {
+            
+        }
         e.preventDefault();
         
     }
