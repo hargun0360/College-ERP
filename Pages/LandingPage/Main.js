@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './LandingPage.css'
-import animated from '../../../src/Assets/Imagesused/Landing-illustration.gif'
-import underline from '../../../src/Assets/Imagesused/Underline.png'
+import animated from '../../../src/Assets/Images/Landing-illustration.gif'
+import underline from '../../../src/Assets/Images/Underline.png'
 import Modal from './Modal'
 const Main = () => {
     const [flag, setFlag] = useState(false);

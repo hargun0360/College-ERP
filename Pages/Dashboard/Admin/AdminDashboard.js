@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import profile from '../../../Assets/Imagesused/Profile.png'
+import profile from '../../../Assets/Images/Profile.png'
 import 'boxicons'
 import './AdminDashboard.css'
 import { useSelector,useDispatch} from 'react-redux'

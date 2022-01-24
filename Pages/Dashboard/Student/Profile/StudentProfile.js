@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './Profile.css'
-import profile from '../../../../Assets/Imagesused/Profile.png'
+import profile from '../../../../Assets/Images/Profile.png'
 const StudentProfile = () => {
     const { val } = useSelector((state) => state.toggle);
     const [avatarPreview, setAvatarPreview] = useState(profile);

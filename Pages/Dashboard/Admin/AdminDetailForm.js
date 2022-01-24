@@ -5,7 +5,7 @@ import './AdminDetailForm.css'
 import * as actionCreators from "../../../Service/Action/action";
 import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
-import profile from '../../../Assets/Imagesused/Profile.png'
+import profile from '../../../Assets/Images/Profile.png'
 import AuthService from '../../../ApiServices/AuthService';
 const AdminDetailForm = (props) => {
     const [avatar,setAvatar] = useState(profile)

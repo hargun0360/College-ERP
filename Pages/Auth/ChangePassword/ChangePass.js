@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
-import illustrate from '../../../Assets/Imagesused/resetpass.png'
+import illustrate from '../../../Assets/Images/resetpass.png'
 import '../Login/Login.css'
 import "../CreatePassword/CreatePass.css"
 import "./ChangePass.css"
