@@ -18,7 +18,7 @@ const AdminDetailForm = (props) => {
     const [degree,setDegree] = useState("");
     const [loading,setLoading] = useState(true);
     const [flag,setFlag] = useState(false);
-    const [preview,setPreview] = useState(false);
+    const [preview,setPreview] = useState(profile);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
         defaultValues: {

@@ -1,12 +1,10 @@
 import React, { useState,useEffect } from 'react'
-import SubmitButton from '../../../Components/UI/Button/Button'
+import SubmitButton from '../../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
-import './AdminDetailForm.css'
-import * as actionCreators from "../../../Service/Action/action";
-import { useDispatch, useSelector } from 'react-redux'
-import Spinner from '../../../Components/UI/Spinner/Spinner';
-import profile from '../../../Assets/Images/Profile.png'
-import AuthService from '../../../ApiServices/AuthService';
+import Spinner from '../../../../Components/UI/Spinner/Spinner';
+import profile from '../../../../Assets/Images/Profile.png'
+import AuthService from '../../../../ApiServices/AuthService';
+import './Profile.css'
 const StudentEditDetails = (props) => {
     const [avatar,setAvatar] = useState(profile)
     const user = localStorage.getItem("userd");
@@ -14,48 +12,22 @@ const StudentEditDetails = (props) => {
     const id = localStorage.getItem("userid");
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
+    const [branch,setBranch] = useState( [{ id: "1", batch: "CSE" }, { id: "2", batch: "IT" }, { id: "3", batch: "ECE" }, { id: "4", batch: "EN" }]);
     const [mobile,setMobile] = useState("");
     const [degree,setDegree] = useState("");
     const [loading,setLoading] = useState(true);
-    const branch = [{ id: "1", batch: "CSE" }, { id: "2", batch: "IT" }, { id: "3", batch: "ECE" }, { id: "4", batch: "EN" }];
     const [flag,setFlag] = useState(false);
-    const [preview,setPreview] = useState(false);
+    const [preview,setPreview] = useState(profile);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
-        defaultValues: {
-            fullname: name,
-            email: email,
-            mobilenumber: mobile,
-            qualification: degree,
-        },
+        // defaultValues: {
+        //     fullname: name,
+        //     email: email,
+        //     mobilenumber: mobile,
+        //     qualification: degree,
+        // },
     });
-    useEffect(()=>{
-        loadAdmin();
-     },[reset]);
-     const dispatch = useDispatch();
-    const loadAdmin = async ()=> {
-        try {
-            const res = await AuthService.getadminDetails(user,id)
-            console.log(res);
-            setLoading(false);
-            setImage(res.data.profile.image)
-            setName(res.data.profile.fullname);
-            setEmail(res.data.profile.email);
-            setMobile(res.data.profile.mobile);
-            setDegree(res.data.profile.degree);  
-            const obj = {
-                fullname:res.data.profile.fullname,
-                email:res.data.profile.email,
-                mobilenumber:res.data.profile.mobile,
-                qualification:res.data.profile.degree,
-            } 
-            console.log(obj);
-            reset(obj)
-        } catch (error) {
-            console.log(error);
-        }
-        
-    }
+     
     const handleBranchDropdown = (e) => {
         setBranch(e.target.value);
     }
@@ -70,9 +42,7 @@ const StudentEditDetails = (props) => {
         AuthService.updateAdminDetails(myForm,user,id)
         .then((res) => {
             console.log(res);
-            loadAdmin();
             setFlag(false)
-            dispatch(actionCreators.update(true));
         }).catch((e => {
             console.log(e);
         }))
@@ -93,8 +63,8 @@ const StudentEditDetails = (props) => {
         }
     }
     
-    return loading ? (<Spinner />) : (props.trigger) ? (
-        <div className='Modal-box'>
+    return  (
+        <div className='Modal-box-2'>
             <div className='Student-Form'>
                 <div className='Student-Form-Heading'>
                     <h2>Fill Personal Details</h2>
@@ -135,15 +105,17 @@ const StudentEditDetails = (props) => {
                             </div>
                             <p className='alerts'>{errors.mobilenumber?.message}</p>
                         </div>
+                        <div className='combine-input'>
                         <div className='Batch-Dropdown'>
-                    <select id="batch-drop" disabled={flag} onChange={handleBranchDropdown}>
+                    <select id="branch-drop" disabled={flag} onChange={handleBranchDropdown}>
                         <option selected="selected" hidden>Select Branch</option>
                         {
                             branch.map((b) => (
-                                <option key={b.id} name={b.id} value={b.branch}>{b.branch}</option>
+                                <option key={b.id} name={b.id} value={b.batch}>{b.batch}</option>
                             ))
                         }
                     </select>
+                    </div>
                 </div>
                         <div className='combine-input'>
                             <div className='Label-form'>
@@ -190,7 +162,7 @@ const StudentEditDetails = (props) => {
                             <p className='alerts'>{errors.address?.message}</p>
                         </div>
                         <div id="registerImage">
-                            <img src={flag ? preview : `https://ourcollege.herokuapp.com/${image}`} alt="Avatar Preview" />
+                            <img src={flag ?  `https://ourcollege.herokuapp.com/${image}` : preview} alt="Avatar Preview" />
                             <input
                                 type="file"
                                 name="avatar"
@@ -199,17 +171,17 @@ const StudentEditDetails = (props) => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='Button-update'>
+                        <div className='Button-update-3'>
                             <SubmitButton className="Admin-Details-Update" Label="Update" ></SubmitButton>
                         </div>
                     </form>
                 </div>
-                <div className='cross1'>
+                <div className='cross-icon-1'>
                     <i id="crossed" className="fa fa-times" onClick={handleClick} ></i>
                 </div>
             </div>
         </div>
-    ) : null;
+    );
 }
 
 export default StudentEditDetails

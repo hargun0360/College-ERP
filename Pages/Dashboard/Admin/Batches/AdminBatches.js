@@ -43,7 +43,6 @@ const AdminBatches = () => {
 
     const handleApply = (e) =>{
         e.preventDefault();
-        if(year && batch){
             AuthService.getStudents(batch,year)
             .then((res)=>{
                 console.log(res);
@@ -51,9 +50,7 @@ const AdminBatches = () => {
             }).catch((e)=>{
                 console.log(e);
             })
-        }else{
-            //show error
-        }
+        
     }
 
     useEffect(()=>{
