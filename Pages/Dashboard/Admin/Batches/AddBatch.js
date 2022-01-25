@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
-import * as actionCreators from "../../../../Service/Action/action";
-import { useDispatch, useSelector } from 'react-redux'
+import AuthService from '../../../../ApiServices/AuthService';
 const AddBatch = (props) => {
     const [year, setYear] = useState(null);
     const [state, setState] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
-    const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         if(year===null){
             setState(true);
-        }
-        const obj = {
-            
+        }else{
+            const obj = {
+                batch:data.batch,
+                year:year,
+                sem:data.Semester,
+            }
+            AuthService.AddBatch(obj)
+            .then((res)=>{
+                console.log(res);
+            }).catch((e)=>{
+                console.log(e);
+            })
         }
         e.preventDefault();
-        
+        reset();
     }
     const handleClick = (e) => {
         e.preventDefault();
@@ -39,7 +46,7 @@ const AddBatch = (props) => {
                     <form className='Batch-Input' onSubmit={handleSubmit(onSubmit)}>
                         <div className='combine-input' style={{marginBottom:"3%"}}>
                             <div className='Label-form'>
-                                <label htmlFor="Full-Name">
+                                <label htmlFor="Batch Name">
                                     Batch Name
                                 </label>
                             </div>
@@ -53,7 +60,7 @@ const AddBatch = (props) => {
                                 <option selected="selected" hidden>Select Year</option>
                                 {
                                     years.map((y) => (
-                                        <option key={y.id} name={y.id} value={y.yr}>{y.yr}</option>
+                                        <option key={y.id} name={y.id} value={y.id}>{y.yr}</option>
                                     ))
                                 }
                             </select>
@@ -66,7 +73,7 @@ const AddBatch = (props) => {
                                 </label>
                             </div>
                             <div className='Input-detail'>
-                                <input className='input-field-form' size={"34"} type="text" name="Semester" {...register("Semester", { required: "**Semester is required", })}></input>
+                                <input className='input-field-form' size={"34"} type="text" name="Semester" {...register("Semester", { required: "**Semester is required", maxLength: { value: 1, message: "**Semester cannot exceed more than 1 number" }, pattern: { value: /^[1-8]{1}$/i, message: "**This is not a valid semester" } })}></input>
                             </div>
                             <p className='alerts'>{errors.Semester?.message}</p>
                         </div>

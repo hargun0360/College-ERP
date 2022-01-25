@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { flag } from '../../../Service/Action/action';
 const Sidebar = () => {
-    const my = useSelector((state)=>state.user.user)
+    const my = localStorage.getItem("userd")
+
     const dispatch = useDispatch();
     const [state,setState]=useState(true);
     const navigate = useNavigate();

@@ -15,6 +15,7 @@ import DateTimeBox from './Pages/Dashboard/Annoucement/DateTimeBox'
 import Batches from './Pages/Dashboard/Admin/Batches/Batches'
 import Profile from './Pages/Dashboard/Student/Profile/Profile';
 import StudentEditDetails from './Pages/Dashboard/Student/Profile/StudentEditDetails';
+import Holiday from './Pages/Dashboard/Admin/Holidays/Holiday';
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/changepass" element={<ChangePass />} />
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
+            <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="/detail" element={<StudentEditDetails />} />
             <Route exact path="/Dashboard/stuProfile" element={<Profile />} />
             <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />

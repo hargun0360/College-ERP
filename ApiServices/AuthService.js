@@ -120,6 +120,17 @@ class AuthServices {
         })
     }
 
+    // Add Batch (Batch Section)
+
+        AddBatch(data) {
+            console.log(data);
+        return axios.post(`admin/addbatch`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
 
 }
 
