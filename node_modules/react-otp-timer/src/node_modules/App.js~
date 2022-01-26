@@ -1,0 +1,13 @@
+import React                from 'react'
+import DaysTimer        from 'components/DaysTimer'
+class App extends React.Component {
+  render() {
+    return (
+      <DaysTimer 
+
+	/>
+        
+    )
+  }
+}
+export default App
