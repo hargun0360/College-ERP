@@ -1,0 +1,10 @@
+.Add-Admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -43%;
+    cursor: pointer;
+    z-index: 1;
+    top: 7%;
+}
