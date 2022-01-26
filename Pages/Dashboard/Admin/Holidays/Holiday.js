@@ -1,9 +1,9 @@
 import React from 'react'
-import './Dashboard.css'
-import Navbar from '../../Pages/LandingPage/Navbar'
-import Sidebar from './Sidebar/Sidebar'
-import { AdminDashboard } from './Admin/AdminDashboard'
-const Dashboard = () => {
+import '../../Dashboard.css'
+import Navbar from '../../../LandingPage/Navbar'
+import Sidebar from '../../Sidebar/Sidebar'
+import Holidays from './Holidays'
+const Holiday = () => {
     return (
         <div className='dashboard'>
             <Navbar />
@@ -12,11 +12,12 @@ const Dashboard = () => {
                     <Sidebar />
                 </div>
                 <div>
-                    <AdminDashboard />
+                    <Holidays />
                 </div>
             </div>
         </div>
     )
 }
 
-export default Dashboard;
+export default Holiday;
+

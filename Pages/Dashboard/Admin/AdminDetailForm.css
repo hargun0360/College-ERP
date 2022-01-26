@@ -1,0 +1,112 @@
+.Admin-Form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    height: 517px;
+    width: 532px;
+    position: relative;
+    left: -7%;
+}
+.Admin-Input,.combine-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.input-field-form,.input-field-form1,.input-field-form2,.input-field-form3{
+    background-color: #F7F7F7;
+    padding: 1.5%;
+    border-style: none;
+    padding-left: 5%;
+    border-radius: 3px;
+}
+.Admin-Details-Update{
+    padding:  18% 282%;
+    cursor: pointer;
+    background-color: #1E637E;
+    color: white;
+    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
+    border-radius: 8px;
+    border-color: #1E637E;
+    font-weight: 500;
+    border-style: none;
+}
+.Admin-Update{
+    padding: 20% 490%;
+    cursor: pointer;
+    background-color: #1E637E;
+    color: white;
+    box-shadow: 0px 0px 30px rgba(31, 91, 124, 0.089);
+    border-radius: 8px;
+    border-color: #1E637E;
+    font-weight: 500;
+    border-style: none;
+}
+.Button-update{
+    margin-top: 2%;
+}
+#emailicon1{
+    z-index: 99;
+    position: relative;
+    left: 7%;
+}
+.input-field-form1{
+    padding-left: 10%;
+}
+.Input-detail1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Admin-Form-Heading > h2 {
+    margin-bottom: 14%;
+}
+.cross1{
+    position: absolute;
+    top: 4%;
+    right: 5%;
+    cursor: pointer;
+}
+.input-field-form2{
+    padding-left: 0%;
+    text-align: center;
+}
+#registerImage{
+    display: flex;
+    position: relative;
+    margin-bottom: 2%;
+}
+#registerImage > img {
+    width: 3vmax;
+    height: 3vmax;
+    border-radius: 100%;
+  }
+  #registerImage > input {
+    display: flex;
+    padding: 1% 0%;
+    position: absolute;
+    left: 106%;
+    top: -17%;
+    border-radius: 3px;
+  }
+  #registerImage > input::file-selector-button {
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    height: 8vh;
+    border: 1px solid transparent;
+    margin: 0%;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    padding: 0 1vmax;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: #F7F7F7;
+  }
+  
+  #registerImage > input::file-selector-button:hover {
+    border-color: #1E637E;
+    color: #1E637E;
+    background-color: white;
+  }

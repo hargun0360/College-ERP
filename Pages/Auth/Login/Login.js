@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
-import illustrate from '../../../Assets/Imagesused/login.png'
+import illustrate from '../../../Assets/Images/login.png'
 import AuthService from '../../../ApiServices/AuthService'
 import './Login.css'
 import { Link } from 'react-router-dom'
@@ -16,6 +16,7 @@ import Spinner from '../../../Components/UI/Spinner/Spinner'
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = localStorage.getItem("userd");
     const mystate = useSelector((state)=>state.emailReducer.user)
     const [toggle, setToggle] = useState(false);
     const [loading, setLoading] = useState(false)
@@ -36,8 +37,9 @@ const Login = () => {
                 console.log(res);
             localStorage.setItem("user",res.data.accessToken);
             localStorage.setItem("ref_token",res.data.refreshToken);
+            localStorage.setItem("userid",res.data.result._id);
             dispatch(actionCreators.userEmail(res.data.email));
-            navigate("/Dashboard");
+            navigate(`/${user}/Dashboard/profile`);
             }
             
         }).catch((error)=>{

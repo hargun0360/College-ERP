@@ -30,14 +30,14 @@
     left:90%;
   }
   .sidebar ul {
-    margin-top: -3px;
+    margin-top: 50px;
     margin-left: -34px;
   }
   .sidebar ul li{
     position:relative;
     height:50px;
     width:100%;
-    margin:5px 0;
+    margin:0;
     list-style: none;
     line-height: 50px;
     display: flex;

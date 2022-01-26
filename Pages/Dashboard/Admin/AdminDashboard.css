@@ -1,0 +1,245 @@
+.Admin-Container{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 78px);
+    margin-left: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Admin-Container.activate{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 200px);
+    margin-left: 200px;
+}
+.Admin-Profile-Box{
+    width:85vw;
+    height: 181px;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 90px;  
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.Admin-Container.activate > .Admin-Profile-Box {
+    width:80vw;
+}
+.profile-box1,.Admin-email,.Admin-mobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-image-box{
+    height: 130px;
+    width: 123px;
+    margin-left: -10px;
+    position: absolute;
+    left: 2%;
+    transition:all 0.5s ease;
+    opacity:1;
+}
+.Admin-Container.activate > .Admin-Profile-Box > .profile-box1 > .profile-image-box{
+    left: 1.5%;
+}
+.profile-image-box > img {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+}
+.Admin-basic-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    left: 14%;
+}
+.profile-box2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    left: -7%;
+}
+.Admin-name > h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    width: 233%;
+}
+.Admin-post > h4{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+.call-favi{
+    padding-right: 7%;
+}
+.email-favi{
+    padding-right: 4%;
+}
+.College-basic-data{
+    display: flex;
+    width: 75vw;
+    justify-content: space-around;
+    margin-top: 3%;
+    margin-bottom: -9%;
+}
+.box-1,.box-2,.box-3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 192px;
+    height: 215px;
+    border: 2px solid #F2F2F2;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+.Edit{
+    display: flex;
+    position: relative;
+    top: 13.5%;
+    left: -37%;
+    justify-content: space-between;
+    width: 10%;
+    cursor: pointer;
+}
+.Total-student > h3,.Total-faculty > h3{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    color: white;
+}
+.Students-name > h5,.Faculty-name > h5,.upcoming-Holiday > h5{
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+}
+.upcoming-Holiday > h5 {
+    width: 67%;
+}
+.upcoming-Holiday{
+    width: 50%;
+}
+.Holiday-date > h3{
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 44px;
+    color: white;
+}
+.month-cal{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin-left: 3%;
+    color: white;
+}
+.Holiday-date{
+    width:57%;
+}
+.Edit-detail > h5{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #007BAB;
+}
+.Edit-favicon > i{
+    color: #007BAB;
+}
+.Edit-favicon{
+    margin-top: -2%;
+}
+.student-favi > i,.faculty-favi > i{
+    position: relative;
+    top: -46%;
+    color: white;
+}
+.circular1,.circular2,.circular3{
+    width: 7vmax;
+    height: 6vmax;
+    border-left: 1px solid #F2F2F2;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -45px;
+    border-style: none;
+}
+.circular3{
+    background-color: #6C63FF;
+}
+.circular2{
+    background-color: #1bdbe2;
+}
+.circular1{
+    background-color: #FF902A;
+}
+.box-1{
+ background: #f08a2a;
+}
+.box-2{
+    background: #2bc8ce;
+}
+.box-3{
+    background: #573ae9;
+}
+.Holiday-date > span,.upcoming-Holiday,.calendar-favi > i{
+    color: white;
+}
+.box-4{
+    margin-top: -4%;
+}
+.Edit-profile{
+    width: max-content;
+    position: absolute;
+    top: 89%;
+    left: 77%;
+    cursor: pointer;
+}
+#camera-icon{
+    fill: rgb(143, 137, 137);
+    cursor: pointer;
+}
+.file-input{
+    position: absolute;
+    top: 87%;
+    left: 78%;
+    cursor: pointer;
+    width: 16%;
+    opacity: 0;
+}
+input[type=file]::-webkit-file-upload-button { 
+    cursor: pointer; 
+}
+.annoucement-opt{
+    display: flex;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+}
+.student-radio{
+    position: relative;
+    left: 5%;
+}
+.both-radio{
+    position: relative;
+    left: 7%;
+}
+#field-Student,#field-Faculty,#field-Both{
+    position: relative;
+    left: -3%;
+}
+.annoucement-opt{
+    margin-bottom: 1%;
+}
+.label-data{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
