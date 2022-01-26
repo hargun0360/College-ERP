@@ -8,3 +8,7 @@
     z-index: 1;
     top: 7%;
 }
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent; 
+}
