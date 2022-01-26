@@ -7,6 +7,8 @@ import AddBatch from './AddBatch'
 import  {  useNavigate  } from 'react-router-dom'
 import EditDetails from './EditDetails'
 import AuthService from '../../../../ApiServices/AuthService';
+import Toaster from '../../../../Components/UI/Toaster/Toaster'
+import { toast } from 'react-toastify';
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
@@ -44,16 +46,29 @@ const AdminBatches = () => {
 
     const handleDelete = (id) => {
         setTrigger(true);
+        console.log(trigger);
         AuthService.DelStudent(id)
             .then((res)=>{
                 console.log(res);
-                setTrigger(FontFaceSetLoadEvent);
+                if(res){
+                    toast.success("Student Deleted Successfully")
+                }
+                setTrigger(false);
+                console.log(trigger);
+            }).catch((e)=>{
+                console.log(e);
+                toast.error("Error!")
+            })
+    }
+    console.log(trigger);
+    useEffect(()=>{
+        AuthService.getStudents(batch,year)
+            .then((res)=>{
+                console.log(res);
+                setTableData(res.data.students);
             }).catch((e)=>{
                 console.log(e);
             })
-    }
-    useEffect(()=>{
-        loadBatch();
      },[trigger]);
 
     const handleApply = (e) =>{
@@ -70,6 +85,7 @@ const AdminBatches = () => {
             })
         }else{
             // show error
+            toast.warn("Please Select Year and Batch")
         }
     }
 
@@ -186,6 +202,7 @@ const AdminBatches = () => {
                 </TableContainer>
 
             </div>
+            <Toaster />
         </div>);
 };
 
