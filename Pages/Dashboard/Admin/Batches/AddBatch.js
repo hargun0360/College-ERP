@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
 import AuthService from '../../../../ApiServices/AuthService';
+import Toaster from '../../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
 const AddBatch = (props) => {
     const [year, setYear] = useState(null);
     const [state, setState] = useState(false);
@@ -20,8 +22,13 @@ const AddBatch = (props) => {
             AuthService.AddBatch(obj)
             .then((res)=>{
                 console.log(res);
+                if(res){
+                    toast.success("Batch Created Successfully");
+                }
+                
             }).catch((e)=>{
                 console.log(e);
+                toast.error("Network error");
             })
         }
         e.preventDefault();
@@ -86,6 +93,7 @@ const AddBatch = (props) => {
                     <i id="crossed" className="fa fa-times" onClick={handleClick} ></i>
                 </div>
             </div>
+            <Toaster />
         </div>
     ) : null;
 }

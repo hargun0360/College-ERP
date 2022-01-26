@@ -101,7 +101,7 @@ class AuthServices {
     // View Student Data (Batch Section)
 
     getStudents(branch,year) {
-        return axios.get(`admin/viewbatch?batch=cse1&year=3`, {
+        return axios.get(`admin/viewbatch?batch=${branch}&year=${year}`, {
             headers: {
                 "Content-Type": "application/json" ,
                 Authorization: 'Bearer ' + localStorage.getItem('user')
@@ -125,6 +125,17 @@ class AuthServices {
         AddBatch(data) {
             console.log(data);
         return axios.post(`admin/addbatch`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    // Delete Student 
+
+    DelStudent(id) {
+        return axios.delete(`admin/deletestudent/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

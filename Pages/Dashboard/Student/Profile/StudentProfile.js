@@ -9,6 +9,7 @@ const StudentProfile = () => {
     const id = localStorage.getItem("stuid");
     const { val } = useSelector((state) => state.toggle);
     const [image, setImage] = useState(profile);
+    const [preview, setPreview] = useState(profile);
     const [att,setAtt] = useState("");
     const [email,setEmail] = useState("");
     const [name,setName] = useState("");
@@ -20,6 +21,7 @@ const StudentProfile = () => {
     const [mother,setMother] = useState("");
     const [year,setYear] = useState("");
     const [branch,setBranch] = useState("");
+    const [flag,setFlag] = useState(false);
     useEffect(()=>{
         loadStudent();
     },[]);
@@ -40,6 +42,7 @@ const StudentProfile = () => {
             setYear(res.data.profile.year)
             setBranch(res.data.profile.branch)
             setImage(res.data.profile.image)
+            setFlag(true)
         } catch (error) {
             console.log(error);
         }
@@ -86,23 +89,23 @@ const StudentProfile = () => {
                         </div>
                         <div className='Info'>
                             <div className='Avatar-Image'>
-                                <img id='Avatar-img' src={image} alt="Avatar Preview" />
+                                <img id='Avatar-img' src={flag ? `https://ourcollege.herokuapp.com/${image}` : preview} alt="Avatar Preview" />
                             </div>
                             <div className='Student-Details'>
                                 <div className='Name'>
-                                    <h6>Hargun Singh</h6>
+                                    <h6>{name}</h6>
                                 </div>
                                 <div className='Email'>
-                                    <h6>Hargun2013021@akgec.ac.in</h6>
+                                    <h6>{email}</h6>
                                 </div>
                                 <div className='Branch'>
-                                    <h6>Information Technology</h6>
+                                    <h6>{branch}</h6>
                                 </div>
                                 <div className='Mobile'>
-                                    <h6>7985719583</h6>
+                                    <h6>{mobile}</h6>
                                 </div>
                                 <div className='Roll-Number'>
-                                    <h6>2000270130065</h6>
+                                    <h6>{roll}</h6>
                                 </div>
                             </div>
                         </div>
@@ -112,13 +115,13 @@ const StudentProfile = () => {
                     </div>
                     <div className='Year-info'>
                         <div className='Semester-year'>
-                            <h5>Third Semester</h5>
+                            <h5>{sem} Semester</h5>
                         </div>
                         <div className='circular-year'>
 
                         </div>
                         <div className='year-number'>
-                            <h1>2</h1>
+                            <h1>{year}</h1>
                             <h5>Year</h5>
                         </div>
                     </div>
@@ -143,13 +146,13 @@ const StudentProfile = () => {
                         </div>
                         <div className='Info-Details'>
                             <div className="Father-name">
-                                <h5>Ajeet Singh</h5>
+                                <h5>{father}</h5>
                             </div>
                             <div className='Mother-name'>
-                                <h5>Jasmeet Kaur</h5>
+                                <h5>{mother}</h5>
                             </div>
                             <div className='Address-name'>
-                            <h5>118/548 'A', KaushalPuri,Kanpur</h5>
+                            <h5>{address}</h5>
                             </div>
                         </div>
                     </div>

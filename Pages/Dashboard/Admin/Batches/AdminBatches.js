@@ -11,6 +11,7 @@ const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
     const [flag1, setFlag1] = useState(false);
+    const [trigger, setTrigger] = useState(false);
     const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([])
@@ -41,8 +42,25 @@ const AdminBatches = () => {
         navigate("/Dashboard/stuProfile");
     }
 
+    const handleDelete = (id) => {
+        setTrigger(true);
+        AuthService.DelStudent(id)
+            .then((res)=>{
+                console.log(res);
+                setTrigger(FontFaceSetLoadEvent);
+            }).catch((e)=>{
+                console.log(e);
+            })
+    }
+    useEffect(()=>{
+        loadBatch();
+     },[trigger]);
+
     const handleApply = (e) =>{
         e.preventDefault();
+        if(year && batch){
+
+        
             AuthService.getStudents(batch,year)
             .then((res)=>{
                 console.log(res);
@@ -50,7 +68,9 @@ const AdminBatches = () => {
             }).catch((e)=>{
                 console.log(e);
             })
-        
+        }else{
+            // show error
+        }
     }
 
     useEffect(()=>{
@@ -67,12 +87,6 @@ const AdminBatches = () => {
         
     }
 
-    if (year) {
-        console.log(year);
-    }
-    if (batch) {
-        console.log(batch);
-    }
     return (
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
         {
@@ -159,7 +173,7 @@ const AdminBatches = () => {
                                                 <h6>View</h6>
                                             </div>
                                         </TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" }} align='center'>
+                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={()=>handleDelete(data._id)}>
                                             <div className='trash-icon' style={{cursor:"pointer"}}>
                                                 <box-icon color="red" name='trash-alt' />
                                             </div>
