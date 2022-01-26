@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 import profile from '../../../Assets/Images/Profile.png'
 import AuthService from '../../../ApiServices/AuthService';
+import Toaster from '../../../Components/UI/Toaster/Toaster'
+import {toast} from 'react-toastify'
 const AdminDetailForm = (props) => {
     const [avatar,setAvatar] = useState(profile)
     const user = localStorage.getItem("userd");
@@ -69,6 +71,9 @@ const AdminDetailForm = (props) => {
             console.log(res);
             loadAdmin();
             setFlag(false)
+            if(res){
+                toast.success("Updated Successfully");
+            }
             dispatch(actionCreators.update(true));
         }).catch((e => {
             console.log(e);
@@ -162,6 +167,7 @@ const AdminDetailForm = (props) => {
                     <i id="crossed" className="fa fa-times" onClick={handleClick} ></i>
                 </div>
             </div>
+            <Toaster />
         </div>
     ) : null;
 }
