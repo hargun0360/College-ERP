@@ -31,7 +31,7 @@ const Holidays = () => {
             <div className='plus-icon'>
               <box-icon name='plus-circle' color="#007BAB" ></box-icon>
             </div>
-            <div className='Add-Student-text'>
+            <div className='Add-Holiday-text'>
               <h4>Add Holiday</h4>
             </div>
           </div>

@@ -135,6 +135,17 @@
     background: #00B8BD;
 
 }
+.Holiday-Container.activate > .timeline > .line{
+    left: 83.8%;
+} 
+.Add-Holiday-text > h4 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    color: #007BAB;
+    width: 183%;
+}
 .Add-Holiday-btn{
     display: flex;
     justify-content: center;
