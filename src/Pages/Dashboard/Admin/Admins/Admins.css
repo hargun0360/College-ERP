@@ -12,3 +12,13 @@
     width: 0;  
     background: transparent; 
 }
+.AddAdmin-Form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    height: 456px;
+    width: 418px;
+    position: relative;
+}

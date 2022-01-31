@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Admins.css'
+import AddAdmin from './AddAdmin'
 const AdminsData = () => {
     const { val } = useSelector((state) => state.toggle);
+    const [flag,setFlag] = useState(false);
     const [tableData, setTableData] = useState([{id:"1",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"2",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"3",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"4",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"5",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"6",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"7",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"8",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"9",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"10",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"11",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"12",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"13",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"}])
     const handleView = (id) => {
         console.log(id)
@@ -12,9 +14,16 @@ const AdminsData = () => {
     const handleDelete = (id) => {
         console.log(id);
     }
+    const handleAdmin = (e) => {
+        setFlag(true);
+    }
   return (<>
+        {
+            
+            <AddAdmin trigger={flag} setTrigger={setFlag} />
+        }
       <div className={`Admin-Container ${val ? "activate" : ""}`}>
-      <div className='Add-Admin'>
+      <div className='Add-Admin' onClick={handleAdmin}>
                 <div className='plus-icon'>
                     <box-icon name='plus-circle' color="#007BAB" ></box-icon>
                 </div>
