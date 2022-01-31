@@ -212,10 +212,41 @@ tr:hover {
 }
 .EditDetail-btn{
     padding-left: 43%;
-    width: 107%;
+    width: 103%;
     cursor: pointer;
 }
 ::-webkit-scrollbar {
     width: 0;  
     background: transparent; 
+}
+#sem-drop{
+    margin:10% 0%;
+}
+.AddStudent-Form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    height: 509px;
+    width: 479px;
+    position: relative;
+}
+.file-input{
+    position: absolute;
+    top: 87%;
+    left: 78%;
+    cursor: pointer;
+    width: 16%;
+    opacity: 0;
+}
+input[type=file]::-webkit-file-upload-button { 
+    cursor: pointer; 
+    width: 100%;
+    padding: 2%;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
 }

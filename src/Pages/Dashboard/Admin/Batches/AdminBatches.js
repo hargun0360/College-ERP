@@ -8,12 +8,14 @@ import  {  useNavigate  } from 'react-router-dom'
 import EditDetails from './EditDetails'
 import AuthService from '../../../../ApiServices/AuthService';
 import Toaster from '../../../../Components/UI/Toaster/Toaster'
+import AddStudent from './AddStudent'
 import { toast } from 'react-toastify';
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
     const [year, setYear] = useState(null);
     const [flag1, setFlag1] = useState(false);
     const [trigger, setTrigger] = useState(false);
+    const [flag3,setFlag3] = useState(false);
     const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([])
@@ -42,6 +44,11 @@ const AdminBatches = () => {
     const handleView = (id) => {
         localStorage.setItem("stuid",id);
         navigate("/Dashboard/stuProfile");
+    }
+
+    const handleStudent = (e) =>{
+            e.preventDefault();
+            setFlag3(true);
     }
 
     const handleDelete = (id) => {
@@ -111,6 +118,10 @@ const AdminBatches = () => {
         {
             <EditDetails trigger={flag2} setTrigger={setFlag2} />
         }
+        {
+            
+            <AddStudent trigger={flag3} setTrigger={setFlag3} />
+        }
             <div className='Batches-Details'>
                 <div className='Year-Dropdown'>
                     <select id="year-drop" onChange={handleYearDropdown}>
@@ -143,7 +154,7 @@ const AdminBatches = () => {
                     </div>
                 </div>
             </div>
-            <div className='Add-Student'>
+            <div className='Add-Student' onClick={handleStudent}>
                 <div className='plus-icon'>
                     <box-icon name='plus-circle' color="#007BAB" ></box-icon>
                 </div>
