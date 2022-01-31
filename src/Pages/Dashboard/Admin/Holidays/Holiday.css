@@ -279,3 +279,13 @@
     cursor: default;
     text-decoration-skip-ink: none;
 }
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    width: 270px;
+    background: #F7F7F7;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    padding-left: 1px;
+    padding: 1px 0px;
+}

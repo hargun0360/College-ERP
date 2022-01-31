@@ -18,6 +18,7 @@ import StudentEditDetails from './Pages/Dashboard/Student/Profile/StudentEditDet
 import Holiday from './Pages/Dashboard/Admin/Holidays/Holiday';
 import Admins from './Pages/Dashboard/Admin/Admins/Admins';
 import Faculty from './Pages/Dashboard/Admin/Faculty/Faculty';
+import AddHoliday from './Pages/Dashboard/Admin/Holidays/AddHoliday'
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="/detail" element={<StudentEditDetails />} />
             <Route exact path="admin/Dashboard/Admins" element={<Admins />} />
+            <Route exact path="/time" element={<AddHoliday />} />
             <Route exact path="/Dashboard/stuProfile" element={<Profile />} />
             <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />
             <Route exact path="admin/Dashboard/Batches" element={<Batches />} />
