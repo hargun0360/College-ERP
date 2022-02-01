@@ -33,6 +33,12 @@ import Attendance from './Pages/Dashboard/Student/Attendance/Attendance';
 import Result from './Pages/Dashboard/Student/Result/Result'
 import Feedbacks from './Pages/Dashboard/Student/Feedback/Feedback'
 
+
+// *************************** Faculty Routings *************************************************
+
+import FacAnnoucement from './Pages/Dashboard/Faculty/Annoucement/Annoucement'
+import FacProfile from './Pages/Dashboard/Faculty/Profile/Profile'
+
 function App() {
   return (
     <div className="App">
@@ -60,6 +66,8 @@ function App() {
             <Route exact path="student/Dashboard/Attendance" element={<Attendance />} />
             <Route exact path="student/Dashboard/Result" element={<Result />} />
             <Route exact path="student/Dashboard/Feedback" element={<Feedbacks />} />
+            <Route exact path="faculty/Dashboard/Annoucements" element={<FacAnnoucement />} />
+            <Route exact path="faculty/Dashboard/profile" element={<FacProfile />} />
             <Route exact path="/date" element={<DateTimeBox />} />
             <Route path="*" element={<NotFound />} />
       </Routes>
