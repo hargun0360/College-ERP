@@ -46,6 +46,9 @@
     width: 91vw;
     position: relative;
 }
+.Personal-year.activity, .Additional-Attendance.activity{ 
+    margin-top: 8px;
+}
 .Personal-details{
     position: relative;
     display: flex;
@@ -253,5 +256,15 @@
     position: absolute;
     top: 3%;
     right: 6%;
+    cursor: pointer;
+}
+.EditDetails-bt{
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    align-items: baseline;
+    position: relative;
+    top: 3%;
+    left: 1%;
     cursor: pointer;
 }

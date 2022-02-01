@@ -7,6 +7,10 @@ import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
 import {Routes,Route} from 'react-router-dom'
 import NotFound from './Components/UI/PageNotFound/Page404';
+
+// *************************** Admin Routings *************************************************
+
+
 import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import AdminAnnoucementForm from './Pages/Dashboard/Admin/AdminAnnoucement';
@@ -22,10 +26,7 @@ import AddStudent from './Pages/Dashboard/Admin/Batches/AddStudent'
 import TimeTable from './Pages/Dashboard/Admin/Time Table/TimeTable'
 import Feedback from './Pages/Dashboard/Admin/Feedback/Feedback'
 
-// *************************** Admin Routings *************************************************
-
-
-
+// *************************** Student Routings *************************************************
 
 
 
@@ -50,6 +51,7 @@ function App() {
             <Route exact path="admin/Dashboard/Faculty" element={<Faculty />} />
             <Route exact path="admin/Dashboard/TimeTable" element={<TimeTable />} />
             <Route exact path="admin/Dashboard/Feedback" element={<Feedback />} />
+            <Route exact path="student/Dashboard/profile" element={<Profile />} />
             <Route exact path="/date" element={<DateTimeBox />} />
             <Route path="*" element={<NotFound />} />
       </Routes>

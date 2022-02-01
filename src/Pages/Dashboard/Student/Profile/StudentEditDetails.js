@@ -63,8 +63,8 @@ const StudentEditDetails = (props) => {
         }
     }
     
-    return  (
-        <div className='Modal-box-2'>
+    return (props.trigger) ?  (
+        <div className='Modal-box1'>
             <div className='Student-Form'>
                 <div className='Student-Form-Heading'>
                     <h2>Fill Personal Details</h2>
@@ -181,7 +181,7 @@ const StudentEditDetails = (props) => {
                 </div>
             </div>
         </div>
-    );
+    ) : null ;
 }
 
 export default StudentEditDetails

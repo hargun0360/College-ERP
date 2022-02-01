@@ -5,8 +5,11 @@ import profile from '../../../../Assets/Images/Profile.png'
 import 'boxicons'
 import Chart from "react-apexcharts";
 import AuthService from '../../../../ApiServices/AuthService';
+import StudentEditDetails from './StudentEditDetails';
 const StudentProfile = () => {
     const id = localStorage.getItem("stuid");
+    const user = localStorage.getItem("userd");
+    const userid = localStorage.getItem("userid");
     const { val } = useSelector((state) => state.toggle);
     const [image, setImage] = useState(profile);
     const [preview, setPreview] = useState(profile);
@@ -22,13 +25,14 @@ const StudentProfile = () => {
     const [year,setYear] = useState("");
     const [branch,setBranch] = useState("");
     const [flag,setFlag] = useState(false);
+    const [flag1,setFlag1] = useState(false);
     useEffect(()=>{
         loadStudent();
     },[]);
 
     const loadStudent = async ()=> {
         try {
-            const res = await AuthService.getEachStudent(id);
+            const res = await AuthService.getEachStudent(id ? id : userid);
             console.log(res);
             setAtt(res.data.att);
             setEmail(res.data.profile.email)
@@ -78,10 +82,17 @@ const StudentProfile = () => {
             colors: ['#1E637E'],
         }
     }
+    const handleClick = () => {
+        setFlag1(true);
+    }
     return (<>
 
+        {
+            <StudentEditDetails trigger={flag1} setTrigger={setFlag1} />
+        }
+
         <div className={`Annoucement-Container ${val ? "activate" : ""}`}>
-            <div className='Personal-year'>
+            <div className={`Personal-year ${user === "student" ? "activity" : ""}`}>
                 <div className='Personal-info'>
                     <div className='Personal-details'>
                         <div className='Personal-detail-heading'>
@@ -127,7 +138,7 @@ const StudentProfile = () => {
                     </div>
                 </div>
             </div>
-            <div className='Additional-Attendance'>
+            <div className={`Additional-Attendance ${user === "student" ? "activity" : ""}`}>
                 <div className='Additional-info'>
                     <div className='Additional-Info-heading'>
                         <h5>Additional Information</h5>
@@ -171,6 +182,14 @@ const StudentProfile = () => {
                     </div>
                 </div>
             </div>
+            {user === "student" ? <div className='EditDetails-bt' onClick={handleClick}>
+                <div className='Edit-detail'>
+                    <h5>Edit details</h5>
+                </div>
+                <div className='Edit-favicon'>
+                    <i class='fas fa-edit'></i>
+                </div>
+            </div> : null}
         </div>
     </>
     );
