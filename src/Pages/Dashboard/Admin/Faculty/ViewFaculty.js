@@ -4,10 +4,12 @@ import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import '../Admins/Admins.css'
 import AddFaculty from './AddFaculty';
+import EditFacultyDetails from './EditFacultyDetails'
 
 const ViewFaculty = () => {
     const { val } = useSelector((state) => state.toggle);
     const [flag,setFlag] = useState(false);
+    const [flag1,setFlag1] = useState(false);
     const [tableData, setTableData] = useState([{id:"1",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"2",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"3",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"4",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"5",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"6",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"7",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"8",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"9",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"10",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"11",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"12",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"13",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"}])
     const handleView = (id) => {
         console.log(id)
@@ -17,6 +19,7 @@ const ViewFaculty = () => {
     }
     const handleEditDetails =  (id) =>{
         console.log(id);
+        setFlag1(true);
     }
     const handleFaculty = () => {
         setFlag(true);
@@ -25,6 +28,10 @@ const ViewFaculty = () => {
         {
             
             <AddFaculty trigger={flag} setTrigger={setFlag} />
+        }
+        {
+            
+            <EditFacultyDetails trigger={flag1} setTrigger={setFlag1} />
         }
       <div className={`Admin-Container ${val ? "activate" : ""}`}>
       <div className='Add-Admin' onClick={handleFaculty}>
