@@ -29,7 +29,6 @@ const StudentProfile = () => {
     useEffect(()=>{
         loadStudent();
     },[]);
-
     const loadStudent = async ()=> {
         try {
             const res = await AuthService.getEachStudent(id ? id : userid);

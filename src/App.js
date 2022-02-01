@@ -42,6 +42,7 @@ function App() {
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
             <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
+            <Route exact path="student/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="/detail" element={<StudentEditDetails />} />
             <Route exact path="admin/Dashboard/Admins" element={<Admins />} />
             <Route exact path="/time" element={<AddStudent />} />
