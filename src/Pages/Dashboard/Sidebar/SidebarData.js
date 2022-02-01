@@ -4,44 +4,50 @@ export const SidebarData = [
     {
         title:"Profile",
         icon:<box-icon name="user" color="#505050"/>,
-        Link:'/Profile',
+        Link:'/Dashboard/profile',
         tooltip:"Profile"
     },
     {
         title:"Announcements",
         icon:<box-icon name="bell" color="#505050"/>,
-        Link:'/Announcements',
+        Link:'/Dashboard/Announcements',
         tooltip:"Announcements"
 
     },
     {
         title:"Attendence",
         icon:<box-icon name="clipboard" color="#505050"/>,
-        Link:'/Attendence',
+        Link:'/Dashboard/Attendence',
         tooltip:"Attendence"
     },
     {
-        title:"Result",
-        icon:<box-icon name="award" color="#505050"/>,
-        Link:'/Result',
-        tooltip:"Result"
+        title:"Batches",
+        icon:<box-icon name="group" color="#505050"/>,
+        Link:'/Dashboard/Batches',
+        tooltip:"Batches"
+    },
+    {
+        title:"Marks",
+        icon:<box-icon name="trophy" color="#505050"/>,
+        Link:'/Dashboard/marks',
+        tooltip:"Marks"
     },
     {
         title:"Time Table", 
         icon:<box-icon name="time-five" color="#505050"/>,
-        Link:'/Time Table',
-        tooltip:"Time Table"
+        Link:'/Dashboard/Time Table',
+        tooltip:"TimeTable"
     },
     {
         title:"Holidays",
         icon:<box-icon name="calendar" color="#505050"/>,
-        Link:'/Holidays',
+        Link:'/Dashboard/Holidays',
         tooltip:"Holidays"
     },
     {
         title:"Feedback",
         icon:<box-icon name="edit" color="#505050"/>,
-        Link:'/Feedback',
+        Link:'/Dashboard/Feedback',
         tooltip:"Feedback"
     }
 

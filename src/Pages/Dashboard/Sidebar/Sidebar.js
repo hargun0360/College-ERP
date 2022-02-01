@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { StudentSidebarData } from './StudentSidebarData';
 import { AdminSidebarData } from './AdminSidebarData';
+import { SidebarData } from './SidebarData';
 import 'boxicons'
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css'
@@ -55,7 +56,17 @@ const Sidebar = () => {
                             <span className="tooltip">{val.tooltip}</span>
                         </li>
                     );
-                }) : null}  
+                }) : user==="faculty" ? SidebarData.map((val, key) => {
+                    return (
+                        <li key={key}>
+                            <NavLink exact activeClassName="active" to={`/${my}${val.Link}`} className='linking'>
+                                <i>{val.icon}</i>
+                                <span className="links_name">{val.title}</span>
+                            </NavLink>
+                            <span className="tooltip">{val.tooltip}</span>
+                        </li>
+                    );
+                }) : null }  
                 <li onClick={handleInputClick}>
                     <NavLink exact activeClassName="active" to='/' className='linking'>
                         <i><box-icon name="log-out" color="#505050" /></i>
