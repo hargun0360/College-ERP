@@ -151,9 +151,12 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 107%;
+    top: 125%;
     left: -78%;
     cursor: pointer;
+}
+.Add-Holiday-text{
+  margin-bottom: -4%;
 }
 .react-calendar {
     width: 450px;

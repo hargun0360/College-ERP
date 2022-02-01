@@ -3,7 +3,7 @@ import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
 import * as actionCreators from "../../../../Service/Action/action";
 import { useDispatch, useSelector } from 'react-redux'
-const AddFaculty = (props) => {
+const EditFacultyDetails = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
@@ -71,4 +71,4 @@ const AddFaculty = (props) => {
     ) : null;
 }
 
-export default AddFaculty
+export default EditFacultyDetails
