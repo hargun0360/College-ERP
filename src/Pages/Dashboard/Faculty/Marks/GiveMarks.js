@@ -1,7 +1,7 @@
 import React from 'react';
-import './Feedback.css'
+import './Marks.css'
 import { useDispatch, useSelector } from 'react-redux'
-const GiveFeedback = () => {
+const GiveMarks = () => {
     const { val } = useSelector((state) => state.toggle);
   return (<>
       <div className={`Annoucement-Container ${val ? "activate" : ""}`} > 
@@ -10,4 +10,4 @@ const GiveFeedback = () => {
   </>);
 };
 
-export default GiveFeedback;
+export default GiveMarks;

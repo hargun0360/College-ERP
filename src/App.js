@@ -38,6 +38,10 @@ import Feedbacks from './Pages/Dashboard/Student/Feedback/Feedback'
 
 import FacAnnoucement from './Pages/Dashboard/Faculty/Annoucement/Annoucement'
 import FacProfile from './Pages/Dashboard/Faculty/Profile/Profile'
+import Marks from './Pages/Dashboard/Faculty/Marks/Marks'
+import FacFeedback from './Pages/Dashboard/Faculty/Feedback/Feedback';
+import FacBatch from './Pages/Dashboard/Faculty/Batches/Batches';
+import FacAttendance from './Pages/Dashboard/Faculty/Attendance/Attendance';
 
 function App() {
   return (
@@ -52,6 +56,7 @@ function App() {
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
             <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="student/Dashboard/holidays" element={<Holiday />} />
+            <Route exact path="faculty/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="/detail" element={<StudentEditDetails />} />
             <Route exact path="admin/Dashboard/Admins" element={<Admins />} />
             <Route exact path="/time" element={<AddStudent />} />
@@ -68,6 +73,10 @@ function App() {
             <Route exact path="student/Dashboard/Feedback" element={<Feedbacks />} />
             <Route exact path="faculty/Dashboard/Annoucements" element={<FacAnnoucement />} />
             <Route exact path="faculty/Dashboard/profile" element={<FacProfile />} />
+            <Route exact path="faculty/Dashboard/Feedback" element={<FacFeedback />} />
+            <Route exact path="faculty/Dashboard/Marks" element={<Marks />} />
+            <Route exact path="faculty/Dashboard/Batches" element={<FacBatch />} />
+            <Route exact path="faculty/Dashboard/Attendance" element={<FacAttendance />} />
             <Route exact path="/date" element={<DateTimeBox />} />
             <Route path="*" element={<NotFound />} />
       </Routes>

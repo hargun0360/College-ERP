@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../../../LandingPage/Navbar';
 import Sidebar from '../../Sidebar/Sidebar';
-import FacultyProfile from './FacultyProfile'
-const FacProfile = () => {
+import MarkAttendance from './MarkAttendance'
+const FacAttendance = () => {
     return (
         <div className='dashboard'>
             <Navbar />
@@ -11,10 +11,10 @@ const FacProfile = () => {
                     <Sidebar />
                 </div>
                 <div>
-                    <FacultyProfile />
+                    <MarkAttendance />
                 </div>
             </div>
         </div>);
 };
 
-export default FacProfile
+export default FacAttendance
