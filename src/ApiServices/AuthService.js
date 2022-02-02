@@ -135,7 +135,7 @@ class AuthServices {
     // Delete Student 
 
     DelStudent(id) {
-        return axios.delete(`admin/deletestudent/${id}`, {
+        return axios.delete(`admin/deletestudent/${id}?user=student`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

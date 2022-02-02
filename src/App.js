@@ -13,7 +13,6 @@ import NotFound from './Components/UI/PageNotFound/Page404';
 
 import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
-import AdminAnnoucementForm from './Pages/Dashboard/Admin/AdminAnnoucement';
 import Annoucement from './Pages/Dashboard/Annoucement/Annoucement'
 import DateTimeBox from './Pages/Dashboard/Annoucement/DateTimeBox'
 import Batches from './Pages/Dashboard/Admin/Batches/Batches'
@@ -54,7 +53,7 @@ function App() {
             <Route exact path="/changepass" element={<ChangePass />} />
             <Route exact path="/createpass" element={<CreatePass />} />
             <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
-            <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
+            <Route exact path="ashboaradmin/Dd/holidays" element={<Holiday />} />
             <Route exact path="student/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="faculty/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="/detail" element={<StudentEditDetails />} />
