@@ -8,17 +8,17 @@ export const SidebarData = [
         tooltip:"Profile"
     },
     {
-        title:"Announcements",
+        title:"Annoucements",
         icon:<box-icon name="bell" color="#505050"/>,
-        Link:'/Dashboard/Announcements',
-        tooltip:"Announcements"
+        Link:'/Dashboard/Annoucements',
+        tooltip:"Annoucements"
 
     },
     {
-        title:"Attendence",
+        title:"Attendance",
         icon:<box-icon name="clipboard" color="#505050"/>,
-        Link:'/Dashboard/Attendence',
-        tooltip:"Attendence"
+        Link:'/Dashboard/Attendance',
+        tooltip:"Attendance"
     },
     {
         title:"Batches",
