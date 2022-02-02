@@ -1,0 +1,8 @@
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent; 
+}
+#batchdrop{
+    width: 214%;
+    margin-bottom: 9%;
+}
