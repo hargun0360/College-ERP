@@ -143,6 +143,19 @@ class AuthServices {
         })
     }
 
+
+    // Add Student
+
+    AddStudent(data) {
+        console.log(data);
+    return axios.post(`admin/addstudents`,data, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: 'Bearer ' + localStorage.getItem('user')
+        }
+    })
+}
+
 }
 
 
