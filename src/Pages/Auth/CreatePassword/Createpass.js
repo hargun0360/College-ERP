@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -16,10 +16,15 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../../Components/UI/Spinner/Spinner'
 const CreatePass = () => {
-    const navigate = useNavigate();
     const [toggle1, setToggle1] = useState(false);
     const [toggle2, setToggle2] = useState(false);
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(localStorage.getItem("userd") === null || localStorage.getItem("userd") === undefined){
+            navigate('/');
+        }
+    },[])
     const mystate1 = localStorage.getItem("userd");
     const mystate2 = useSelector((state)=>state.emailReducer.email)
     const formSchema = Yup.object().shape({

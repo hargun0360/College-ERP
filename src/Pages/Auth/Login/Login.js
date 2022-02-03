@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -14,7 +14,6 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../../Components/UI/Spinner/Spinner'
 const Login = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = localStorage.getItem("userd");
     const mystate = useSelector((state)=>state.emailReducer.user)
@@ -23,6 +22,12 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(localStorage.getItem("userd") === null || localStorage.getItem("userd") === undefined){
+            navigate('/');
+        }
+    },[])
     console.log(mystate);
     const onSubmit = (data,e) => {
         e.preventDefault();

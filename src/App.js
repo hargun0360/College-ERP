@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './App.css';
 import Login from './Pages/Auth/Login/Login'
 import Forgotpassword from './Pages/Auth/Forgot/ForgotPassword';
 import OTP from './Pages/Auth/OTP/OTP';
 import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,useLocation , useNavigate} from 'react-router-dom'
 import NotFound from './Components/UI/PageNotFound/Page404';
 
 // *************************** Admin Routings *************************************************
@@ -14,14 +14,11 @@ import NotFound from './Components/UI/PageNotFound/Page404';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Annoucement from './Pages/Dashboard/Annoucement/Annoucement'
-import DateTimeBox from './Pages/Dashboard/Annoucement/DateTimeBox'
 import Batches from './Pages/Dashboard/Admin/Batches/Batches'
 import Profile from './Pages/Dashboard/Student/Profile/Profile';
-import StudentEditDetails from './Pages/Dashboard/Student/Profile/StudentEditDetails';
 import Holiday from './Pages/Dashboard/Admin/Holidays/Holiday';
 import Admins from './Pages/Dashboard/Admin/Admins/Admins';
 import Faculty from './Pages/Dashboard/Admin/Faculty/Faculty';
-import AddStudent from './Pages/Dashboard/Admin/Batches/AddStudent'
 import TimeTable from './Pages/Dashboard/Admin/Time Table/TimeTable'
 import Feedback from './Pages/Dashboard/Admin/Feedback/Feedback'
 
@@ -43,6 +40,7 @@ import FacBatch from './Pages/Dashboard/Faculty/Batches/Batches';
 import FacAttendance from './Pages/Dashboard/Faculty/Attendance/Attendance';
 
 function App() {
+  
   return (
     <div className="App">
      <Routes>
@@ -56,9 +54,7 @@ function App() {
             <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="student/Dashboard/holidays" element={<Holiday />} />
             <Route exact path="faculty/Dashboard/holidays" element={<Holiday />} />
-            <Route exact path="/detail" element={<StudentEditDetails />} />
             <Route exact path="admin/Dashboard/Admins" element={<Admins />} />
-            <Route exact path="/time" element={<AddStudent />} />
             <Route exact path="/Dashboard/stuProfile" element={<Profile />} />
             <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />
             <Route exact path="admin/Dashboard/Batches" element={<Batches />} />
@@ -76,7 +72,6 @@ function App() {
             <Route exact path="faculty/Dashboard/Marks" element={<Marks />} />
             <Route exact path="faculty/Dashboard/Batches" element={<FacBatch />} />
             <Route exact path="faculty/Dashboard/Attendance" element={<FacAttendance />} />
-            <Route exact path="/date" element={<DateTimeBox />} />
             <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

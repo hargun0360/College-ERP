@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Image from '../../../Components/UI/Images/Image'
 import SubmitButton from '../../../Components/UI/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -21,6 +21,11 @@ const Forgotpassword = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    useEffect(()=>{
+        if(localStorage.getItem("userd") === null || localStorage.getItem("userd") === undefined){
+            navigate('/');
+        }
+    },[])
     const onSubmit = (data, e) => {
         e.preventDefault();
         console.log(data);
