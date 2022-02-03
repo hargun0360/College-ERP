@@ -7,6 +7,7 @@ import ChangePass from './Pages/Auth/ChangePassword/ChangePass';
 import CreatePass from './Pages/Auth/CreatePassword/Createpass';
 import {Routes,Route,useLocation , useNavigate} from 'react-router-dom'
 import NotFound from './Components/UI/PageNotFound/Page404';
+import PrivateRoute from './Pages/Routes/PrivateRoutes';
 
 // *************************** Admin Routings *************************************************
 
@@ -38,6 +39,7 @@ import Marks from './Pages/Dashboard/Faculty/Marks/Marks'
 import FacFeedback from './Pages/Dashboard/Faculty/Feedback/Feedback';
 import FacBatch from './Pages/Dashboard/Faculty/Batches/Batches';
 import FacAttendance from './Pages/Dashboard/Faculty/Attendance/Attendance';
+import Attandance from './Pages/Dashboard/Student/Attendance/Attendance';
 
 function App() {
   
@@ -50,28 +52,94 @@ function App() {
             <Route exact path="/otp" element={<OTP />} />
             <Route exact path="/changepass" element={<ChangePass />} />
             <Route exact path="/createpass" element={<CreatePass />} />
-            <Route exact path="admin/Dashboard/profile" element={<Dashboard />} />
-            <Route exact path="admin/Dashboard/holidays" element={<Holiday />} />
-            <Route exact path="student/Dashboard/holidays" element={<Holiday />} />
-            <Route exact path="faculty/Dashboard/holidays" element={<Holiday />} />
-            <Route exact path="admin/Dashboard/Admins" element={<Admins />} />
-            <Route exact path="/Dashboard/stuProfile" element={<Profile />} />
-            <Route exact path="admin/Dashboard/annoucement" element={<Annoucement />} />
-            <Route exact path="admin/Dashboard/Batches" element={<Batches />} />
-            <Route exact path="admin/Dashboard/Faculty" element={<Faculty />} />
-            <Route exact path="admin/Dashboard/TimeTable" element={<TimeTable />} />
-            <Route exact path="admin/Dashboard/Feedback" element={<Feedback />} />
-            <Route exact path="student/Dashboard/profile" element={<Profile />} />
-            <Route exact path="student/Dashboard/Annoucements" element={<Annoucements />} />
-            <Route exact path="student/Dashboard/Attendance" element={<Attendance />} />
-            <Route exact path="student/Dashboard/Result" element={<Result />} />
-            <Route exact path="student/Dashboard/Feedback" element={<Feedbacks />} />
-            <Route exact path="faculty/Dashboard/Annoucements" element={<FacAnnoucement />} />
-            <Route exact path="faculty/Dashboard/profile" element={<FacProfile />} />
-            <Route exact path="faculty/Dashboard/Feedback" element={<FacFeedback />} />
-            <Route exact path="faculty/Dashboard/Marks" element={<Marks />} />
-            <Route exact path="faculty/Dashboard/Batches" element={<FacBatch />} />
-            <Route exact path="faculty/Dashboard/Attendance" element={<FacAttendance />} />
+            <Route exact path="admin/Dashboard/profile" element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/holidays" element={
+            <PrivateRoute>
+              <Holiday />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/holidays" element={
+            <PrivateRoute>
+              <Holiday />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/holidays" element={
+            <PrivateRoute>
+              <Holiday />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/Admins" element={
+            <PrivateRoute>
+              <Admins />
+            </PrivateRoute>} />
+            <Route exact path="/Dashboard/stuProfile" element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/annoucement" element={
+            <PrivateRoute>
+              <Annoucement />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/Batches" element={
+            <PrivateRoute>
+              <Batches />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/Faculty" element={
+            <PrivateRoute>
+              <Faculty />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/TimeTable" element={
+            <PrivateRoute>
+              <TimeTable />
+            </PrivateRoute>} />
+            <Route exact path="admin/Dashboard/Feedback" element={
+            <PrivateRoute>
+              <Feedback />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/profile" element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/Annoucements" element={
+            <PrivateRoute>
+              <Annoucements />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/Attendance" element={
+            <PrivateRoute>
+              <Attandance />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/Result" element={
+            <PrivateRoute>
+              <Result />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/Feedback" element={
+            <PrivateRoute>
+              <Feedbacks />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Annoucements" element={
+            <PrivateRoute>
+              <FacAnnoucement />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/profile" element={
+            <PrivateRoute>
+              <FacProfile />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Feedback" element={
+            <PrivateRoute>
+              <FacFeedback />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Marks" element={
+            <PrivateRoute>
+              <Marks />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Batches" element={
+            <PrivateRoute>
+              <FacBatch />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Attendance" element={
+            <PrivateRoute>
+              <FacAttendance />
+            </PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
