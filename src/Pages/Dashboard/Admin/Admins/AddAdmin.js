@@ -59,6 +59,17 @@ const AddAdmin = (props) => {
                             </div>
                             <p className='alerts'>{errors.subject?.message}</p>
                         </div>
+                        <div className='combine-input' style={{marginBottom:"3%"}}>
+                            <div className='Label-form'>
+                                <label htmlFor="Password">
+                                     Password
+                                </label>
+                            </div>
+                            <div className='Input-detail'>
+                                <input className='input-field-form' size={"32"} type="text" name="password" {...register("password", { required: "**Password is required", })}></input>
+                            </div>
+                            <p className='alerts'>{errors.password?.message}</p>
+                        </div>
                         <div className='EditDetail-btn'>
                             <SubmitButton className="EditDetail-button" Label="Add Admin" ></SubmitButton>
                         </div>

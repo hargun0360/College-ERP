@@ -16,7 +16,7 @@ instance.interceptors.response.use((response) => {
     console.log(originalRequest);
     
     if(error){
-        if (error.response.status === 401 && originalRequest.url === url + "auth/token") {
+        if (error.response.status === 401 && originalRequest.url === url + "auth/renewtoken") {
             localStorage.clear()
             window.location.href = '/Login'
             return Promise.reject(error);
@@ -27,8 +27,8 @@ instance.interceptors.response.use((response) => {
             originalRequest._retry = true;
             const refreshToken = localStorage.getItem('ref_token');
             if(refreshToken){
-                console.log("calling reqqq")
-                return axios.post(url + 'auth/token/', {refresh_token:refreshToken},
+                console.log("calling request")
+                return axios.post(url + 'auth/renewtoken', {refresh_token:refreshToken},
                 {
                     headers: {
                         Authorization: 'Bearer '+ refreshToken

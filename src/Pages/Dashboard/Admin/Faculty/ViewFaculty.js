@@ -21,6 +21,9 @@ const ViewFaculty = () => {
         console.log(id);
         setFlag1(true);
     }
+    const handleMakeAdmin =  (id) =>{
+        console.log(id);
+    }
     const handleFaculty = () => {
         setFlag(true);
     }
@@ -59,6 +62,7 @@ const ViewFaculty = () => {
                                 <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'></TableCell>
                                 <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
                                 <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -72,6 +76,11 @@ const ViewFaculty = () => {
                                         <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
                                             <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleEditDetails(data._id)}>
                                                 <h6>Edit details</h6>
+                                            </div>
+                                        </TableCell>
+                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleMakeAdmin(data._id)}>
+                                                <h6>Make Admin</h6>
                                             </div>
                                         </TableCell>
                                         <TableCell style={{ border: "0px solid transparent" }} align='center'>

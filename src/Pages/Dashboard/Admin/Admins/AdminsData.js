@@ -14,29 +14,14 @@ const AdminsData = () => {
     const handleDelete = (id) => {
         console.log(id);
     }
-    const handleAdmin = (e) => {
-        setFlag(true);
-    }
   return (<>
-        {
-            
-            <AddAdmin trigger={flag} setTrigger={setFlag} />
-        }
       <div className={`Admin-Container ${val ? "activate" : ""}`}>
-      <div className='Add-Admin' onClick={handleAdmin}>
-                <div className='plus-icon'>
-                    <box-icon name='plus-circle' color="#007BAB" ></box-icon>
-                </div>
-                <div className='Add-Student-text'>
-                    <h4>Add Admin</h4>
-                </div>
-            </div>
             <div className='Admins-info-table'>
             <TableContainer component={Paper} style={{
                     width: val ? "81vw" : "91vw",
                     position: "relative",
-                    top: "10%",
-                    height:"80vh"
+                    top: "5%",
+                    height:"90vh"
 
                 }} >
                     <Table style={{height: "max-content"}} stickyHeader>
