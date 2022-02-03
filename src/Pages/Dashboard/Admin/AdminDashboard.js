@@ -44,7 +44,6 @@ export const AdminDashboard = () => {
     const dispatch = useDispatch();
     const { val } = useSelector((state) => state.toggle);
     const { x } = useSelector((state) => state.updateToggle);
-    console.log(x);
     useEffect(()=>{
         loadAdmin();
      },[x]);

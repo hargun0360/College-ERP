@@ -4,10 +4,13 @@ import Sidebar from '../../Sidebar/Sidebar';
 import FacultyAnnoucement from './FacultyAnnoucement'
 import { useNavigate } from 'react-router-dom';
 const FacAnnoucement = () => {
+    let urlElements = window.location.pathname.split('/');
+    let user = urlElements[1];
     const navigate = useNavigate();
     useEffect(()=>{
-        if(localStorage.getItem("userd") === null || localStorage.getItem("userd") === undefined){
+        if(localStorage.getItem("userd") === null || localStorage.getItem("userd") !== user){
             navigate('/');
+            localStorage.clear();
         }
     },[])
     return (
