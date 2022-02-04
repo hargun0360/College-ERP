@@ -14,6 +14,23 @@
     width: 82vw;
     height: 16vh;
 }
+.Annoucement-Container > .Batch-Detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 92vw;
+    height: 16vh;
+    position: relative;
+    margin-top: 1%;
+    left: -4%;
+}
+.Annoucement-Container.activate > .Batch-Detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 82vw;
+    height: 16vh;
+}
 .Annoucement-Container.activate > .Batches-Detail > .Batch-Dropdown > #batch-drop{
     position: absolute;
     left: 31%;
@@ -48,4 +65,21 @@
     position: relative;
     left: 0;
     top: 18%;
+}
+.dabba1,.dabba2,.dabba3,.dabba4{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dabba1{
+    width: 17.5%;
+}
+.dabba2{
+    width: 11%;
+}
+.dabba3{
+    width: 11%;
+}
+.dabba4{
+    width: 23.5%;
 }

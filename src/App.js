@@ -40,6 +40,7 @@ import FacFeedback from './Pages/Dashboard/Faculty/Feedback/Feedback';
 import FacBatch from './Pages/Dashboard/Faculty/Batches/Batches';
 import FacAttendance from './Pages/Dashboard/Faculty/Attendance/Attendance';
 import Attandance from './Pages/Dashboard/Student/Attendance/Attendance';
+import UploadMarks from './Pages/Dashboard/Faculty/Marks/UploadMarks'
 
 function App() {
   
@@ -139,6 +140,10 @@ function App() {
             <Route exact path="faculty/Dashboard/Attendance" element={
             <PrivateRoute>
               <FacAttendance />
+            </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/upload" element={
+            <PrivateRoute>
+              <UploadMarks />
             </PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
       </Routes>
