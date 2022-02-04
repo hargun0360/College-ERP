@@ -3,31 +3,40 @@ import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
 import * as actionCreators from "../../../../Service/Action/action";
 import { useDispatch, useSelector } from 'react-redux'
+import './Faculty.css'
+import Autocomplete from 'react-autocomplete'
 const AddFaculty = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
+    const [flag,setFlag] = useState(false);
+    const [value, setValue] = useState('');
     const onSubmit = (data, e) => {
         e.preventDefault();
-        
+        if(value==''){
+            setFlag(true);
+        }else{
+            //post api
+        }
+
     }
     const handleClick = (e) => {
         e.preventDefault();
         props.setTrigger(false);
     }
 
-    return (props.trigger) ?  (
+    return (props.trigger) ? (
         <div className='Modal-box1'>
             <div className='AddAdmin-Form'>
-                <div className='EditDetails-Heading' style={{marginBottom:"5%"}}>
+                <div className='EditDetails-Heading' style={{ marginBottom: "5%" }}>
                     <h2>Add Faculty</h2>
                 </div>
                 <div>
                     <form className='EditDetails-Form-Input' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='combine-input' style={{marginBottom:"3%"}}>
+                        <div className='combine-input' style={{ marginBottom: "3%" }}>
                             <div className='Label-form'>
                                 <label htmlFor="Full-Name">
-                                     Name
+                                    Name
                                 </label>
                             </div>
                             <div className='Input-detail'>
@@ -35,7 +44,7 @@ const AddFaculty = (props) => {
                             </div>
                             <p className='alerts'>{errors.Name?.message}</p>
                         </div>
-                        <div className='combine-input' style={{margin:"5% 0%"}}>
+                        <div className='combine-input' style={{ margin: "5% 0%" }}>
                             <div className='Label-form'>
                                 <label htmlFor="Email">
                                     Email
@@ -47,21 +56,79 @@ const AddFaculty = (props) => {
                             </div>
                             <p className='alerts'>{errors.email?.message}</p>
                         </div>
-                        <div className='combine-input' style={{marginBottom:"3%"}}>
-                            <div className='Label-form'>
-                                <label htmlFor="Full-Name">
-                                     Subject
-                                </label>
-                            </div>
-                            <div className='Input-detail'>
-                                <input className='input-field-form' size={"32"} type="text" name="subject" {...register("subject", { required: "**Subject is required", })}></input>
-                            </div>
-                            <p className='alerts'>{errors.subject?.message}</p>
+                        <div className='combine-input' style={{ marginBottom: "6%" }}>
+                            <Autocomplete
+                                items={[
+                                    { id: "1", sub: "maths" },
+                                    { id: "2", sub: "phy" },
+                                    { id: "3", sub: "chem" },
+                                    { id: "4", sub: "react" },
+                                    { id: "5", sub: "node" },
+                                    { id: "6", sub: "Django" },
+                                    { id: "7", sub: "spring" },
+                                    { id: "8", sub: "android" },
+                                    { id: "9", sub: "designer" },
+                                    { id: "10", sub: "science" },
+                                    { id: "11", sub: "manish" },
+                                    { id: "12", sub: "bhavya" },
+                                    { id: "13", sub: "hargun" },
+                                    { id: "14", sub: "mohit" },
+                                ]}
+                                shouldItemRender={(item, value
+                                ) => item.sub.toLowerCase()
+                                    .indexOf(value.toLowerCase()) > -1}
+                                getItemValue={item => item.sub}
+                                renderItem={(item, isHighlighted) =>
+                                    <div style={{
+                                        background: isHighlighted ?
+                                            'rgb(233 227 227)' : 'white',
+                                        padding: "1px 10px",
+                                    }}
+                                        key={item.id}>
+                                        {item.sub}
+                                    </div>
+                                }
+                                value={value}
+                                onChange={e => setValue(e.target.value)}
+                                onSelect={(val) => setValue(val)}
+                                renderInput={(params) => (
+                                    
+                                    <input {...params} required={value.length === 0} />
+                                )}
+                                inputProps={{
+                                    style: {
+                                        width: "287px",
+                                        height: "32px",
+                                        background: "#F7F7F7",
+                                        border: "1px transparent",
+                                        padding: "12px",
+                                        borderRadius: "4px",
+                                        marginBottom: "7%",
+                                        
+                                    },
+                                    placeholder: '--Search Subject--'
+                                }}
+                                menuStyle={{
+                                    borderRadius: "3px",
+                            boxShadow: "rgb(0 0 0 / 10%) 0px 2px 12p",
+                            background: "rgba(255, 255, 255, 0.9)",
+                            padding:" 2px 0px",
+                            fontSize: "90%",
+                            position: "fixed",
+                            overflow: "auto",
+                            maxHeight: "18%",
+                            left: "477.415px",
+                            top: "351.957px",
+                            minWidth: "286.989px",
+                            fontFamily:"'Inter', sans-serif"
+                                   }}
+                            />
                         </div>
-                        <div className='combine-input' style={{marginBottom:"3%"}}>
+                       
+                        <div className='combine-input' style={{ marginBottom: "3%" }}>
                             <div className='Label-form'>
                                 <label htmlFor="Password">
-                                     Password
+                                    Password
                                 </label>
                             </div>
                             <div className='Input-detail'>

@@ -22,6 +22,7 @@
     "otp-timer": "^1.1.5",
     "react": "^17.0.2",
     "react-apexcharts": "^1.3.9",
+    "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^2.0.4",
     "react-calendar": "^3.6.0",
     "react-datepicker": "^4.5.0",
