@@ -36,6 +36,11 @@ option{
     left: 0;
     transition: all ease-in;
 }
+#sub-drop{
+    position: absolute;
+    left: 56%;
+    top: 49%;
+}
 #year-drop:hover{
     border-style: solid;
     border: 1px solid #007BAB;
@@ -52,6 +57,9 @@ option{
 .Admin-Container.activate > .Batches-Details > .Batch-Dropdown > #batch-drop{
     position: absolute;
     left: 31%;
+}
+.Admin-Container.activate > .Batches-Details > .Subject-Dropdown > #sub-drop{
+    left: 62%;
 }
 .Apply-Button{
     background: #136180e1;

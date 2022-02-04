@@ -1,0 +1,51 @@
+.Annoucement-Container > .Batches-Detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 92vw;
+    height: 16vh;
+    position: relative;
+    margin-top: -2%;
+}
+.Annoucement-Container.activate > .Batches-Detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 82vw;
+    height: 16vh;
+}
+.Annoucement-Container.activate > .Batches-Detail > .Batch-Dropdown > #batch-drop{
+    position: absolute;
+    left: 31%;
+}
+.Annoucement-Container.activate > .Batches-Detail > .Subject-Dropdown > #sub-drop{
+    left: 62%;
+}
+.Exams-opt{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 41%;
+    position: relative;
+    top: 10%;
+    left: -4%;
+}
+.st1-radio,.st2-radio,.PUT-radio{
+    width: 12%;
+}
+.label-data1{
+    width: 100%;
+    font-family: 'Inter';
+}
+#field-PUT,#field-ST2,#field-ST1{
+    margin-right: 7%;
+}
+.exbox{
+    position: relative;
+    top: 14%;
+}
+.exbox1{
+    position: relative;
+    left: 0;
+    top: 18%;
+}

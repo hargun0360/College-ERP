@@ -102,7 +102,7 @@ const handleDelete = (id) => {
                 <TableContainer component={Paper} style={{
                     width: val ? "81vw" : "91vw",
                     position: "relative",
-                    top: "10%",
+                    top: "6%",
                     height:"80vh"
 
                 }} >
