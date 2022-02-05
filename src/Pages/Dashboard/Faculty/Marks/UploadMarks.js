@@ -17,16 +17,21 @@ const UploadMarks = () => {
             localStorage.clear();
         }
     }, [])
-    const [tableData, setTableData] = useState([{ id: "1", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "2", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "3", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "4", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "5", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "6", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "7", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "8", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "9", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    { id: "10", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" }]);
+    const arr=[{}]
+    const handleSubmit = () =>{
+        console.log(arr);
+    }
+    const [tableData, setTableData] = useState([{ roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" }]);
+    const [values,setValues] = useState(new Array(tableData.length).fill(''))
     return (<>
         <div className='dashboard'>
             <Navbar />
@@ -76,13 +81,14 @@ const UploadMarks = () => {
                                 position: "relative",
                                 top: "-2%",
                                 height: "62vh",
-                                border: "1px solid transparent"
+                                border: "1px solid #F2F2F2"
+
 
                             }} >
                                 <Table style={{ height: "max-content" }} stickyHeader>
                                     <TableHead>
-                                        <TableRow>
-                                            <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Roll Number</TableCell>
+                                        <TableRow >
+                                            <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Roll Number</TableCell>
                                             <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
                                             <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Email</TableCell>
                                             <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Marks</TableCell>
@@ -91,15 +97,15 @@ const UploadMarks = () => {
                                     <TableBody>
 
                                         {
-                                            tableData.map((data) => (<>
-                                                <TableRow>
-                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
-                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
-                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
-                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
-                                                        <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} >
-                                                            <input id="marks-input" />
-                                                        </div>
+                                            tableData.map((data,index) => (<>
+                                                <TableRow >
+                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
+                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
+                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
+                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
+                                                        <input key={index} type={"text"} style={{ border: "1px solid black", width: "66px", height: "32px", background: "#F2F2F2", paddingLeft: "5px" }} required value={values[index]} onChange={(e)=>{
+                                                            setValues(e.target.value)
+                                                        }} />
                                                     </TableCell>
                                                 </TableRow>
                                             </>))
@@ -107,6 +113,11 @@ const UploadMarks = () => {
                                     </TableBody>
                                 </Table>
                             </TableContainer>
+                        </div>
+                        <div className="upload-btn" onClick={handleSubmit}>
+                            <div className='Apply-text'>
+                                <h4>Upload</h4>
+                            </div>
                         </div>
                     </div>
                 </div>

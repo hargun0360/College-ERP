@@ -83,3 +83,23 @@
 .dabba4{
     width: 23.5%;
 }
+.upload-btn{
+    background: #1E637E;
+    box-shadow: 0px 0px 30px rgb(111 141 158 / 13%);
+    border-radius: 8px;
+    border-style: none;
+    width: 290px;
+    height: 46px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upload-btn > .Apply-text > h4{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    color: #FFFFFF;
+    margin-bottom: 18%;
+}
