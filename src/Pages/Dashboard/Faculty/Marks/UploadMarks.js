@@ -17,21 +17,38 @@ const UploadMarks = () => {
             localStorage.clear();
         }
     }, [])
-    const arr=[{}]
-    const handleSubmit = () =>{
-        console.log(arr);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        Array.from(e.target).forEach((va,ind)=>{
+            
+            if(ind<values.length){
+            let newvalue=values;
+            newvalue[ind].score = va.value
+            setValues(newvalue)
+            }
+        })
+        console.log(values);
+
     }
-    const [tableData, setTableData] = useState([{ roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
-    {  roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" }]);
-    const [values,setValues] = useState(new Array(tableData.length).fill(''))
+    const [tableData, setTableData] = useState([{ id: "1", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "2", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "3", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "4", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "5", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "6", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "7", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "8", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "9", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" },
+    { id: "10", roll: "2000270130065", name: "hargun", email: "hargun2013021@akgec.ac.in" }]);
+
+    const [values, setValues] = useState(tableData.map(data => (
+        {
+            id: data.id,
+            score: "",
+            roll: data.roll,
+        }
+    )));
+
     return (<>
         <div className='dashboard'>
             <Navbar />
@@ -75,7 +92,7 @@ const UploadMarks = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='marks-table'>
+                        <form className='marks-table' onSubmit={handleSubmit}>
                             <TableContainer component={Paper} style={{
                                 width: val ? "81vw" : "91vw",
                                 position: "relative",
@@ -97,15 +114,13 @@ const UploadMarks = () => {
                                     <TableBody>
 
                                         {
-                                            tableData.map((data,index) => (<>
-                                                <TableRow >
-                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
-                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
-                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
-                                                    <TableCell key={index} style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
-                                                        <input key={index} type={"text"} style={{ border: "1px solid black", width: "66px", height: "32px", background: "#F2F2F2", paddingLeft: "5px" }} required value={values[index]} onChange={(e)=>{
-                                                            setValues(e.target.value)
-                                                        }} />
+                                            tableData.map((data) => (<>
+                                                <TableRow key={data.id} >
+                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
+                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
+                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
+                                                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
+                                                        <input style={{ border: "1px solid black", width: "66px", height: "32px", background: "#F2F2F2", paddingLeft: "5px" }} required  />
                                                     </TableCell>
                                                 </TableRow>
                                             </>))
@@ -113,12 +128,13 @@ const UploadMarks = () => {
                                     </TableBody>
                                 </Table>
                             </TableContainer>
-                        </div>
-                        <div className="upload-btn" onClick={handleSubmit}>
+                            <button className="upload-btn" type='submit' >
                             <div className='Apply-text'>
                                 <h4>Upload</h4>
                             </div>
-                        </div>
+                        </button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
