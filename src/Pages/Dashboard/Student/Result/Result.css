@@ -1,0 +1,45 @@
+.Marks-div{
+    width: 90vw;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #F2F2F2;
+    margin-top: 1%;
+}
+.marks-radialbar{
+    width: 38vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.overall-marks > h4{
+    width: 20vw;
+}
+.radial-div-compo{
+    position: relative;
+    left: -11%;
+}
+.heading-marks{
+    margin-top: 1%;
+}
+.all-sub-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 91vw;
+    margin-top: 1%;
+    overflow-y: scroll;
+}
+.each-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 192px;
+    height: 220px;
+    left: 312px;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 8px;
+}

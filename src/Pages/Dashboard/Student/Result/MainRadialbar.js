@@ -18,10 +18,10 @@ const MainRadialbar = () => {
                         show: false,
                     },
                     value: {
-                        offsetY: 10,
+                        offsetY: 15,
                         color: "#1E637E",
-                        fontSize: "35px",
-                        show: true
+                        fontSize: "34px",
+                        show: true,
                     }
                 },
             },
@@ -32,7 +32,7 @@ const MainRadialbar = () => {
         }
     }
   return <div>
-      <Chart options={option} series={option.series} type="radialBar" height={200} />
+      <Chart options={option} series={option.series} type="radialBar" height={250} />
   </div>;
 };
 
