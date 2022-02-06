@@ -14,7 +14,7 @@ const ViewResult = () => {
       <div className='Marks-div'>
         <div className='marks-radialbar'>
           <div className='overall-marks'>
-            <h4>Overall Attendence</h4>
+            <h4>Overall Attendence</h4> 
           </div>
           <div className='radial-div-compo'>
             <MainRadialbar />

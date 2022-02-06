@@ -7,6 +7,12 @@
     border: 2px solid #F2F2F2;
     margin-top: 1%;
 }
+.Annoucement-Container.activate > .Marks-div {
+    width: 80vw;
+}
+.Annoucement-Container.activate > .all-sub-div {
+    width: 81vw;
+}
 .marks-radialbar{
     width: 38vw;
     display: flex;

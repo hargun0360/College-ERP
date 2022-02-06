@@ -1,0 +1,38 @@
+.StudentResult-Container{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 78px);
+    margin-left: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+.StudentResult-Container.activate{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 200px);
+    margin-left: 200px;
+}
+.Column-bars{
+    width: 58vw;
+    margin-top: -1%;
+}
+.StudentResult-Container.activate > .Marks-div{
+    width: 80vw;
+}
+.Exams-opt1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 41%;
+    position: relative;
+    top: 4%;
+    left: -32%;
+}
+.sem-heading{
+    display: flex;
+    align-items: center;
+    width: 90vw;
+    height: 8vh;
+    position: relative;
+    top: 2%;
+}
