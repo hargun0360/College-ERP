@@ -29,10 +29,8 @@
     left: -32%;
 }
 .sem-heading{
-    display: flex;
-    align-items: center;
-    width: 90vw;
-    height: 8vh;
+    
     position: relative;
     top: 2%;
+    left: -42%;
 }
