@@ -34,6 +34,7 @@ const EditDetails = (props) => {
             const obj = {
                 email:res.data.profile.email,
             } 
+            console.log(obj)
             reset(obj)
         } catch (error) {
             console.log(error);
@@ -55,7 +56,7 @@ const EditDetails = (props) => {
         }).catch((e)=>{
             console.log(e);
         })
-        reset();
+       e.target.reset();
     }
     const handleClick = (e) => {
         e.preventDefault();
