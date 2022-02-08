@@ -141,7 +141,7 @@ function App() {
             <PrivateRoute>
               <FacAttendance />
             </PrivateRoute>} />
-            <Route exact path="faculty/Dashboard/upload" element={
+            <Route exact path="faculty/Dashboard/marks/upload" element={
             <PrivateRoute>
               <UploadMarks />
             </PrivateRoute>} />

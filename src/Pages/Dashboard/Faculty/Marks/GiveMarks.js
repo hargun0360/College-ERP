@@ -3,8 +3,10 @@ import './Marks.css'
 import '../../Admin/Batches/Batches.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom';
 const GiveMarks = () => {
   const { val } = useSelector((state) => state.toggle);
+  const navigate = useNavigate();
   const [batch, setBatch] = useState(null);
   const [batches, setBatches] = useState([]);
   const [flag, setFlag] = useState(true);
@@ -32,6 +34,7 @@ const GiveMarks = () => {
     // console.log(obj);
 
     reset();
+    navigate("upload")
   }
   const handleSubDropdown = (e) => {
     setSub(e.target.value);
