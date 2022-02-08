@@ -3,6 +3,8 @@ import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
 import * as actionCreators from "../../../../Service/Action/FacultyAction";
 import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify';
+import Toaster from '../../../../Components/UI/Toaster/Toaster';
 import AuthService from '../../../../ApiServices/AuthService'
 const EditDetails = (props) => {
     const [email , setEmail] = useState("");
@@ -46,6 +48,9 @@ const EditDetails = (props) => {
         AuthService.EditUser(obj,id)
         .then((res) => {
             console.log(res);
+            if(res){
+                toast.success("Updated Successfully")
+            }
             dispatch(actionCreators.Edit(false))
         }).catch((e)=>{
             console.log(e);
@@ -86,6 +91,7 @@ const EditDetails = (props) => {
                     <i id="crossed" className="fa fa-times" onClick={handleClick} ></i>
                 </div>
             </div>
+            <Toaster />
         </div>
     ) : null;
 }
