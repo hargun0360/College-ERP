@@ -11,9 +11,13 @@ const StudentAttendance = () => {
   const [flag1, setFlag1] = useState(false);
   const [flag3, setFlag3] = useState(false);
   const [id,setId] = useState(0)
+  const [arr , setArr] = useState(new Array(data.length).fill(false))
   const handleChange = (d,s,i) => {
     const value=d;
     console.log(value , s);
+    const a = arr;
+    a[i] = true;
+    setArr(a);
     setId(i)
   if (d === "ST1") {
     setFlag1(true);
@@ -28,7 +32,7 @@ const StudentAttendance = () => {
     setFlag2(false);
     setFlag1(false);
   }
-  
+
 }
 
 return (<>
@@ -88,15 +92,14 @@ return (<>
     </form>
     <div className='Column-bars'>
     {
-      flag1 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
+      flag1 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null
     }
     {
-      flag2 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
+      flag2 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null
     }
     {
-      flag3 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
+      flag3 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null
     }
-      
     </div>
     </>))
     }

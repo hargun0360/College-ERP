@@ -2,12 +2,13 @@ import React,{useGlobal} from 'reactn';
 import Chart from "react-apexcharts";
 
 const DistributedBar = (props) => {
-  var v = new Array((props.data).length).fill(false);
+  // var v = new Array((props.data).length).fill(false);
   
-  if(props.flag){
-    v[props.id] = true;
-    console.log(v);
-  }
+  // if(props.flag){
+  //   v[props.id] = true;
+  //   console.log(v);
+  // }
+
 
     const option = {
         series: [{
@@ -64,13 +65,12 @@ const DistributedBar = (props) => {
           },
       };
   return  (<>
-  {
-    v.map((val) => (
-      val  ?  <div>
+  
+      <div style={props.flag ? {} : {display:"none"}}>
       <Chart options={option} series={option.series} type="bar" height={250} />
-  </div> : null
-    ))
-  }
+  </div>
+  
+  
   
   </>);
 };
