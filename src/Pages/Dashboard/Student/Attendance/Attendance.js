@@ -3,7 +3,7 @@ import Navbar from '../../../LandingPage/Navbar';
 import Sidebar from '../../Sidebar/Sidebar';
 import StudentAttendance from './StudentAttendance'
 import { useNavigate } from 'react-router-dom';
-const Attandance = () => {
+const Attendance = () => {
     let urlElements = window.location.pathname.split('/');
     let user = urlElements[1];
     const navigate = useNavigate();
@@ -27,4 +27,4 @@ const Attandance = () => {
         </div>);
 };
 
-export default Attandance;
+export default Attendance;

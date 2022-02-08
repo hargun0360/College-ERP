@@ -26,8 +26,8 @@ import Feedback from './Pages/Dashboard/Admin/Feedback/Feedback'
 // *************************** Student Routings *************************************************
 
 import Annoucements from './Pages/Dashboard/Student/Annoucement/Annoucement';
-import Attendance from './Pages/Dashboard/Student/Attendance/Attendance';
-import Result from './Pages/Dashboard/Student/Result/Result'
+import Result from './Pages/Dashboard/Student/Result/Result';
+import Attendance from './Pages/Dashboard/Student/Attendance/Attendance'
 import Feedbacks from './Pages/Dashboard/Student/Feedback/Feedback'
 
 
@@ -39,7 +39,7 @@ import Marks from './Pages/Dashboard/Faculty/Marks/Marks'
 import FacFeedback from './Pages/Dashboard/Faculty/Feedback/Feedback';
 import FacBatch from './Pages/Dashboard/Faculty/Batches/Batches';
 import FacAttendance from './Pages/Dashboard/Faculty/Attendance/Attendance';
-import Attandance from './Pages/Dashboard/Student/Attendance/Attendance';
+import Attandance from './Pages/Dashboard/Student/Result/Result';
 import UploadMarks from './Pages/Dashboard/Faculty/Marks/UploadMarks'
 
 function App() {
@@ -105,13 +105,13 @@ function App() {
             <PrivateRoute>
               <Annoucements />
             </PrivateRoute>} />
-            <Route exact path="student/Dashboard/Attendance" element={
-            <PrivateRoute>
-              <Attandance />
-            </PrivateRoute>} />
             <Route exact path="student/Dashboard/Result" element={
             <PrivateRoute>
               <Result />
+            </PrivateRoute>} />
+            <Route exact path="student/Dashboard/Attendance" element={
+            <PrivateRoute>
+              <Attendance />
             </PrivateRoute>} />
             <Route exact path="student/Dashboard/Feedback" element={
             <PrivateRoute>

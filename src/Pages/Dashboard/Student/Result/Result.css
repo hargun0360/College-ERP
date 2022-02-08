@@ -1,51 +1,37 @@
-.Marks-div{
-    width: 90vw;
-    height: 35vh;
+.StudentResult-Container{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 78px);
+    margin-left: 78px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 2px solid #F2F2F2;
-    margin-top: 1%;
+    overflow-y: scroll;
 }
-.Annoucement-Container.activate > .Marks-div {
+.StudentResult-Container.activate{
+    height:calc(100vh - 56px);
+    width:calc(100vw - 200px);
+    margin-left: 200px;
+}
+.Column-bars{
+    width: 58vw;
+    margin-top: -1%;
+}
+.StudentResult-Container.activate > .Marks-div{
     width: 80vw;
 }
-.Annoucement-Container.activate > .all-sub-div {
-    width: 81vw;
-}
-.marks-radialbar{
-    width: 38vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.overall-marks > h4{
-    width: 20vw;
-}
-.radial-div-compo{
-    position: relative;
-    left: -11%;
-}
-.heading-marks{
-    margin-top: 1%;
-}
-.all-sub-div{
+.Exams-opt1{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 91vw;
-    margin-top: 1%;
-    overflow-y: scroll;
+    width: 41%;
+    position: relative;
+    top: 4%;
+    left: -32%;
+    margin-bottom: 6%;
 }
-.each-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 192px;
-    height: 220px;
-    left: 312px;
-    border: 2px solid #F2F2F2;
-    box-sizing: border-box;
-    border-radius: 8px;
+.sem-heading{
+    
+    position: relative;
+    top: 2%;
+    left: -42%;
 }
