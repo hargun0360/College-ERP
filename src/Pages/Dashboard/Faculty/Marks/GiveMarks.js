@@ -34,7 +34,7 @@ const GiveMarks = () => {
     // console.log(obj);
 
     reset();
-    navigate("upload")
+    navigate("upload",{state:{exam:data.opt,max:data.max}});
   }
   const handleSubDropdown = (e) => {
     setSub(e.target.value);

@@ -9,6 +9,7 @@ import EditDetails from './EditDetails'
 import AuthService from '../../../../ApiServices/AuthService';
 import Toaster from '../../../../Components/UI/Toaster/Toaster'
 import AddStudent from './AddStudent'
+import * as actioncreators from '../../../../Service/Action/FacultyAction'
 import { toast } from 'react-toastify';
 const AdminBatches = () => {
     const { val } = useSelector((state) => state.toggle);
@@ -19,7 +20,10 @@ const AdminBatches = () => {
     const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([])
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { edit } = useSelector((state) => state.edit);
+    console.log(edit);
     const [flag, setFlag] = useState(true);
     const years = [{ id: "1", yr: "First" }, { id: "2", yr: "Second" }, { id: "3", yr: "Third" }, { id: "4", yr: "Fourth" }];
     const [batches , setBatches] = useState([]);
@@ -34,7 +38,8 @@ const AdminBatches = () => {
         setFlag1(true);
     }
     const handleEditDetails =  (id) =>{
-        console.log(id);
+        localStorage.setItem("studentid",id);
+        dispatch(actioncreators.Edit(true))
         setFlag2(true);
     }
     const handleBatchDropdown = (e) => {
@@ -77,6 +82,15 @@ const AdminBatches = () => {
                 console.log(e);
             })
      },[trigger]);
+     useEffect(()=>{
+        AuthService.getStudents(batch,year)
+            .then((res)=>{
+                console.log(res);
+                setTableData(res.data.students);
+            }).catch((e)=>{
+                console.log(e);
+            })
+     },[edit]);
 
     const handleApply = (e) =>{
         e.preventDefault();

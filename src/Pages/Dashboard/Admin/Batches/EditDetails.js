@@ -1,15 +1,56 @@
 import React, { useState, useEffect } from 'react'
 import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
-import * as actionCreators from "../../../../Service/Action/action";
+import * as actionCreators from "../../../../Service/Action/FacultyAction";
 import { useDispatch, useSelector } from 'react-redux'
+import AuthService from '../../../../ApiServices/AuthService'
 const EditDetails = (props) => {
+    const [email , setEmail] = useState("");
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
+        defaultValues:{
+            email:email
+        }
     });
+    const dispatch = useDispatch();
+    const id=localStorage.getItem("studentid");
+    if(id){
+        console.log(id);
+    }
+    
+    useEffect(()=>{
+        if(id){
+            loadEmail();
+        }
+            
+    },[reset])
+    const loadEmail = async () =>{
+        try {
+            const res = await AuthService.getEachStudent(id);
+            console.log(res);
+            setEmail(res.data.profile.email);
+            const obj = {
+                email:res.data.profile.email,
+            } 
+            reset(obj)
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
     const onSubmit = (data, e) => {
         e.preventDefault();
-        
+        const obj = {
+            email:data.email
+        }
+        AuthService.EditUser(obj,id)
+        .then((res) => {
+            console.log(res);
+            dispatch(actionCreators.Edit(false))
+        }).catch((e)=>{
+            console.log(e);
+        })
+        reset();
     }
     const handleClick = (e) => {
         e.preventDefault();
@@ -24,17 +65,6 @@ const EditDetails = (props) => {
                 </div>
                 <div>
                     <form className='EditDetails-Form-Input' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='combine-input' style={{marginBottom:"3%"}}>
-                            <div className='Label-form'>
-                                <label htmlFor="Full-Name">
-                                     Name
-                                </label>
-                            </div>
-                            <div className='Input-detail'>
-                                <input className='input-field-form' size={"34"} type="text" name="Name" {...register("Name", { required: "**Name is required", })}></input>
-                            </div>
-                            <p className='alerts'>{errors.Name?.message}</p>
-                        </div>
                         <div className='combine-input' style={{margin:"5% 0%"}}>
                             <div className='Label-form'>
                                 <label htmlFor="Email">
@@ -47,7 +77,7 @@ const EditDetails = (props) => {
                             </div>
                             <p className='alerts'>{errors.email?.message}</p>
                         </div>
-                        <div className='EditDetail-btn'>
+                        <div className='EditDetail-btn'> 
                             <SubmitButton className="EditDetail-button" Label="Update" ></SubmitButton>
                         </div>
                     </form>

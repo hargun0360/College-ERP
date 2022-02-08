@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../../LandingPage/Navbar';
 import Sidebar from '../../Sidebar/Sidebar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation } from 'react-router-dom';
 import './Marks.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
@@ -17,6 +17,8 @@ const UploadMarks = () => {
             localStorage.clear();
         }
     }, [])
+    const location = useLocation();
+    console.log(location.state);
     const handleSubmit = (e) => {
         e.preventDefault();
         Array.from(e.target).forEach((va,ind)=>{

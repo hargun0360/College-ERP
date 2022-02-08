@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import {emailReducer,toggleReducer,addadminDetailReducer,userReducer,userDetailReducer,updateAdminDetailReducer,loadAnnoucementReducer,addAnnoucementReducer,updateToggleReducer} from './Reducer';
+import {toggledReducer} from './FacultyReducer'
 import {} from './StudentReducer'
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     updateAdmin:updateAdminDetailReducer,
     getAnnoucement:loadAnnoucementReducer,
     editAnnoucement:addAnnoucementReducer,
+    edit:toggledReducer,
   });
   
   export default rootReducer;
