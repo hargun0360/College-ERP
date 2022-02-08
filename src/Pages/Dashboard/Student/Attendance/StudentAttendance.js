@@ -6,27 +6,35 @@ import MainRadialbar from '../Result/MainRadialbar'
 import { useForm } from 'react-hook-form'
 const StudentAttendance = () => {
   const { val } = useSelector((state) => state.toggle);
-  const [flag1, setFlag1] = useState(false);
-  const [flag2, setFlag2] = useState(false);
-  const [flag3, setFlag3] = useState(false);
   const [data, setData] = useState([{id:"1",sem:"1"},{id:"2",sem:"2"},{id:"3",sem:"3"},{id:"4",sem:"4"},{id:"5",sem:"5"},{id:"6",sem:"6"},{id:"7",sem:"7"},{id:"8",sem:"8"},]);
-  
-  const handleChange = (data) => {
-
-  if (data === "ST1") {
+  const [flag2, setFlag2] = useState(false);
+  const [flag1, setFlag1] = useState(false);
+  const [flag3, setFlag3] = useState(false);
+  const [id,setId] = useState(0)
+  const handleChange = (d,s,i) => {
+    const value=d;
+    console.log(value , s);
+    setId(i)
+  if (d === "ST1") {
     setFlag1(true);
-  } else if (data === "ST2") {
+    setFlag2(false);
+    setFlag3(false);
+  } else if (d === "ST2") {
     setFlag2(true);
-  } else if (data === "PUT") {
+    setFlag3(false);
+    setFlag1(false);
+  } else if (d === "PUT") {
     setFlag3(true);
+    setFlag2(false);
+    setFlag1(false);
   }
-console.log(flag1,flag2,flag3);
+  
 }
 
 return (<>
   <div className={`StudentResult-Container ${val ? "activate" : ""}`} >
     {
-      data.map((val,index) => (<>
+      data.map((val,i) => (<>
         <div className='sem-heading'>
       <h4>Semester : <span>{val.id}</span></h4>
     </div>
@@ -48,7 +56,7 @@ return (<>
             name="opt"
             value="ST1"
             id="field-ST1"
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleChange(e.target.value,val.sem,i)}
           />
           ST1
         </label>
@@ -61,8 +69,7 @@ return (<>
             name="opt"
             value="ST2"
             id="field-ST2"
-            onChange={(e) => handleChange(e.target.value)}
-          />
+            onChange={(e) => handleChange(e.target.value,val.sem,i)} />
           ST2
         </label>
       </div>
@@ -73,7 +80,7 @@ return (<>
             name="opt"
             value="PUT"
             id="field-PUT"
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => handleChange(e.target.value,val.sem,i)}
           />
           PUT
         </label>
@@ -81,13 +88,13 @@ return (<>
     </form>
     <div className='Column-bars'>
     {
-      flag1 ?  <DistributedBar /> : null
+      flag1 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
     }
     {
-      flag2 ?  <DistributedBar /> : null
+      flag2 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
     }
     {
-      flag3 ?  <DistributedBar /> : null
+      flag3 ?  <DistributedBar flag={id===i ? true : false} id={id} data={data} /> : null
     }
       
     </div>
