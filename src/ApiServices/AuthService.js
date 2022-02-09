@@ -157,11 +157,24 @@ class AuthServices {
 }
 
 
-    // Edit Profile
+    // Edit Profile Student (Admin Section)
 
     EditUser(data,id){
         
         return axios.put(`admin/editprofile/${id}?user=student`,data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    
+    // Edit Profile Faculty (Admin Section)5
+
+    EditFaculty(data,id){
+        
+        return axios.put(`admin/editprofile/${id}?user=faculty`,data, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

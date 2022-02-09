@@ -92,7 +92,7 @@ return (<>
     </form>
     <div className='Column-bars'>
     {
-      flag1 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null
+      flag1 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null 
     }
     {
       flag2 ?  <DistributedBar flag={arr[i]} id={id} data={data} /> : null

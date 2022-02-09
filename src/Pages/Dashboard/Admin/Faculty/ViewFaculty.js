@@ -20,6 +20,7 @@ const ViewFaculty = () => {
     const handleEditDetails =  (id) =>{
         console.log(id);
         setFlag1(true);
+        localStorage.setItem("facid",id)
     }
     const handleMakeAdmin =  (id) =>{
         console.log(id);
