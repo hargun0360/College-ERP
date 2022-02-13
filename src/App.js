@@ -105,6 +105,10 @@ function App() {
             <PrivateRoute>
               <Annoucements />
             </PrivateRoute>} />
+            <Route exact path="faculty/Dashboard/Annoucements/admin" element={
+            <PrivateRoute>
+              <Annoucements />
+            </PrivateRoute>} />
             <Route exact path="student/Dashboard/Result" element={
             <PrivateRoute>
               <Result />

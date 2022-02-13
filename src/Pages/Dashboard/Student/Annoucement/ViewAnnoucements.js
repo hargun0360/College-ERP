@@ -6,10 +6,10 @@ const ViewAnnoucements = () => {
     const user = localStorage.getItem("userd");
     const [tableData, setTableData] = useState([{id:"1",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"},{id:"2",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"},{id:"3",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"},{id:"4",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"},{id:"5",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"},{id:"6",date:"20-2-2022",time:"9:00 AM",Annby:"Hargun Singh",Ann:"so much data here"}])
     const loadAnnF = () =>{
-        console.log("student");
+        console.log("faculty");
     }
     const loadAnnS = () =>{
-            console.log("faculty");
+            console.log("student");
     }
 
      useEffect(()=>{  

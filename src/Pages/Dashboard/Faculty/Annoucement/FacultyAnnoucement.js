@@ -3,6 +3,7 @@ import './Annoucement.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import MakeAnnoucement from './MakeAnnoucement';
+import {Navigate , useNavigate} from 'react-router-dom';
 
 const FacultyAnnoucement = () => {
   const { val } = useSelector((state) => state.toggle);
@@ -12,6 +13,10 @@ const FacultyAnnoucement = () => {
     setFlag(true);
 
   }
+  const navigate = useNavigate();
+   const handleAdminAnn = () => {
+    navigate("admin")
+   }
   const handleDelete = (id) => {
     // AuthService.DelStudent(id)
     //     .then((res)=>{
@@ -32,7 +37,8 @@ const FacultyAnnoucement = () => {
             <MakeAnnoucement trigger={flag} setTrigger={setFlag} />
         }
     <div className={`Annoucement-Container ${val ? "activate" : ""}`} >
-      <div className='make-annoucement-btn' onClick={handleClick}>
+    <div className='Ann-btns'>
+      <div className='make-annoucement-btn1' onClick={handleClick}>
         <div className='annoucement-icon'>
           <box-icon id="edit-icons" color="white" name='edit' />
         </div>
@@ -40,11 +46,17 @@ const FacultyAnnoucement = () => {
           <h2>Make an Announcement</h2>
         </div>
       </div>
+      <div className='view-annoucement-btn' onClick={handleAdminAnn} >
+        <div className='annoucement-tex'>
+          <h2>Admin Announcement</h2>
+        </div>
+      </div>
+      </div>
       <div className='annoucement-table'>
       <TableContainer component={Paper} style={{
                     width: val ? "81vw" : "91vw",
                     position: "relative",
-                    top: "0%",
+                    top: "2%",
                     height:"80vh"
 
                 }} >
