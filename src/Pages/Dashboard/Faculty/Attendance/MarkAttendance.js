@@ -81,7 +81,7 @@ const MarkAttendance = () => {
               <TableRow>
                 <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Roll Number</TableCell>
                 <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
-                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Attendance</TableCell>
+                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Attendance </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -93,8 +93,8 @@ const MarkAttendance = () => {
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
-                      <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} >
-                        <h6>Edit details</h6>
+                      <div className='Att-box' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} >
+                        <p>P</p>
                       </div>
                     </TableCell>
                   </TableRow>

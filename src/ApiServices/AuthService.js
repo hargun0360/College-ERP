@@ -28,8 +28,8 @@ class AuthServices {
 
     //Get Admin Detail
 
-    getadminDetails(user,id) {
-        console.log(user,id);
+    getadminDetails(user, id) {
+        console.log(user, id);
         return axios.get(`admin/showProfile/${id}?user=${user}`, {
             headers: {
                 "Content-Type": "application/json",
@@ -40,18 +40,18 @@ class AuthServices {
 
     // update Admin Detail
 
-    updateAdminDetails(data,user,id) {
-        console.log(user,id,data);
+    updateAdminDetails(data, user, id) {
+        console.log(user, id, data);
         return axios({
-            method:"put",
-            url:`admin/editprofile/${id}?user=${user}`,
-            data:data,
-            headers:{
+            method: "put",
+            url: `admin/editprofile/${id}?user=${user}`,
+            data: data,
+            headers: {
                 "Content-Type": "multipart/form-data",
-                 Authorization: 'Bearer ' + localStorage.getItem('user'),
-                 
+                Authorization: 'Bearer ' + localStorage.getItem('user'),
+
             }
-            
+
         })
     }
 
@@ -60,7 +60,7 @@ class AuthServices {
     getAnnoucementDetails(user) {
         return axios.get(`student/viewAnnouncement?user=${user}`, {
             headers: {
-                "Content-Type": "application/json" ,
+                "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
             }
         })
@@ -68,7 +68,7 @@ class AuthServices {
 
     // post annoucement
 
-    postAdminDetails(data,id) {
+    postAdminDetails(data, id) {
         console.log(data);
         return axios.post(`faculty/makeannouncement/${id}`, data, {
             headers: {
@@ -78,7 +78,7 @@ class AuthServices {
         })
     }
 
-    deleteAnnoucementDetails(idu,ida) {
+    deleteAnnoucementDetails(idu, ida) {
         return axios.delete(`faculty/deleteannouncement/${ida}/${idu}`, {
             headers: {
                 "Content-Type": "application/json",
@@ -89,10 +89,10 @@ class AuthServices {
 
     // get Batch (Batch Section)
 
-        getBatch(year) {
+    getBatch(year) {
         return axios.get(`admin/getbatch/${year}`, {
             headers: {
-                "Content-Type": "application/json" ,
+                "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
             }
         })
@@ -100,10 +100,10 @@ class AuthServices {
 
     // View Student Data (Batch Section)
 
-    getStudents(branch,year) {
+    getStudents(branch, year) {
         return axios.get(`admin/viewbatch?batch=${branch}&year=${year}`, {
             headers: {
-                "Content-Type": "application/json" ,
+                "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
             }
         })
@@ -114,7 +114,7 @@ class AuthServices {
     getEachStudent(id) {
         return axios.get(`admin/showprofile/${id}?user=student`, {
             headers: {
-                "Content-Type": "application/json" ,
+                "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
             }
         })
@@ -122,8 +122,8 @@ class AuthServices {
 
     // Add Batch (Batch Section)
 
-        AddBatch(data) {
-            console.log(data);
+    AddBatch(data) {
+        console.log(data);
         return axios.post(`admin/addbatch`, data, {
             headers: {
                 "Content-Type": "application/json",
@@ -148,20 +148,7 @@ class AuthServices {
 
     AddStudent(data) {
         console.log(data);
-    return axios.post(`admin/addstudents`,data, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: 'Bearer ' + localStorage.getItem('user')
-        }
-    })
-}
-
-
-    // Edit Profile Student (Admin Section)
-
-    EditUser(data,id){
-        
-        return axios.put(`admin/editprofile/${id}?user=student`,data, {
+        return axios.post(`admin/addstudents`, data, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
@@ -169,12 +156,34 @@ class AuthServices {
         })
     }
 
-    
+
+    // Edit Profile Student (Admin Section)
+
+    EditUser(data, id) {
+
+        return axios.put(`admin/editprofile/${id}?user=student`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+
     // Edit Profile Faculty (Admin Section)5
 
-    EditFaculty(data,id){
-        
-        return axios.put(`admin/editprofile/${id}?user=faculty`,data, {
+    EditFaculty(data, id) {
+
+        return axios.put(`admin/editprofile/${id}?user=faculty`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    getFaculty() {
+        return axios.get(`admin/viewfaculty`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

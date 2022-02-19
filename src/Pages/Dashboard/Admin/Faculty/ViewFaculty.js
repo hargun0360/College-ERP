@@ -1,44 +1,60 @@
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import '../Admins/Admins.css'
 import AddFaculty from './AddFaculty';
 import EditFacultyDetails from './EditFacultyDetails'
+import AuthServices from '../../../../ApiServices/AuthService'
 
 const ViewFaculty = () => {
     const { val } = useSelector((state) => state.toggle);
-    const [flag,setFlag] = useState(false);
-    const [flag1,setFlag1] = useState(false);
-    const [tableData, setTableData] = useState([{id:"1",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"2",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"3",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"4",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"5",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"6",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"7",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"8",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"9",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"10",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"11",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"12",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"},{id:"13",name:"Mohit",email:"Mohit2013021@akgec.ac.in",sub:"Node JS"}])
+    const [flag, setFlag] = useState(false);
+    const [flag1, setFlag1] = useState(false);
+    const [tableData, setTableData] = useState([])
+
+    useEffect(() => {
+        loadFaculty();
+    }, []);
+
+    const loadFaculty = async () => {
+        await AuthServices.getFaculty()
+            .then((res) => {
+                console.log(res);
+                setTableData(res.data);
+            }).catch((e) => {
+                console.log(e);
+            })
+    }
+
     const handleView = (id) => {
         console.log(id)
     }
     const handleDelete = (id) => {
         console.log(id);
     }
-    const handleEditDetails =  (id) =>{
+    const handleEditDetails = (id) => {
         console.log(id);
         setFlag1(true);
-        localStorage.setItem("facid",id)
+        localStorage.setItem("facid", id)
     }
-    const handleMakeAdmin =  (id) =>{
+    const handleMakeAdmin = (id) => {
         console.log(id);
     }
     const handleFaculty = () => {
         setFlag(true);
     }
-  return (<>
+    return (<>
         {
-            
+
             <AddFaculty trigger={flag} setTrigger={setFlag} />
         }
         {
-            
+
             <EditFacultyDetails trigger={flag1} setTrigger={setFlag1} />
         }
-      <div className={`Admin-Container ${val ? "activate" : ""}`}>
-      <div className='Add-Admin' onClick={handleFaculty}>
+        <div className={`Admin-Container ${val ? "activate" : ""}`}>
+            <div className='Add-Admin' onClick={handleFaculty}>
                 <div className='plus-icon'>
                     <box-icon name='plus-circle' color="#007BAB" ></box-icon>
                 </div>
@@ -47,23 +63,23 @@ const ViewFaculty = () => {
                 </div>
             </div>
             <div className='Admins-info-table'>
-            <TableContainer component={Paper} style={{
+                <TableContainer component={Paper} style={{
                     width: val ? "81vw" : "91vw",
                     position: "relative",
                     top: "10%",
-                    height:"80vh"
+                    height: "80vh"
 
                 }} >
-                    <Table style={{height: "max-content"}} stickyHeader>
+                    <Table style={{ height: "max-content" }} stickyHeader>
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{ border: "0px solid transparent", width: "20%",fontFamily:"'Inter', sans-serif"  }} align='center'>Name</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Email</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Subject</TableCell>
-                                <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'></TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Email</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Subject</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -71,26 +87,26 @@ const ViewFaculty = () => {
                             {
                                 tableData.map((data) => (<>
                                     <TableRow>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.name}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.email}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.sub}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleEditDetails(data._id)}>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.fullname}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.sub}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleEditDetails(data._id)}>
                                                 <h6>Edit details</h6>
                                             </div>
                                         </TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleMakeAdmin(data._id)}>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleMakeAdmin(data._id)}>
                                                 <h6>Make Admin</h6>
                                             </div>
                                         </TableCell>
                                         <TableCell style={{ border: "0px solid transparent" }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif" }} onClick={()=>handleView(data._id)} >
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleView(data._id)} >
                                                 <h6>View</h6>
                                             </div>
                                         </TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={()=>handleDelete(data._id)}>
-                                            <div className='trash-icon' style={{cursor:"pointer"}}>
+                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={() => handleDelete(data._id)}>
+                                            <div className='trash-icon' style={{ cursor: "pointer" }}>
                                                 <box-icon color="red" name='trash-alt' />
                                             </div>
                                         </TableCell>
@@ -101,8 +117,8 @@ const ViewFaculty = () => {
                     </Table>
                 </TableContainer>
             </div>
-      </div>
-  </>);
+        </div>
+    </>);
 };
 
 export default ViewFaculty;
