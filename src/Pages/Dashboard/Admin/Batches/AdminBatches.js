@@ -4,7 +4,7 @@ import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Batches.css'
 import AddBatch from './AddBatch'
-import  {  useNavigate  } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import EditDetails from './EditDetails'
 import AuthService from '../../../../ApiServices/AuthService';
 import Toaster from '../../../../Components/UI/Toaster/Toaster'
@@ -16,7 +16,7 @@ const AdminBatches = () => {
     const [year, setYear] = useState(null);
     const [flag1, setFlag1] = useState(false);
     const [trigger, setTrigger] = useState(false);
-    const [flag3,setFlag3] = useState(false);
+    const [flag3, setFlag3] = useState(false);
     const [flag2, setFlag2] = useState(false);
     const [batch, setBatch] = useState(null);
     const [tableData, setTableData] = useState([])
@@ -26,19 +26,19 @@ const AdminBatches = () => {
     console.log(edit);
     const [flag, setFlag] = useState(true);
     const years = [{ id: "1", yr: "First" }, { id: "2", yr: "Second" }, { id: "3", yr: "Third" }, { id: "4", yr: "Fourth" }];
-    const [batches , setBatches] = useState([]);
+    const [batches, setBatches] = useState([]);
     const handleYearDropdown = (e) => {
         setYear(e.target.value);
         console.log(e.target.value);
         setFlag(false);
     }
-    const handleBatch = (e) =>{
+    const handleBatch = (e) => {
         e.preventDefault();
         setBatch(e.target.value);
         setFlag1(true);
     }
-    const handleEditDetails =  (id) =>{
-        localStorage.setItem("studentid",id);
+    const handleEditDetails = (id) => {
+        localStorage.setItem("studentid", id);
         dispatch(actioncreators.Edit(true))
         setFlag2(true);
     }
@@ -47,95 +47,95 @@ const AdminBatches = () => {
     }
 
     const handleView = (id) => {
-        localStorage.setItem("stuid",id);
+        localStorage.setItem("stuid", id);
         navigate("/Dashboard/stuProfile");
     }
 
-    const handleStudent = (e) =>{
-            e.preventDefault();
-            setFlag3(true);
+    const handleStudent = (e) => {
+        e.preventDefault();
+        setFlag3(true);
     }
 
     const handleDelete = (id) => {
         setTrigger(true);
         console.log(trigger);
         AuthService.DelStudent(id)
-            .then((res)=>{
+            .then((res) => {
                 console.log(res);
-                if(res){
+                if (res) {
                     toast.success("Student Deleted Successfully")
                 }
                 setTrigger(false);
                 console.log(trigger);
-            }).catch((e)=>{
+            }).catch((e) => {
                 console.log(e);
                 toast.error("Error!")
             })
     }
     console.log(trigger);
-    useEffect(()=>{
-        AuthService.getStudents(batch,year)
-            .then((res)=>{
+    useEffect(() => {
+        AuthService.getStudents(batch, year)
+            .then((res) => {
                 console.log(res);
                 setTableData(res.data.students);
-            }).catch((e)=>{
+            }).catch((e) => {
                 console.log(e);
             })
-     },[trigger]);
-     useEffect(()=>{
-        AuthService.getStudents(batch,year)
-            .then((res)=>{
+    }, [trigger]);
+    useEffect(() => {
+        AuthService.getStudents(batch, year)
+            .then((res) => {
                 console.log(res);
                 setTableData(res.data.students);
-            }).catch((e)=>{
+            }).catch((e) => {
                 console.log(e);
             })
-     },[edit]);
+    }, [edit]);
 
-    const handleApply = (e) =>{
+    const handleApply = (e) => {
         e.preventDefault();
-        if(year && batch){
+        if (year && batch) {
 
-        
-            AuthService.getStudents(batch,year)
-            .then((res)=>{
-                console.log(res);
-                setTableData(res.data.students);
-            }).catch((e)=>{
-                console.log(e);
-            })
-        }else{
+
+            AuthService.getStudents(batch, year)
+                .then((res) => {
+                    console.log(res);
+                    setTableData(res.data.students);
+                }).catch((e) => {
+                    console.log(e);
+                })
+        } else {
             // show error
             toast.warn("Please Select Year and Batch")
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         loadBatch();
-    },[year]);
+    }, [year]);
 
-    const loadBatch = async ()=> {
+    const loadBatch = async () => {
         try {
             const res = await AuthService.getBatch(year);
             setBatches(res.data);
         } catch (error) {
             console.log(error);
         }
-        
+
     }
 
     return (
         <div className={`Admin-Container ${val ? "activate" : ""}`}>
-        {
-            <AddBatch trigger={flag1} setTrigger={setFlag1} />
-        }
-        {
-            <EditDetails trigger={flag2} setTrigger={setFlag2} />
-        }
-        {
-            
-            <AddStudent trigger={flag3} setTrigger={setFlag3} />
-        }
+            {
+                <AddBatch trigger={flag1} setTrigger={setFlag1} />
+            }
+            {
+                <EditDetails trigger={flag2} setTrigger={setFlag2} />
+            }
+            {
+
+                <AddStudent trigger={flag3} setTrigger={setFlag3} />
+            }
             <div className='Batches-Details'>
                 <div className='Year-Dropdown'>
                     <select id="year-drop" onChange={handleYearDropdown}>
@@ -182,18 +182,18 @@ const AdminBatches = () => {
                     width: val ? "81vw" : "91vw",
                     position: "relative",
                     top: "10%",
-                    height:"80vh"
+                    height: "80vh"
 
                 }} >
-                    <Table style={{height: "max-content"}} stickyHeader>
+                    <Table style={{ height: "max-content" }} stickyHeader>
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{ border: "0px solid transparent", width: "20%",fontFamily:"'Inter', sans-serif"  }} align='center'>Roll Number</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Name</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Email</TableCell>
-                                <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'></TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Roll Number</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Email</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -201,21 +201,21 @@ const AdminBatches = () => {
                             {
                                 tableData.map((data) => (<>
                                     <TableRow>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.roll}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.name}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif"  }} onClick={()=>handleEditDetails(data._id)}>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleEditDetails(data._id)}>
                                                 <h6>Edit details</h6>
                                             </div>
                                         </TableCell>
                                         <TableCell style={{ border: "0px solid transparent" }} align='center'>
-                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer",fontFamily:"'Inter', sans-serif" }} onClick={()=>handleView(data._id)} >
+                                            <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleView(data._id)} >
                                                 <h6>View</h6>
                                             </div>
                                         </TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={()=>handleDelete(data._id)}>
-                                            <div className='trash-icon' style={{cursor:"pointer"}}>
+                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={() => handleDelete(data._id)}>
+                                            <div className='trash-icon' style={{ cursor: "pointer" }}>
                                                 <box-icon color="red" name='trash-alt' />
                                             </div>
                                         </TableCell>

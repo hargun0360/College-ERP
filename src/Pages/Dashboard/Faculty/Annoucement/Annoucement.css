@@ -20,6 +20,7 @@
     border: 2px solid #2F748F;
     padding: 6px;
     cursor: pointer;
+    border-radius:5px;
 }
 
 .annoucement-tex > h2{
