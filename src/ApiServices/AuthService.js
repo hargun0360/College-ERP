@@ -170,7 +170,7 @@ class AuthServices {
     }
 
 
-    // Edit Profile Faculty (Admin Section)5
+    // Edit Profile Faculty (Admin Section)
 
     EditFaculty(data, id) {
 
@@ -197,6 +197,17 @@ class AuthServices {
 
     getEachFaculty(id) {
         return axios.get(`admin/showprofile/${id}?user=faculty`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+    // Delete faculty 
+
+    DelFaculty(id) {
+        return axios.delete(`admin/deletestudent/${id}?user=faculty`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

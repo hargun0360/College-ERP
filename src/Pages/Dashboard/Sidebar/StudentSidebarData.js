@@ -2,48 +2,42 @@ import React from 'react'
 import 'boxicons'
 export const StudentSidebarData = [
     {
-        title:"Profile",
-        icon:<box-icon name="user" color="#505050"/>,
-        Link:'/Dashboard/Profile',
-        tooltip:"Profile"
+        title: "Profile",
+        icon: <box-icon name="user" color="#505050" />,
+        Link: '/Dashboard/Profile',
+        tooltip: "Profile"
     },
     {
-        title:"Annoucements",
-        icon:<box-icon name="bell" color="#505050"/>,
-        Link:'/Dashboard/Annoucements',
-        tooltip:"Annoucements"
+        title: "Annoucements",
+        icon: <box-icon name="bell" color="#505050" />,
+        Link: '/Dashboard/Annoucements',
+        tooltip: "Annoucements"
 
     },
     {
-        title:"Attendance",
-        icon:<box-icon name="clipboard" color="#505050"/>,
-        Link:'/Dashboard/Attendance',
-        tooltip:"Attendance"
+        title: "Attendance",
+        icon: <box-icon name="clipboard" color="#505050" />,
+        Link: '/Dashboard/Attendance',
+        tooltip: "Attendance"
     },
     {
-        title:"Result",
-        icon:<box-icon name="award" color="#505050"/>,
-        Link:'/Dashboard/Result',
-        tooltip:"Result"
+        title: "Result",
+        icon: <box-icon name="award" color="#505050" />,
+        Link: '/Dashboard/Result',
+        tooltip: "Result"
     },
     {
-        title:"Time Table", 
-        icon:<box-icon name="time-five" color="#505050"/>,
-        Link:'/Dashboard/TimeTable',
-        tooltip:"Time Table"
+        title: "Time Table",
+        icon: <box-icon name="time-five" color="#505050" />,
+        Link: '/Dashboard/TimeTable',
+        tooltip: "Time Table"
     },
     {
-        title:"Holidays",
-        icon:<box-icon name="calendar" color="#505050"/>,
-        Link:'/Dashboard/Holidays',
-        tooltip:"Holidays"
+        title: "Holidays",
+        icon: <box-icon name="calendar" color="#505050" />,
+        Link: '/Dashboard/Holidays',
+        tooltip: "Holidays"
     },
-    {
-        title:"Feedback",
-        icon:<box-icon name="edit" color="#505050"/>,
-        Link:'/Dashboard/Feedback',
-        tooltip:"Feedback"
-    }
 
 ];
 

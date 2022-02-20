@@ -44,12 +44,6 @@ export const SidebarData = [
         Link:'/Dashboard/Holidays',
         tooltip:"Holidays"
     },
-    {
-        title:"Feedback",
-        icon:<box-icon name="edit" color="#505050"/>,
-        Link:'/Dashboard/Feedback',
-        tooltip:"Feedback"
-    }
 
 ];
 
