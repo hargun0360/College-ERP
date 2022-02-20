@@ -26,6 +26,11 @@ export function Faculty(state = {}, action) {
                 ...state,
                 add: action.payload
             };
+        case "Make_Admin":
+            return {
+                ...state,
+                make: action.payload
+            };
         default:
             return state;
     }

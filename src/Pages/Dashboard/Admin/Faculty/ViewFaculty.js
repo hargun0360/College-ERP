@@ -11,7 +11,7 @@ import * as actionCreators from '../../../../Service/Action/FacultyAction'
 
 const ViewFaculty = () => {
     const { val } = useSelector((state) => state.toggle);
-    const { view, del, add } = useSelector((state) => state.faculty)
+    const { view, del, add, make } = useSelector((state) => state.faculty)
     const [flag, setFlag] = useState(false);
     const [flag1, setFlag1] = useState(false);
     const [tableData, setTableData] = useState([])
@@ -22,7 +22,7 @@ const ViewFaculty = () => {
     }, []);
     useEffect(() => {
         loadFaculty();
-    }, [view, del, add]);
+    }, [view, del, add, make]);
 
     const loadFaculty = async () => {
         await AuthServices.getFaculty()
@@ -59,7 +59,19 @@ const ViewFaculty = () => {
         dispatch(actionCreators.editFaculty(false));
     }
     const handleMakeAdmin = (id) => {
+        dispatch(actionCreators.makeAdmin(false));
         console.log(id);
+        const obj = {
+            id: id,
+        }
+        AuthServices.makeAdmin(obj)
+            .then((res) => {
+                console.log(res);
+            }).catch((e) => {
+                if (e) {
+                    dispatch(actionCreators.makeAdmin(true));
+                }
+            })
     }
     const handleFaculty = () => {
         dispatch(actionCreators.addFaculty(false))

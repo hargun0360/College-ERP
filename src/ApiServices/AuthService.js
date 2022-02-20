@@ -227,6 +227,17 @@ class AuthServices {
         })
     }
 
+    // Make Admin (Faculty)
+
+    makeAdmin(data) {
+        console.log(data);
+        return axios.post(`admin/makeadmin`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
 
 }
 

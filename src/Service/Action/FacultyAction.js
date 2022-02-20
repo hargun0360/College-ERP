@@ -22,3 +22,9 @@ export const addFaculty = (value) => {
         payload: value
     }
 }
+export const makeAdmin = (value) => {
+    return {
+        type: "Make_Admin",
+        payload: value
+    }
+}
