@@ -9,3 +9,24 @@ export function toggledReducer(state = {}, action) {
             return state;
     }
 }
+export function Faculty(state = {}, action) {
+    switch (action.type) {
+        case "View_Faculty":
+            return {
+                ...state,
+                view: action.payload
+            };
+        case "Delete_Faculty":
+            return {
+                ...state,
+                del: action.payload
+            };
+        case "Add_Faculty":
+            return {
+                ...state,
+                add: action.payload
+            };
+        default:
+            return state;
+    }
+}

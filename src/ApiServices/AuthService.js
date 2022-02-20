@@ -191,6 +191,15 @@ class AuthServices {
         })
     }
 
+    getEachFaculty(id) {
+        return axios.get(`admin/showprofile/${id}?user=faculty`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
 }
 
 

@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import '../Admins/Admins.css'
 import AddFaculty from './AddFaculty';
 import EditFacultyDetails from './EditFacultyDetails'
 import AuthServices from '../../../../ApiServices/AuthService'
+import * as actionCreators from '../../../../Service/Action/FacultyAction'
 
 const ViewFaculty = () => {
     const { val } = useSelector((state) => state.toggle);
+    const { view, del, add } = useSelector((state) => state.faculty)
     const [flag, setFlag] = useState(false);
     const [flag1, setFlag1] = useState(false);
     const [tableData, setTableData] = useState([])
+    const dispatch = useDispatch();
 
     useEffect(() => {
         loadFaculty();
     }, []);
+    useEffect(() => {
+        loadFaculty();
+    }, [view,del,add]);
 
     const loadFaculty = async () => {
         await AuthServices.getFaculty()
@@ -31,17 +37,21 @@ const ViewFaculty = () => {
         console.log(id)
     }
     const handleDelete = (id) => {
+        dispatch(actionCreators.deleteFaculty(false))
         console.log(id);
+        // res true
     }
     const handleEditDetails = (id) => {
         console.log(id);
         setFlag1(true);
         localStorage.setItem("facid", id)
+        dispatch(actionCreators.editFaculty(false));
     }
     const handleMakeAdmin = (id) => {
         console.log(id);
     }
     const handleFaculty = () => {
+        dispatch(actionCreators.addFaculty(false))
         setFlag(true);
     }
     return (<>
@@ -89,7 +99,7 @@ const ViewFaculty = () => {
                                     <TableRow>
                                         <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.fullname}</TableCell>
                                         <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.sub}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.subject}</TableCell>
                                         <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
                                             <div className='Edit-details' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} onClick={() => handleEditDetails(data._id)}>
                                                 <h6>Edit details</h6>

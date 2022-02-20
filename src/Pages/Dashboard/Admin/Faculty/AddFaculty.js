@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
-import * as actionCreators from "../../../../Service/Action/action";
+import * as actionCreators from "../../../../Service/Action/FacultyAction";
 import { useDispatch, useSelector } from 'react-redux'
 import './Faculty.css'
 import Autocomplete from 'react-autocomplete'
@@ -9,6 +9,7 @@ const AddFaculty = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
+    const dispatch = useDispatch();
     const [flag,setFlag] = useState(false);
     const [value, setValue] = useState('');
     const onSubmit = (data, e) => {
@@ -16,6 +17,7 @@ const AddFaculty = (props) => {
         if(value==''){
             setFlag(true);
         }else{
+            dispatch(actionCreators.addFaculty(true))
             //post api
         }
 

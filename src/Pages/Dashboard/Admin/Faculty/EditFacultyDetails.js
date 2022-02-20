@@ -1,48 +1,92 @@
 import React, { useState, useEffect } from 'react'
 import SubmitButton from '../../../../Components/UI/Button/Button'
 import { set, useForm } from 'react-hook-form'
-import * as actionCreators from "../../../../Service/Action/action";
+import * as actionCreators from "../../../../Service/Action/FacultyAction";
 import { useDispatch, useSelector } from 'react-redux'
 import Autocomplete from 'react-autocomplete'
 import AuthService from '../../../../ApiServices/AuthService'
 const EditFacultyDetails = (props) => {
+    const [email, setEmail] = useState("");
     const [value, setValue] = useState('');
+    const [flag, setFlag] = useState(false);
+    const [subject, setSubject] = useState([{ id: "1", sub: "maths" },
+    { id: "2", sub: "phy" },
+    { id: "3", sub: "chem" },
+    { id: "4", sub: "react" },
+    { id: "5", sub: "node" },
+    { id: "6", sub: "Django" },
+    { id: "7", sub: "spring" },
+    { id: "8", sub: "android" },
+    { id: "9", sub: "designer" },
+    { id: "10", sub: "science" },
+    { id: "11", sub: "manish" },
+    { id: "12", sub: "bhavya" },
+    { id: "13", sub: "hargun" },
+    { id: "14", sub: "mohit" },]);
+    const dispatch = useDispatch();
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
+        defaultValues: {
+            email: email,
+        },
     });
+    const { view, del, add } = useSelector((state) => state.faculty)
     const id = localStorage.getItem("facid");
     const onSubmit = (data, e) => {
         e.preventDefault();
-        const obj = {
-            email:data.email,
-            sub:value,
+        dispatch(actionCreators.editFaculty(true));
+        for (let index = 0; index < subject.length; index++) {
+            if (subject[index].id === value) {
+                const myForm = new FormData();
+                myForm.append("email", data.email);
+                myForm.append("subject", value);
+                AuthService.EditFaculty(myForm, id)
+                    .then((res) => {
+                        console.log(res);
+                    }).catch((e) => {
+                        console.log(e);
+                    })
+            } else {
+                //show error message
+            }
+
         }
-        console.log(obj);
-        AuthService.EditFaculty(obj,id)
-        .then((res) => {
-            console.log(res);
-        }).catch((e)=>{
-            console.log(e);
-        })
-        
+
+
+        e.target.reset();
+
     }
     const handleClick = (e) => {
         e.preventDefault();
         props.setTrigger(false);
+        reset();
     }
-    // useEffect(() => {
+    useEffect(() => {
+        loadEachFaculty();
+    }, [reset, localStorage.getItem("facid")])
+    const loadEachFaculty = async () => {
+        await AuthService.getEachFaculty(id)
+            .then((res) => {
+                console.log(res);
+                const obj = {
+                    email: res.data.email,
+                }
+                console.log(obj);
+                reset(obj)
+            }).catch((e) => {
+                console.log(e);
+            })
+    }
 
-    // },[reset])
-
-    return (props.trigger) ?  (
+    return (props.trigger) ? (
         <div className='Modal-box1'>
             <div className='AddAdmin-Form'>
-                <div className='EditDetails-Heading' style={{marginBottom:"5%"}}>
+                <div className='EditDetails-Heading' style={{ marginBottom: "5%" }}>
                     <h2>Edit Details</h2>
                 </div>
                 <div>
                     <form className='EditDetails-Form-Input' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='combine-input' style={{margin:"5% 0%"}}>
+                        <div className='combine-input' style={{ margin: "5% 0%" }}>
                             <div className='Label-form'>
                                 <label htmlFor="Email">
                                     Email
@@ -56,22 +100,7 @@ const EditFacultyDetails = (props) => {
                         </div>
                         <div className='combine-input' style={{ marginBottom: "6%" }}>
                             <Autocomplete
-                                items={[
-                                    { id: "1", sub: "maths" },
-                                    { id: "2", sub: "phy" },
-                                    { id: "3", sub: "chem" },
-                                    { id: "4", sub: "react" },
-                                    { id: "5", sub: "node" },
-                                    { id: "6", sub: "Django" },
-                                    { id: "7", sub: "spring" },
-                                    { id: "8", sub: "android" },
-                                    { id: "9", sub: "designer" },
-                                    { id: "10", sub: "science" },
-                                    { id: "11", sub: "manish" },
-                                    { id: "12", sub: "bhavya" },
-                                    { id: "13", sub: "hargun" },
-                                    { id: "14", sub: "mohit" },
-                                ]}
+                                items={subject}
                                 shouldItemRender={(item, value
                                 ) => item.sub.toLowerCase()
                                     .indexOf(value.toLowerCase()) > -1}
@@ -90,7 +119,7 @@ const EditFacultyDetails = (props) => {
                                 onChange={e => setValue(e.target.value)}
                                 onSelect={(val) => setValue(val)}
                                 renderInput={(params) => (
-                                    
+
                                     <input {...params} required={value.length === 0} />
                                 )}
                                 inputProps={{
@@ -102,24 +131,24 @@ const EditFacultyDetails = (props) => {
                                         padding: "12px",
                                         borderRadius: "4px",
                                         marginBottom: "7%",
-                                        
+
                                     },
                                     placeholder: '--Search Subject--'
                                 }}
                                 menuStyle={{
                                     borderRadius: "3px",
-                            boxShadow: "rgb(0 0 0 / 10%) 0px 2px 12p",
-                            background: "rgba(255, 255, 255, 0.9)",
-                            padding:" 2px 0px",
-                            fontSize: "90%",
-                            position: "fixed",
-                            overflow: "auto",
-                            maxHeight: "18%",
-                            left: "477.415px",
-                            top: "351.957px",
-                            minWidth: "286.989px",
-                            fontFamily:"'Inter', sans-serif"
-                                   }}
+                                    boxShadow: "rgb(0 0 0 / 10%) 0px 2px 12p",
+                                    background: "rgba(255, 255, 255, 0.9)",
+                                    padding: " 2px 0px",
+                                    fontSize: "90%",
+                                    position: "fixed",
+                                    overflow: "auto",
+                                    maxHeight: "18%",
+                                    left: "477.415px",
+                                    top: "351.957px",
+                                    minWidth: "286.989px",
+                                    fontFamily: "'Inter', sans-serif"
+                                }}
                             />
                         </div>
                         <div className='EditDetail-btn'>
