@@ -13,7 +13,7 @@ const EditFacultyDetails = (props) => {
     { id: "2", sub: "phy" },
     { id: "3", sub: "chem" },
     { id: "4", sub: "react" },
-    { id: "5", sub: "node" },
+    { id: "5", sub: "computer architecture and organisation" },
     { id: "6", sub: "Django" },
     { id: "7", sub: "spring" },
     { id: "8", sub: "android" },

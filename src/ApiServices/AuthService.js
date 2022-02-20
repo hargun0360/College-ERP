@@ -182,6 +182,8 @@ class AuthServices {
         })
     }
 
+    // View All Faculty List
+
     getFaculty() {
         return axios.get(`admin/viewfaculty`, {
             headers: {
@@ -191,6 +193,8 @@ class AuthServices {
         })
     }
 
+    // Get Faculty
+
     getEachFaculty(id) {
         return axios.get(`admin/showprofile/${id}?user=faculty`, {
             headers: {
@@ -199,6 +203,8 @@ class AuthServices {
             }
         })
     }
+
+
 
 }
 

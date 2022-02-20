@@ -12,81 +12,82 @@ import { useDispatch, useSelector } from 'react-redux'
 const FacultyProfile = () => {
   const { val } = useSelector((state) => state.toggle);
   const user = localStorage.getItem("userd");
-    const id = localStorage.getItem("userid");
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [image,setImage] = useState(null);
-    const [mobile,setMobile] = useState("");
-    const [degree,setDegree] = useState("");
-    const [stun,setStun] = useState("");
-    const [facn,setFacn] = useState("");
-    const [loading,setLoading] = useState(true);
-    const [preview,setPreview] = useState(profile)
-    const loadAdmin = async ()=> {
-        try {
-            const res = await AuthService.getadminDetails(user,id)
-            console.log(res);
-            if(res){
-                setLoading(false)
-            }
-            setName(res.data.profile.fullname);
-            setEmail(res.data.profile.email);
-            setMobile(res.data.profile.mobile);
-            setDegree(res.data.profile.degree);
-            setImage(res.data.profile.image)   
-            setStun(res.data.studentNo)
-            setFacn(res.data.facultyNo)
-        } catch (error) {
-            console.log(error);
-        }
-        
+  const useride = localStorage.getItem("userid");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [image, setImage] = useState(null);
+  const [mobile, setMobile] = useState("");
+  const [degree, setDegree] = useState("");
+  const [stun, setStun] = useState("");
+  const [facn, setFacn] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [preview, setPreview] = useState(profile)
+  const id = localStorage.getItem("useride");
+  const loadAdmin = async () => {
+    try {
+      const res = await AuthService.getEachFaculty(id ? id : useride)
+      console.log(res);
+      if (res) {
+        setLoading(false)
+      }
+      setName(res.data.profile.fullname);
+      setEmail(res.data.profile.email);
+      setMobile(res.data.profile.mobile);
+      setDegree(res.data.profile.degree);
+      setImage(res.data.profile.image)
+      setStun(res.data.studentNo)
+      setFacn(res.data.facultyNo)
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(()=>{
-       loadAdmin();
-    },[]);
-    const dispatch = useDispatch();
-    const { x } = useSelector((state) => state.updateToggle);
-    console.log(x);
-    useEffect(()=>{
-        loadAdmin();
-     },[x]);
-    const [flag, setFlag] = useState(false);
-    const handleClick = (e) => {
-        e.preventDefault();
-        setFlag(true);
-        dispatch(actionCreators.update(false))
-    }
-    const option = {
-        series: [70],
-        chart: {
-            height: 200,
-            type: "radialBar"
+
+  }
+  useEffect(() => {
+    loadAdmin();
+  }, []);
+  const dispatch = useDispatch();
+  const { x } = useSelector((state) => state.updateToggle);
+  console.log(x);
+  useEffect(() => {
+    loadAdmin();
+  }, [x]);
+  const [flag, setFlag] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setFlag(true);
+    dispatch(actionCreators.update(false))
+  }
+  const option = {
+    series: [70],
+    chart: {
+      height: 200,
+      type: "radialBar"
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          margin: 10,
+          size: '55%',
         },
-        plotOptions: {
-            radialBar: {
-                hollow: {
-                    margin: 10,
-                    size: '55%',
-                },
-                dataLabels: {
-                    name: {
-                        show: false,
-                    },
-                    value: {
-                        color: "#111",
-                        fontSize: "35px",
-                        show: true
-                    }
-                },
-            },
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            color: "#111",
+            fontSize: "35px",
+            show: true
+          }
         },
-    }
-    
+      },
+    },
+  }
+
 
   return loading ? (<Spinner />) : (<>
-        {
-            <EditProfile trigger={flag} setTrigger={setFlag} />
-        }
+    {
+      <EditProfile trigger={flag} setTrigger={setFlag} />
+    }
     <div className={`Admin-Container ${val ? "activate" : ""}`} >
       <div className='Admin-Profile-Box'>
         <div className='profile-box1'>
@@ -170,7 +171,7 @@ const FacultyProfile = () => {
           <Chart options={option} series={option.series} type="radialBar" height={310} />;
         </div>
       </div>
-      {user==="faculty" ? <div className='Edit' onClick={handleClick}>
+      {user === "faculty" ? <div className='Edit' onClick={handleClick}>
         <div className='Edit-detail'>
           <h5>Edit details</h5>
         </div>

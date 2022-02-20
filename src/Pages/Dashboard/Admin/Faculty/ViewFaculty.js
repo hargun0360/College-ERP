@@ -4,6 +4,7 @@ import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import '../Admins/Admins.css'
 import AddFaculty from './AddFaculty';
+import { useNavigate } from 'react-router-dom'
 import EditFacultyDetails from './EditFacultyDetails'
 import AuthServices from '../../../../ApiServices/AuthService'
 import * as actionCreators from '../../../../Service/Action/FacultyAction'
@@ -15,13 +16,13 @@ const ViewFaculty = () => {
     const [flag1, setFlag1] = useState(false);
     const [tableData, setTableData] = useState([])
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     useEffect(() => {
         loadFaculty();
     }, []);
     useEffect(() => {
         loadFaculty();
-    }, [view,del,add]);
+    }, [view, del, add]);
 
     const loadFaculty = async () => {
         await AuthServices.getFaculty()
@@ -34,6 +35,8 @@ const ViewFaculty = () => {
     }
 
     const handleView = (id) => {
+        localStorage.setItem("useride", id);
+        navigate("/faculty/Dashboard/profile");
         console.log(id)
     }
     const handleDelete = (id) => {
@@ -85,7 +88,7 @@ const ViewFaculty = () => {
                             <TableRow>
                                 <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
                                 <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Email</TableCell>
-                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Subject</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Subject</TableCell>
                                 <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
                                 <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
                                 <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
