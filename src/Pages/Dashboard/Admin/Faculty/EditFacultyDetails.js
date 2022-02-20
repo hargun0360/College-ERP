@@ -36,7 +36,7 @@ const EditFacultyDetails = (props) => {
         e.preventDefault();
         dispatch(actionCreators.editFaculty(true));
         for (let index = 0; index < subject.length; index++) {
-            if (subject[index].id === value) {
+            if (subject[index].sub === value) {
                 const myForm = new FormData();
                 myForm.append("email", data.email);
                 myForm.append("subject", value);
