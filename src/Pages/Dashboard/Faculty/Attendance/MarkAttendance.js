@@ -93,8 +93,8 @@ const MarkAttendance = () => {
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
-                      <div className='Att-box' style={{ color: "#007BAB", cursor: "pointer", fontFamily: "'Inter', sans-serif" }} >
-                        <p>P</p>
+                      <div className='Att-box' style={{ width: "50px", height: "50px", backgroundColor: "lightgreen", border: "1px solid black", color: "white" }} >
+                        p
                       </div>
                     </TableCell>
                   </TableRow>

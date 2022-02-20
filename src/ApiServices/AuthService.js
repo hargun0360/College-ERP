@@ -215,6 +215,17 @@ class AuthServices {
         })
     }
 
+    // Add Faculty 
+
+    AddFaculty(data) {
+        console.log(data);
+        return axios.post(`admin/addfaculty`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
 
 
 }

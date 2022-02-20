@@ -5,22 +5,56 @@ import * as actionCreators from "../../../../Service/Action/FacultyAction";
 import { useDispatch, useSelector } from 'react-redux'
 import './Faculty.css'
 import Autocomplete from 'react-autocomplete'
+import AuthService from '../../../../ApiServices/AuthService';
 const AddFaculty = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched",
     });
+    const subject = [{ id: "1", sub: "maths" },
+    { id: "2", sub: "phy" },
+    { id: "3", sub: "chem" },
+    { id: "4", sub: "react" },
+    { id: "5", sub: "node" },
+    { id: "6", sub: "Django" },
+    { id: "7", sub: "spring" },
+    { id: "8", sub: "android" },
+    { id: "9", sub: "designer" },
+    { id: "10", sub: "science" },
+    { id: "11", sub: "manish" },
+    { id: "12", sub: "bhavya" },
+    { id: "13", sub: "hargun" },
+    { id: "14", sub: "mohit" },];
     const dispatch = useDispatch();
-    const [flag,setFlag] = useState(false);
+    const [flag, setFlag] = useState(false);
     const [value, setValue] = useState('');
     const onSubmit = (data, e) => {
         e.preventDefault();
-        if(value==''){
+        if (value == '') {
             setFlag(true);
-        }else{
-            dispatch(actionCreators.addFaculty(true))
-            //post api
+        } else {
+            for (let index = 0; index < subject.length; index++) {
+                if (subject[index].sub === value) {
+                    const obj = {
+                        fullname: data.Name,
+                        email: data.email,
+                        password: data.password,
+                        subject: value
+                    }
+                    AuthService.AddFaculty(obj)
+                        .then((res) => {
+                            console.log(res);
+                            if (res) {
+                                dispatch(actionCreators.addFaculty(true))
+                            }
+                        }).catch((e) => {
+                            console.log(e);
+                        })
+                } else {
+                    //show error message
+                }
+            }
         }
-
+        reset();
     }
     const handleClick = (e) => {
         e.preventDefault();
@@ -60,22 +94,7 @@ const AddFaculty = (props) => {
                         </div>
                         <div className='combine-input' style={{ marginBottom: "6%" }}>
                             <Autocomplete
-                                items={[
-                                    { id: "1", sub: "maths" },
-                                    { id: "2", sub: "phy" },
-                                    { id: "3", sub: "chem" },
-                                    { id: "4", sub: "react" },
-                                    { id: "5", sub: "node" },
-                                    { id: "6", sub: "Django" },
-                                    { id: "7", sub: "spring" },
-                                    { id: "8", sub: "android" },
-                                    { id: "9", sub: "designer" },
-                                    { id: "10", sub: "science" },
-                                    { id: "11", sub: "manish" },
-                                    { id: "12", sub: "bhavya" },
-                                    { id: "13", sub: "hargun" },
-                                    { id: "14", sub: "mohit" },
-                                ]}
+                                items={subject}
                                 shouldItemRender={(item, value
                                 ) => item.sub.toLowerCase()
                                     .indexOf(value.toLowerCase()) > -1}
@@ -94,7 +113,7 @@ const AddFaculty = (props) => {
                                 onChange={e => setValue(e.target.value)}
                                 onSelect={(val) => setValue(val)}
                                 renderInput={(params) => (
-                                    
+
                                     <input {...params} required={value.length === 0} />
                                 )}
                                 inputProps={{
@@ -106,27 +125,27 @@ const AddFaculty = (props) => {
                                         padding: "12px",
                                         borderRadius: "4px",
                                         marginBottom: "7%",
-                                        
+
                                     },
                                     placeholder: '--Search Subject--'
                                 }}
                                 menuStyle={{
                                     borderRadius: "3px",
-                            boxShadow: "rgb(0 0 0 / 10%) 0px 2px 12p",
-                            background: "rgba(255, 255, 255, 0.9)",
-                            padding:" 2px 0px",
-                            fontSize: "90%",
-                            position: "fixed",
-                            overflow: "auto",
-                            maxHeight: "18%",
-                            left: "477.415px",
-                            top: "351.957px",
-                            minWidth: "286.989px",
-                            fontFamily:"'Inter', sans-serif"
-                                   }}
+                                    boxShadow: "rgb(0 0 0 / 10%) 0px 2px 12p",
+                                    background: "rgba(255, 255, 255, 0.9)",
+                                    padding: " 2px 0px",
+                                    fontSize: "90%",
+                                    position: "fixed",
+                                    overflow: "auto",
+                                    maxHeight: "18%",
+                                    left: "477.415px",
+                                    top: "351.957px",
+                                    minWidth: "286.989px",
+                                    fontFamily: "'Inter', sans-serif"
+                                }}
                             />
                         </div>
-                       
+
                         <div className='combine-input' style={{ marginBottom: "3%" }}>
                             <div className='Label-form'>
                                 <label htmlFor="Password">
