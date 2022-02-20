@@ -40,9 +40,17 @@ const ViewFaculty = () => {
         console.log(id)
     }
     const handleDelete = (id) => {
-        dispatch(actionCreators.deleteFaculty(false))
+        dispatch(actionCreators.deleteFaculty(false));
         console.log(id);
-        // res true
+        AuthServices.DelFaculty(id)
+            .then((res) => {
+                console.log(res);
+                if (res) {
+                    dispatch(actionCreators.deleteFaculty(true));
+                }
+            }).catch((e) => {
+                console.log(e);
+            })
     }
     const handleEditDetails = (id) => {
         console.log(id);
