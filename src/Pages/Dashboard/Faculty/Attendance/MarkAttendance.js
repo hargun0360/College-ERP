@@ -30,14 +30,14 @@ const MarkAttendance = () => {
   )));
   let a;
   const handleClick = (id) => {
-    a = arr;
+    a = [...arr];
     a[id].att = !a[id].att;
     setArr(a);
   }
 
   useEffect(() => {
     console.log(arr);
-  }, [JSON.stringify(arr)])
+  }, [arr])
 
   const handleYearDropdown = (e) => {
     setYear(e.target.value);
