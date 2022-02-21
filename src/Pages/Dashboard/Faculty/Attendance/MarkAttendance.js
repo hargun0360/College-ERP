@@ -10,7 +10,35 @@ const MarkAttendance = () => {
   const [batch, setBatch] = useState(null);
   const [year, setYear] = useState(null);
   const [batches, setBatches] = useState([]);
-  const [tableData, setTableData] = useState([])
+  const [tableData, setTableData] = useState([{ id: "1", name: "hargun", roll: "2000270130065" },
+  { id: "2", name: "hargun", roll: "2000270130066" },
+  { id: "3", name: "mohit", roll: "2000270130067" },
+  { id: "4", name: "bhavya", roll: "2000270130068" },
+  { id: "5", name: "manish", roll: "2000270130069" },
+  { id: "6", name: "hargun", roll: "2000270130070" },
+  { id: "7", name: "hargun", roll: "2000270130071" },
+  { id: "8", name: "hargun", roll: "2000270130072" },
+  { id: "9", name: "hargun", roll: "2000270130073" },
+  { id: "10", name: "hargun", roll: "2000270130074" },
+  { id: "11", name: "hargun", roll: "2000270130075" },]);
+  const [arr, setArr] = useState(tableData.map(data => (
+    {
+      id: data.id,
+      att: false,
+      roll: data.roll,
+    }
+  )));
+  let a;
+  const handleClick = (id) => {
+    a = arr;
+    a[id].att = !a[id].att;
+    setArr(a);
+  }
+
+  useEffect(() => {
+    console.log(arr);
+  }, [arr, a]);
+
   const handleYearDropdown = (e) => {
     setYear(e.target.value);
     console.log(e.target.value);
@@ -38,6 +66,7 @@ const MarkAttendance = () => {
     //     toast.warn("Please Select Year and Batch")
     // }
   }
+
   return (<>
     <div className={`Admin-Container ${val ? "activate" : ""}`} >
       <div className='Batches-Details'>
@@ -72,8 +101,8 @@ const MarkAttendance = () => {
         <TableContainer component={Paper} style={{
           width: val ? "81vw" : "91vw",
           position: "relative",
-          top: "5%",
-          height: "80vh"
+          top: "-3%",
+          height: "70vh"
 
         }} >
           <Table style={{ height: "max-content" }} stickyHeader>
@@ -87,15 +116,18 @@ const MarkAttendance = () => {
             <TableBody>
 
               {
-                tableData.map((data) => (<>
+                tableData.map((data, id) => (<>
                   <TableRow>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.roll}</TableCell>
                     <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.name}</TableCell>
-                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
-                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>
-                      <div className='Att-box' style={{ width: "50px", height: "50px", backgroundColor: "lightgreen", border: "1px solid black", color: "white" }} >
-                        p
-                      </div>
+                    <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif", display: "flex", justifyContent: "center" }} align='center'>
+                      {
+                        arr[id].att ? <div className='Att-box' style={{ width: "50px", height: "50px", backgroundColor: "lightgreen", border: "0.5px solid black", color: "black", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "18px", borderRadius: "50%", cursor: "pointer" }} onClick={() => handleClick(id)} >
+                          P
+                        </div> :
+                          <div className='Att-box' style={{ width: "50px", height: "50px", backgroundColor: "#f15151", border: "0.5px solid black", color: "black", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "18px", borderRadius: "50%", cursor: "pointer" }} onClick={() => handleClick(id)}  >
+                            A
+                          </div>}
                     </TableCell>
                   </TableRow>
                 </>))
