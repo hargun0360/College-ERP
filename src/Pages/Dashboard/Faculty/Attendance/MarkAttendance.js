@@ -37,7 +37,7 @@ const MarkAttendance = () => {
 
   useEffect(() => {
     console.log(arr);
-  }, [arr, a]);
+  }, [JSON.stringify(arr)])
 
   const handleYearDropdown = (e) => {
     setYear(e.target.value);
