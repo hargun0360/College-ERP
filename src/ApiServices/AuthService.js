@@ -185,7 +185,7 @@ class AuthServices {
     // View All Faculty List
 
     getFaculty() {
-        return axios.get(`admin/viewfaculty`, {
+        return axios.get(`admin/viewfaculty?admin=false`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')
@@ -232,6 +232,18 @@ class AuthServices {
     makeAdmin(data) {
         console.log(data);
         return axios.post(`admin/makeadmin`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
+
+    // View All Admins List
+
+    getAdmins() {
+        return axios.get(`admin/viewfaculty?admin=true`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('user')

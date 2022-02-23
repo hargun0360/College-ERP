@@ -25,7 +25,6 @@ const MarkAttendance = () => {
     {
       id: data.id,
       att: false,
-      roll: data.roll,
     }
   )));
   let a;
@@ -34,6 +33,8 @@ const MarkAttendance = () => {
     a[id].att = !a[id].att;
     setArr(a);
   }
+
+
 
   useEffect(() => {
     console.log(arr);

@@ -1,33 +1,50 @@
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Admins.css'
 import AddAdmin from './AddAdmin'
+import AuthService from '../../../../ApiServices/AuthService';
 const AdminsData = () => {
     const { val } = useSelector((state) => state.toggle);
-    const [flag,setFlag] = useState(false);
-    const [tableData, setTableData] = useState([{id:"1",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"2",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"3",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"4",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"5",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"6",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"7",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"8",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"9",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"10",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"11",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"12",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"},{id:"13",name:"Hargun",email:"Hargun2013021@akgec.ac.in",sub:"React JS"}])
+    const [flag, setFlag] = useState(false);
+    const [tableData, setTableData] = useState([]);
+
     const handleDelete = (id) => {
         console.log(id);
     }
-  return (<>
-      <div className={`Admin-Container ${val ? "activate" : ""}`}>
+    useEffect(() => {
+        loadAdmins();
+    }, []);
+
+    const loadAdmins = async () => {
+        await AuthService.getAdmins()
+            .then((res) => {
+                console.log(res);
+                setTableData(res.data)
+            }).catch((e) => {
+                console.log(e);
+            })
+
+    }
+
+    return (<>
+        <div className={`Admin-Container ${val ? "activate" : ""}`}>
             <div className='Admins-info-table'>
-            <TableContainer component={Paper} style={{
+                <TableContainer component={Paper} style={{
                     width: val ? "81vw" : "91vw",
                     position: "relative",
                     top: "5%",
-                    height:"90vh"
+                    height: "90vh"
 
                 }} >
-                    <Table style={{height: "max-content"}} stickyHeader>
+                    <Table style={{ height: "max-content" }} stickyHeader>
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{ border: "0px solid transparent", width: "20%",fontFamily:"'Inter', sans-serif"  }} align='center'>Name</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Email</TableCell>
-                                <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>Subject</TableCell>
-                                <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'></TableCell>
+                                <TableCell style={{ border: "0px solid transparent", width: "20%", fontFamily: "'Inter', sans-serif" }} align='center'>Name</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Email</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>Subject</TableCell>
+                                <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -35,11 +52,11 @@ const AdminsData = () => {
                             {
                                 tableData.map((data) => (<>
                                     <TableRow>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.name}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent",fontFamily:"'Inter', sans-serif"  }} align='center'>{data.email}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" ,fontFamily:"'Inter', sans-serif" }} align='center'>{data.sub}</TableCell>
-                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={()=>handleDelete(data._id)}>
-                                            <div className='trash-icon' style={{cursor:"pointer"}}>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.fullname}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.email}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent", fontFamily: "'Inter', sans-serif" }} align='center'>{data.subject}</TableCell>
+                                        <TableCell style={{ border: "0px solid transparent" }} align='center' onClick={() => handleDelete(data._id)}>
+                                            <div className='trash-icon' style={{ cursor: "pointer" }}>
                                                 <box-icon color="red" name='trash-alt' />
                                             </div>
                                         </TableCell>
@@ -50,8 +67,8 @@ const AdminsData = () => {
                     </Table>
                 </TableContainer>
             </div>
-      </div>
-  </>);
+        </div>
+    </>);
 };
 
 export default AdminsData;
