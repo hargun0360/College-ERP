@@ -1,18 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import 'boxicons'
 import { Paper, TableContainer, TableBody, Table, TableHead, TableCell, TableRow } from "@material-ui/core"
 import './Admins.css'
 import AddAdmin from './AddAdmin'
 import AuthService from '../../../../ApiServices/AuthService';
+import * as actionCreators from '../../../../Service/Action/FacultyAction'
 const AdminsData = () => {
     const { val } = useSelector((state) => state.toggle);
     const [flag, setFlag] = useState(false);
     const [tableData, setTableData] = useState([]);
-
+    const dispatch = useDispatch();
+    const { del } = useSelector((state) => state.faculty)
+    const adminId = localStorage.getItem("userid");
     const handleDelete = (id) => {
-        console.log(id);
+        if (adminId === id) {
+            alert("You can't delete Yourself");
+        }
+        else {
+            dispatch(actionCreators.deleteAdmin(false));
+            console.log(id);
+            AuthService.DelAdmins(id)
+                .then((res) => {
+                    console.log(res);
+                    if (res) {
+                        dispatch(actionCreators.deleteAdmin(true));
+                    }
+                }).catch((e) => {
+                    console.log(e);
+                })
+        }
+
     }
+    useEffect(() => {
+        loadAdmins();
+    }, [del]);
     useEffect(() => {
         loadAdmins();
     }, []);

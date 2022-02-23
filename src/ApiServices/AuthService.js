@@ -251,6 +251,17 @@ class AuthServices {
         })
     }
 
+    // Delete Admin 
+
+    DelAdmins(id) {
+        return axios.delete(`admin/deletestudent/${id}?user=admin`, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
 }
 
 

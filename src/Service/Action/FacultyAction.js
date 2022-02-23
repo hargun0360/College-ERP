@@ -16,6 +16,12 @@ export const deleteFaculty = (value) => {
         payload: value
     }
 }
+export const deleteAdmin = (value) => {
+    return {
+        type: "Delete_Admin",
+        payload: value
+    }
+}
 export const addFaculty = (value) => {
     return {
         type: "Add_Faculty",

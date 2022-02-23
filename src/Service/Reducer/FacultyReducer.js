@@ -17,6 +17,7 @@ export function Faculty(state = {}, action) {
                 view: action.payload
             };
         case "Delete_Faculty":
+        case "Delete_Admin":
             return {
                 ...state,
                 del: action.payload
