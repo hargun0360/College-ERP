@@ -12,13 +12,27 @@ const MarkAttendance = () => {
   const [year, setYear] = useState(null);
   const [batches, setBatches] = useState([]);
   const [tableData, setTableData] = useState([]);
-
+  const [subject, setSubject] = useState(null);
   const [arr, setArr] = useState([]);
+  const [arrayP, setArrayP] = useState([]);
+  const [arrayA, setArrayA] = useState([]);
+
+  const idf = localStorage.getItem("userid");
 
   useEffect(() => {
     loadBatch();
 
   }, [year]);
+
+  useEffect(() => {
+    AuthService.getEachFaculty(idf)
+      .then((res) => {
+        console.log(res);
+        setSubject(res.data.subject);
+      }).catch((e) => {
+        console.log(e);
+      })
+  }, []);
 
   const loadBatch = async () => {
     try {
@@ -73,10 +87,33 @@ const MarkAttendance = () => {
       // show error
     }
   }
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
   const handleAtt = () => {
-    // post api call
+    const p = [];
+    const a = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].att === true) {
+        p.push(arr[i].id);
+      } else if (arr[i].att === false) {
+        a.push(arr[i].id);
+      }
+    }
+    setArrayP(p);
+    setArrayA(a);
+    today = yyyy + '-' + mm + '-' + dd;
+    const obj = {
+      arrayP: arrayP,
+      arrayA: arrayA,
+      subject,
+      date: today
+    }
+    console.log(obj);
   }
-  console.log(arr);
+
+
 
   return (<>
     <div className={`Admin-Container ${val ? "activate" : ""}`} >
@@ -113,7 +150,7 @@ const MarkAttendance = () => {
           width: val ? "81vw" : "91vw",
           position: "relative",
           top: "2%",
-          height: "70vh"
+          height: "65vh"
 
         }} >
           <Table style={{ height: "max-content" }} stickyHeader>
@@ -149,7 +186,7 @@ const MarkAttendance = () => {
         </TableContainer>
 
       </div>
-      <div className='Upload-Btn-att' onClick={() => handleAtt}>
+      <div className='Upload-Btn-att' onClick={handleAtt}>
         <h5>Upload</h5>
       </div>
     </div>
