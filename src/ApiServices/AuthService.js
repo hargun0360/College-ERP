@@ -78,6 +78,8 @@ class AuthServices {
         })
     }
 
+    // Delete Annoucement (Admin)
+
     deleteAnnoucementDetails(idu, ida) {
         return axios.delete(`faculty/deleteannouncement/${ida}/${idu}`, {
             headers: {
@@ -261,6 +263,19 @@ class AuthServices {
             }
         })
     }
+
+    // Mark Attendance (Faculty)
+
+    markAttendance(data) {
+        console.log(data);
+        return axios.post(`faculty/attendance`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer ' + localStorage.getItem('user')
+            }
+        })
+    }
+
 
 }
 

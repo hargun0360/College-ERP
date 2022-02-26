@@ -107,10 +107,19 @@ const MarkAttendance = () => {
     const obj = {
       arrayP: arrayP,
       arrayA: arrayA,
-      subject,
+      subject: subject,
       date: today
     }
-    console.log(obj);
+    if (obj.arrayP.length > 0) {
+      AuthService.markAttendance(obj)
+        .then((res) => {
+          console.log(res);
+        }).catch((e) => {
+          console.log(e);
+        })
+    }
+
+
   }
 
 
