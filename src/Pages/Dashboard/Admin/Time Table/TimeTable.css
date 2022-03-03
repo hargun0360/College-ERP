@@ -36,3 +36,9 @@
     position: absolute;
     left: 63%;
 }
+.Timetable-rows{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
