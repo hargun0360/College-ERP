@@ -30,20 +30,20 @@
     left:90%;
   }
   .sidebar ul {
-    margin-top: 50px;
+    margin-top: -34px;
     margin-left: -34px;
-  }
-  .sidebar ul li{
-    position:relative;
-    height:50px;
-    width:100%;
-    margin:0;
+}
+  .sidebar ul li {
+    position: relative;
+    height: 57px;
+    width: 100%;
+    margin: 0;
     list-style: none;
     line-height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+}
   .sidebar ul li .tooltip{
     position:absolute;
     left:135px;

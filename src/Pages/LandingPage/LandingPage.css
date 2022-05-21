@@ -156,9 +156,9 @@
     margin-bottom: -1%;
 }
 .cross {
-    position: relative;
-    top: -29%;
-    left: -3%;
+    position: absolute;
+    right: 3%;
+    top: 2%;
     cursor: pointer;
 }
 #crossed:hover{
@@ -203,10 +203,6 @@
     }
     .Modal-box{
         height: 111vh;
-    }
-    .cross {
-        top: -26%;
-        left: -4%;
     }
 }
 @media (max-width:600px){
@@ -253,10 +249,6 @@
     }
     .box1:hover,.box2:hover,.box3:hover{
         width: 230px;
-    }
-    .cross {
-        top: -21%;
-        left: -5%;
     }
 }
 @media (max-width:345px){

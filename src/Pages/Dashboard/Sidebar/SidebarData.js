@@ -33,12 +33,6 @@ export const SidebarData = [
         tooltip:"Marks"
     },
     {
-        title:"Time Table", 
-        icon:<box-icon name="time-five" color="#505050"/>,
-        Link:'/Dashboard/Time Table',
-        tooltip:"TimeTable"
-    },
-    {
         title:"Holidays",
         icon:<box-icon name="calendar" color="#505050"/>,
         Link:'/Dashboard/Holidays',

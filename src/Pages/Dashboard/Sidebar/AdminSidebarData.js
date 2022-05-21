@@ -33,12 +33,6 @@ export const AdminSidebarData = [
         tooltip:"Faculty"
     },
     {
-        title:"Time Table",
-        icon:<box-icon name="time-five" color="#505050"/>,
-        Link:'/Dashboard/TimeTable',
-        tooltip:"Time Table"
-    },
-    {
         title:"Holidays",
         icon:<box-icon name="calendar" color="#505050"/>,
         Link:'/Dashboard/Holidays',

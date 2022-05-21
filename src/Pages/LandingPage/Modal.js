@@ -61,9 +61,9 @@ const Modal = (props) => {
                         <h2>Admin</h2>
                     </div>
                 </div>
-            </div>
-            <div className='cross'>
+                <div className='cross'>
                 <i id="crossed" className="fa fa-times" onClick={handleClick}></i>
+                </div>
             </div>
         </div>
     ):null;

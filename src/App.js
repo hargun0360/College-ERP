@@ -20,7 +20,6 @@ import Profile from './Pages/Dashboard/Student/Profile/Profile';
 import Holiday from './Pages/Dashboard/Admin/Holidays/Holiday';
 import Admins from './Pages/Dashboard/Admin/Admins/Admins';
 import Faculty from './Pages/Dashboard/Admin/Faculty/Faculty';
-import TimeTable from './Pages/Dashboard/Admin/Time Table/TimeTable'
 import Feedback from './Pages/Dashboard/Admin/Feedback/Feedback'
 
 // *************************** Student Routings *************************************************
@@ -88,10 +87,6 @@ function App() {
             <Route exact path="admin/Dashboard/Faculty" element={
             <PrivateRoute>
               <Faculty />
-            </PrivateRoute>} />
-            <Route exact path="admin/Dashboard/TimeTable" element={
-            <PrivateRoute>
-              <TimeTable />
             </PrivateRoute>} />
             <Route exact path="admin/Dashboard/Feedback" element={
             <PrivateRoute>
