@@ -1,5 +1,0 @@
-{
- "private": true,
- "name": "DaysTimer",
- "main": "./DaysTimer.js"
-}
